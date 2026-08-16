@@ -2,135 +2,278 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
 <meta name="theme-color" content="#07080c">
-<title>Aura Pro Studio V4 Ultimate</title>
+
+<title>Aura Pro Studio V4.1 Ultimate</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#07080c;color:#fff;
- font-family:Arial,sans-serif;
+*{
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
+
+html{
+ scroll-behavior:smooth;
+}
+
+body{
+ margin:0;
+ background:#07080c;
+ color:#fff;
+ font-family:Arial,sans-serif;
+ overscroll-behavior-y:none;
+}
+
+button,
+input,
+select,
+textarea{
+ font:inherit;
+}
+
+button{
+ cursor:pointer;
+ touch-action:manipulation;
+ user-select:none;
+ -webkit-user-select:none;
+}
+
+button:active{
+ transform:scale(.96);
+}
 
 header{
- height:64px;padding:0 16px;display:flex;
- align-items:center;background:#090a0f;
+ height:64px;
+ padding:0 16px;
+ display:flex;
+ align-items:center;
+ background:#090a0f;
  border-bottom:1px solid #292e3a;
- position:sticky;top:0;z-index:10
+ position:sticky;
+ top:0;
+ z-index:100;
 }
-.logo{font-size:20px;font-weight:900}
-.logo span{color:#ff7417}
-.gear{margin-left:auto;background:#11151d;color:white;
- border:1px solid #303644;border-radius:12px;padding:10px}
 
-main{max-width:1150px;margin:auto;padding:14px 14px 140px}
+.logo{
+ font-size:20px;
+ font-weight:900;
+}
+
+.logo span{
+ color:#ff7417;
+}
+
+.gear{
+ margin-left:auto;
+ background:#11151d;
+ color:white;
+ border:1px solid #303644;
+ border-radius:12px;
+ padding:10px 13px;
+ min-width:46px;
+ min-height:44px;
+}
+
+main{
+ max-width:1150px;
+ margin:auto;
+ padding:14px 14px 145px;
+}
 
 .search{
- width:100%;height:48px;background:#10131a;
- border:1px solid #292e3a;border-radius:14px;
- color:white;padding:0 14px;outline:none
+ width:100%;
+ height:48px;
+ background:#10131a;
+ border:1px solid #292e3a;
+ border-radius:14px;
+ color:white;
+ padding:0 14px;
+ outline:none;
 }
 
-nav,.modes{
- display:flex;gap:7px;overflow:auto;padding:12px 0
+.search:focus{
+ border-color:#ff7417;
 }
-nav button,.modes button{
- white-space:nowrap;padding:10px 13px;
- border-radius:11px;background:#10131a;
- border:1px solid #292e3a;color:#9ba2b2
+
+nav,
+.modes{
+ display:flex;
+ gap:7px;
+ overflow-x:auto;
+ padding:12px 0;
+ scrollbar-width:none;
 }
-nav .active,.modes .active{
- background:#ff7417;color:#111;
- border-color:#ff7417;font-weight:bold
+
+nav::-webkit-scrollbar,
+.modes::-webkit-scrollbar{
+ display:none;
+}
+
+nav button,
+.modes button{
+ white-space:nowrap;
+ padding:11px 14px;
+ min-height:44px;
+ border-radius:11px;
+ background:#10131a;
+ border:1px solid #292e3a;
+ color:#9ba2b2;
+}
+
+nav button.active,
+.modes button.active{
+ background:#ff7417;
+ color:#111;
+ border-color:#ff7417;
+ font-weight:bold;
 }
 
 .hero{
- padding:28px;border-radius:24px;
+ padding:28px;
+ border-radius:24px;
  border:1px solid #292e3a;
  background:
- radial-gradient(circle at 90% 10%,#ff741755,transparent 35%),
- #151820
+ radial-gradient(
+  circle at 90% 10%,
+  #ff741755,
+  transparent 35%
+ ),
+ #151820;
 }
-.hero small{color:#ffb15c;font-weight:bold}
-.hero h1{font-size:31px;margin:8px 0}
-.muted{color:#8e96a7}
+
+.hero small{
+ color:#ffb15c;
+ font-weight:bold;
+}
+
+.hero h1{
+ font-size:31px;
+ margin:8px 0;
+}
+
+.muted{
+ color:#8e96a7;
+}
 
 .card{
- margin:15px 0;padding:20px;
+ margin:15px 0;
+ padding:20px;
  background:#10131a;
  border:1px solid #292e3a;
- border-radius:20px
+ border-radius:20px;
 }
 
-.upload{text-align:center;border-style:dashed}
+.upload{
+ text-align:center;
+ border-style:dashed;
+}
 
 .orange{
- background:#ff7417;color:#111;border:0;
- border-radius:11px;padding:12px 16px;
- font-weight:bold
+ background:#ff7417;
+ color:#111;
+ border:0;
+ border-radius:11px;
+ padding:12px 16px;
+ min-height:44px;
+ font-weight:bold;
 }
 
 .song{
- display:flex;align-items:center;gap:11px;
- padding:9px;margin:7px 0;
+ display:flex;
+ align-items:center;
+ gap:11px;
+ padding:9px;
+ margin:7px 0;
  background:#10131a;
  border:1px solid #292e3a;
- border-radius:14px
+ border-radius:14px;
+}
+
+.song:active{
+ border-color:#ff7417;
 }
 
 .cover{
- width:54px;height:54px;flex-shrink:0;
- border-radius:12px;display:grid;place-items:center;
+ width:54px;
+ height:54px;
+ flex-shrink:0;
+ border-radius:12px;
+ display:grid;
+ place-items:center;
  font-size:23px;
- background:linear-gradient(135deg,#3b4252,#171a22)
+ background:
+ linear-gradient(
+  135deg,
+  #3b4252,
+  #171a22
+ );
 }
 
-.info{flex:1;min-width:0}
-.info b,.info small{
- display:block;overflow:hidden;
- text-overflow:ellipsis;white-space:nowrap
+.info{
+ flex:1;
+ min-width:0;
 }
-.info small{color:#8e96a7;margin-top:4px}
+
+.info b,
+.info small{
+ display:block;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.info small{
+ color:#8e96a7;
+ margin-top:4px;
+}
 
 .song button{
- width:40px;height:40px;
- background:#171b24;color:#ffb15c;
- border:1px solid #303644;border-radius:10px
+ width:44px;
+ height:44px;
+ flex-shrink:0;
+ background:#171b24;
+ color:#ffb15c;
+ border:1px solid #303644;
+ border-radius:10px;
 }
 
 /* EQ */
 
-.eqbox{overflow-x:auto}
+.eqbox{
+ overflow-x:auto;
+ scrollbar-width:none;
+}
+
+.eqbox::-webkit-scrollbar{
+ display:none;
+}
 
 .eq{
- min-width:800px;height:330px;
- display:flex;align-items:end;
+ min-width:800px;
+ height:330px;
+ display:flex;
+ align-items:end;
  justify-content:space-around;
- padding:10px
+ padding:10px;
 }
 
 .eqband{
- display:flex;flex-direction:column;
- align-items:center;color:#8e96a7;
- font-size:9px
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ color:#8e96a7;
+ font-size:9px;
 }
 
 .eqband input{
  height:235px;
  writing-mode:vertical-lr;
  direction:rtl;
- accent-color:#ff7417
-}
-
-.preamp{
- display:flex;align-items:center;gap:12px;
- margin-top:15px
-}
-.preamp input{
- flex:1;accent-color:#ff7417
+ accent-color:#ff7417;
+ touch-action:none;
 }
 
 /* AUDIO LAB */
@@ -138,26 +281,26 @@ nav .active,.modes .active{
 .controls{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:10px
+ gap:10px;
 }
 
 .control{
  background:#171b24;
  border:1px solid #303644;
  border-radius:13px;
- padding:12px
+ padding:12px;
 }
 
 .control label{
  display:flex;
  justify-content:space-between;
  color:#9ba2b2;
- font-size:11px
+ font-size:11px;
 }
 
 .control input{
  width:100%;
- accent-color:#ff7417
+ accent-color:#ff7417;
 }
 
 /* VISUALIZER */
@@ -167,19 +310,22 @@ nav .active,.modes .active{
  background:#050609;
  border:1px solid #292e3a;
  border-radius:22px;
- overflow:hidden
+ overflow:hidden;
 }
 
 canvas{
  width:100%;
  height:100%;
- display:block
+ display:block;
 }
+
+/* METRICS */
 
 .metrics{
  display:grid;
  grid-template-columns:repeat(4,1fr);
- gap:8px;margin-top:10px
+ gap:8px;
+ margin-top:10px;
 }
 
 .metric{
@@ -188,112 +334,336 @@ canvas{
  border-radius:12px;
  padding:12px;
  color:#8e96a7;
- font-size:10px
+ font-size:10px;
 }
 
 .metric b{
  display:block;
  color:#ffb15c;
  font-size:17px;
- margin-top:4px
+ margin-top:4px;
 }
 
-/* NOW PLAYING */
+/* NOW */
 
 .now{
  display:grid;
  grid-template-columns:180px 1fr;
- gap:22px;align-items:center
+ gap:22px;
+ align-items:center;
 }
 
 .bigcover{
- width:180px;height:180px;
+ width:180px;
+ height:180px;
  border-radius:25px;
- display:grid;place-items:center;
+ display:grid;
+ place-items:center;
  font-size:70px;
  background:
- radial-gradient(circle at 30% 20%,
- #ff9b4a,#7b2708 35%,#161922 70%);
- box-shadow:0 20px 60px #ff741722
+ radial-gradient(
+  circle at 30% 20%,
+  #ff9b4a,
+  #7b2708 35%,
+  #161922 70%
+ );
+ box-shadow:0 20px 60px #ff741722;
 }
 
 .nowbuttons{
- display:flex;gap:8px;margin-top:18px
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:18px;
 }
 
 .nowbuttons button{
  padding:10px 14px;
+ min-height:44px;
  border-radius:11px;
  background:#171b24;
- color:white;border:1px solid #303644
+ color:white;
+ border:1px solid #303644;
 }
 
-textarea,select{
+/* FORM */
+
+textarea,
+select{
  width:100%;
  background:#171b24;
  color:white;
  border:1px solid #303644;
  border-radius:11px;
- padding:12px
+ padding:12px;
 }
 
-textarea{min-height:170px}
+textarea{
+ min-height:170px;
+}
 
-/* PLAYER */
+/* FOOTER */
 
 footer{
- position:fixed;bottom:0;left:0;right:0;
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
  background:#0c0e13ed;
  backdrop-filter:blur(18px);
  border-top:1px solid #292e3a;
- z-index:30
+ z-index:90;
 }
 
 .progress{
- height:3px;background:#292e3a
+ height:3px;
+ background:#292e3a;
 }
 
 .progress i{
- display:block;width:0;height:100%;
- background:#ff7417
+ display:block;
+ width:0;
+ height:100%;
+ background:#ff7417;
+ transition:width .1s linear;
 }
 
 .player{
- max-width:1150px;margin:auto;
- padding:8px;display:flex;
- align-items:center;gap:10px
+ max-width:1150px;
+ margin:auto;
+ padding:8px;
+ display:flex;
+ align-items:center;
+ gap:10px;
 }
 
 .player .cover{
- width:46px;height:46px
+ width:46px;
+ height:46px;
 }
 
-.player .info{flex:1}
+.player .info{
+ flex:1;
+}
 
 .player button{
- width:42px;height:42px;
+ width:44px;
+ height:44px;
  border-radius:50%;
  background:#171b24;
  color:white;
- border:1px solid #303644
+ border:1px solid #303644;
+ flex-shrink:0;
 }
 
 .player .play{
  background:#ff7417;
- color:#111;border:0
+ color:#111;
+ border:0;
 }
 
 .empty{
- padding:30px;text-align:center;
- color:#8e96a7
+ padding:30px;
+ text-align:center;
+ color:#8e96a7;
+}
+
+/* SETTINGS */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:#0009;
+ backdrop-filter:blur(10px);
+ z-index:200;
+ display:none;
+ align-items:flex-end;
+ justify-content:center;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.settings{
+ width:100%;
+ max-width:600px;
+ max-height:88vh;
+ overflow:auto;
+ background:#10131a;
+ border:1px solid #303644;
+ border-radius:24px 24px 0 0;
+ padding:20px;
+ box-shadow:0 -20px 80px #000;
+}
+
+.settingsHead{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:15px;
+}
+
+.close{
+ width:44px;
+ height:44px;
+ border-radius:12px;
+ border:1px solid #303644;
+ background:#171b24;
+ color:white;
+}
+
+.settingRow{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
+ padding:15px 0;
+ border-bottom:1px solid #252a35;
+}
+
+.settingRow:last-child{
+ border-bottom:0;
+}
+
+.settingRow small{
+ display:block;
+ color:#8e96a7;
+ margin-top:4px;
+}
+
+.settingRow input[type="range"]{
+ width:140px;
+ accent-color:#ff7417;
+}
+
+.switch{
+ width:48px;
+ height:28px;
+ border-radius:20px;
+ background:#303644;
+ padding:3px;
+}
+
+.switch i{
+ display:block;
+ width:22px;
+ height:22px;
+ border-radius:50%;
+ background:white;
+ transition:.2s;
+}
+
+.switch.on{
+ background:#ff7417;
+}
+
+.switch.on i{
+ transform:translateX(20px);
+}
+
+.danger{
+ background:#261519;
+ color:#ff8b8b;
+ border:1px solid #6b3030;
+ border-radius:11px;
+ padding:12px;
+ width:100%;
+ margin-top:8px;
+}
+
+.success{
+ color:#8cffb2;
+}
+
+/* TOAST */
+
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:100px;
+ transform:translateX(-50%) translateY(20px);
+ background:#171b24;
+ border:1px solid #303644;
+ color:white;
+ padding:12px 18px;
+ border-radius:12px;
+ opacity:0;
+ pointer-events:none;
+ transition:.25s;
+ z-index:300;
+}
+
+.toast.show{
+ opacity:1;
+ transform:translateX(-50%) translateY(0);
 }
 
 @media(max-width:650px){
- .controls{grid-template-columns:1fr 1fr}
- .metrics{grid-template-columns:1fr 1fr}
- .visual{height:330px}
- .now{grid-template-columns:1fr}
- .bigcover{width:155px;height:155px}
+
+ .controls{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .metrics{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .visual{
+  height:330px;
+ }
+
+ .now{
+  grid-template-columns:1fr;
+ }
+
+ .bigcover{
+  width:155px;
+  height:155px;
+ }
+
+ .player{
+  padding:7px;
+ }
+
+ .player .info{
+  min-width:0;
+ }
+
+ .player button{
+  width:42px;
+  height:42px;
+ }
+
+ .player .cover{
+  display:none;
+ }
+
+ .hero{
+  padding:22px;
+ }
+
+ .hero h1{
+  font-size:27px;
+ }
+
+}
+
+@media(max-width:400px){
+
+ .player{
+  gap:5px;
+ }
+
+ .player button{
+  width:39px;
+  height:39px;
+ }
+
+ .controls{
+  grid-template-columns:1fr;
+ }
+
 }
 </style>
 </head>
@@ -301,25 +671,58 @@ footer{
 <body>
 
 <header>
+
  <div class="logo">
   AURA <span>PRO</span> STUDIO
  </div>
- <button class="gear">⚙</button>
+
+ <button
+  class="gear"
+  id="gear"
+  aria-label="Configurações">
+  ⚙
+ </button>
+
 </header>
 
 <main>
 
-<input id="search" class="search"
+<input
+ id="search"
+ class="search"
+ autocomplete="off"
  placeholder="🔎 Buscar músicas...">
 
 <nav id="nav">
- <button class="active" data-page="home">Início</button>
- <button data-page="library">Biblioteca</button>
- <button data-page="now">Player</button>
- <button data-page="eq">EQ 20</button>
- <button data-page="visual">Visualizer</button>
- <button data-page="lab">Audio Lab</button>
- <button data-page="lyrics">Letras</button>
+
+ <button class="active" data-page="home">
+  Início
+ </button>
+
+ <button data-page="library">
+  Biblioteca
+ </button>
+
+ <button data-page="now">
+  Player
+ </button>
+
+ <button data-page="eq">
+  EQ 20
+ </button>
+
+ <button data-page="visual">
+  Visualizer
+ </button>
+
+ <button data-page="lab">
+  Audio Lab
+ </button>
+
+ <button data-page="lyrics">
+  Letras
+ </button>
+
 </nav>
 
 <section id="content"></section>
@@ -328,40 +731,235 @@ footer{
 
 <footer>
 
-<div class="progress">
- <i id="progress"></i>
-</div>
+ <div class="progress">
+  <i id="progress"></i>
+ </div>
 
-<div class="player">
+ <div class="player">
 
-<div class="cover">♪</div>
+  <div class="cover">♪</div>
 
-<div class="info">
- <b id="title">Nenhuma música</b>
- <small class="muted" id="artist">
-  Aura Pro Studio
- </small>
-</div>
+  <div class="info">
 
-<button id="prev">⏮</button>
-<button id="play" class="play">▶</button>
-<button id="next">⏭</button>
+   <b id="title">
+    Nenhuma música
+   </b>
 
-</div>
+   <small
+    class="muted"
+    id="artist">
+    Aura Pro Studio
+   </small>
+
+  </div>
+
+  <button id="prev">
+   ⏮
+  </button>
+
+  <button
+   id="play"
+   class="play">
+   ▶
+  </button>
+
+  <button id="next">
+   ⏭
+  </button>
+
+ </div>
 
 </footer>
 
-<input id="files" type="file" accept="audio/*" multiple hidden>
+<input
+ id="files"
+ type="file"
+ accept="audio/*"
+ multiple
+ hidden>
+
+<!-- CONFIGURAÇÕES -->
+
+<div
+ id="settingsModal"
+ class="modal">
+
+ <div class="settings">
+
+  <div class="settingsHead">
+
+   <div>
+    <h2 style="margin:0">
+     Configurações
+    </h2>
+
+    <small class="muted">
+     Aura Pro Studio
+    </small>
+   </div>
+
+   <button
+    id="closeSettings"
+    class="close">
+    ✕
+   </button>
+
+  </div>
+
+  <div class="settingRow">
+
+   <div>
+    <b>Volume</b>
+    <small>
+     Volume principal do player
+    </small>
+   </div>
+
+   <div>
+    <input
+     id="volumeSetting"
+     type="range"
+     min="0"
+     max="100"
+     value="85">
+    <span id="volumeValue">
+     85%
+    </span>
+   </div>
+
+  </div>
+
+  <div class="settingRow">
+
+   <div>
+    <b>Reprodução automática</b>
+    <small>
+     Tocar próxima música ao terminar
+    </small>
+   </div>
+
+   <button
+    id="autoNextSwitch"
+    class="switch">
+    <i></i>
+   </button>
+
+  </div>
+
+  <div class="settingRow">
+
+   <div>
+    <b>Diagnóstico</b>
+    <small id="diagnosticText">
+     Verificar sistema de áudio
+    </small>
+   </div>
+
+   <button
+    id="diagnostic"
+    class="orange">
+    Testar
+   </button>
+
+  </div>
+
+  <div class="card">
+
+   <b>Biblioteca</b>
+
+   <p class="muted">
+    As músicas importadas são armazenadas
+    localmente neste navegador.
+   </p>
+
+   <button
+    id="clearLibrary"
+    class="danger">
+    🗑 Limpar biblioteca
+   </button>
+
+  </div>
+
+  <div class="card">
+
+   <b>Configurações</b>
+
+   <p class="muted">
+    Restaurar volume, reprodução automática
+    e configurações do aplicativo.
+   </p>
+
+   <button
+    id="resetSettings"
+    class="orange">
+    ↻ Restaurar configurações
+   </button>
+
+  </div>
+
+ </div>
+
+</div>
+
+<div
+ id="toast"
+ class="toast">
+ OK
+</div>
 
 <script>
 
+/* =====================================================
+   UTILIDADES
+===================================================== */
+
 const $=s=>document.querySelector(s);
-const $$=s=>[...document.querySelectorAll(s)];
+
+const $$=s=>[
+ ...document.querySelectorAll(s)
+];
+
+function escapeHTML(value){
+
+ return String(value??"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+function toast(message){
+
+ const t=$("#toast");
+
+ t.textContent=message;
+
+ t.classList.add("show");
+
+ clearTimeout(toast.timer);
+
+ toast.timer=setTimeout(
+  ()=>t.classList.remove("show"),
+  2200
+ );
+
+}
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
 
 let songs=[];
 let current=-1;
 
 let audio=new Audio();
+
+audio.preload="metadata";
+
+let currentObjectURL=null;
 
 let ctx=null;
 let source=null;
@@ -372,131 +970,218 @@ let filters=[];
 let visualMode="spectrum";
 let animation=0;
 
+let autoNext=true;
 
-/* =========================
-   20 BANDAS
-========================= */
+let currentPage="home";
+
+let preampValue=0;
+
+
+/* =====================================================
+   FREQUÊNCIAS
+===================================================== */
 
 const frequencies=[
-20,32,50,80,125,
-200,315,500,800,
-1250,2000,3150,5000,
-6300,8000,10000,
-12500,14000,16000,20000
+ 20,32,50,80,125,
+ 200,315,500,800,
+ 1250,2000,3150,5000,
+ 6300,8000,10000,
+ 12500,14000,16000,20000
 ];
 
 
-/* =========================
-   12 PRESETS
-========================= */
+/* =====================================================
+   PRESETS
+===================================================== */
 
 const presets={
 
-"Normal":
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+ "Normal":
+ [0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0],
 
-"Rap":
-[4,5,6,5,3,1,0,1,2,3,
-4,3,2,2,3,2,1,1,2,2],
+ "Rap":
+ [4,5,6,5,3,1,0,1,2,3,
+  4,3,2,2,3,2,1,1,2,2],
 
-"Bass":
-[7,8,9,8,6,4,2,1,0,0,
-0,0,0,0,1,1,2,2,2,1],
+ "Bass":
+ [7,8,9,8,6,4,2,1,0,0,
+  0,0,0,0,1,1,2,2,2,1],
 
-"Rock":
-[4,3,2,0,-1,-2,0,2,3,2,
-2,3,4,4,3,3,2,2,3,2],
+ "Rock":
+ [4,3,2,0,-1,-2,0,2,3,2,
+  2,3,4,4,3,3,2,2,3,2],
 
-"Pop":
-[1,2,2,1,0,-1,1,2,3,3,
-3,3,2,2,2,2,2,1,1,1],
+ "Pop":
+ [1,2,2,1,0,-1,1,2,3,3,
+  3,3,2,2,2,2,2,1,1,1],
 
-"Vocal":
-[-2,-2,-1,0,2,3,4,4,5,5,
-4,3,2,2,1,0,0,-1,-1,-2],
+ "Vocal":
+ [-2,-2,-1,0,2,3,4,4,5,5,
+  4,3,2,2,1,0,0,-1,-1,-2],
 
-"Dance":
-[6,7,6,5,3,1,0,1,2,3,
-4,4,5,5,5,4,4,3,3,2],
+ "Dance":
+ [6,7,6,5,3,1,0,1,2,3,
+  4,4,5,5,5,4,4,3,3,2],
 
-"Deep Bass":
-[8,10,10,9,7,4,2,0,0,0,
-0,0,0,0,1,1,2,2,2,1],
+ "Deep Bass":
+ [8,10,10,9,7,4,2,0,0,0,
+  0,0,0,0,1,1,2,2,2,1],
 
-"Clear Sound":
-[0,0,0,-1,0,1,2,2,3,3,
-4,4,4,3,3,3,2,2,1,1],
+ "Clear Sound":
+ [0,0,0,-1,0,1,2,2,3,3,
+  4,4,4,3,3,3,2,2,1,1],
 
-"Stadium":
-[3,4,3,2,1,0,0,1,2,3,
-3,3,4,4,4,3,2,2,2,2],
+ "Stadium":
+ [3,4,3,2,1,0,0,1,2,3,
+  3,3,4,4,4,3,2,2,2,2],
 
-"Night Mode":
-[-2,-2,-1,0,1,1,2,2,2,2,
-1,1,0,0,-1,-1,-2,-2,-2,-2],
+ "Night Mode":
+ [-2,-2,-1,0,1,1,2,2,2,2,
+  1,1,0,0,-1,-1,-2,-2,-2,-2],
 
-"Ultra HD":
-[0,0,0,0,0,1,2,2,3,3,
-3,4,5,4,4,4,3,3,2,2]
+ "Ultra HD":
+ [0,0,0,0,0,1,2,2,3,3,
+  3,4,5,4,4,4,3,3,2,2]
 
 };
 
 
-/* =========================
+/* =====================================================
+   CONFIGURAÇÕES
+===================================================== */
+
+function loadSettings(){
+
+ try{
+
+  const saved=
+   JSON.parse(
+    localStorage.getItem(
+     "auraSettings"
+    )||"{}"
+   );
+
+  autoNext=
+   saved.autoNext!==false;
+
+  const volume=
+   Number.isFinite(saved.volume)
+   ?saved.volume
+   :85;
+
+  audio.volume=
+   Math.max(
+    0,
+    Math.min(1,volume/100)
+   );
+
+ }catch(e){
+
+  autoNext=true;
+  audio.volume=.85;
+
+ }
+
+}
+
+
+function saveSettings(){
+
+ localStorage.setItem(
+  "auraSettings",
+  JSON.stringify({
+   autoNext,
+   volume:
+    Math.round(audio.volume*100)
+  })
+ );
+
+}
+
+
+/* =====================================================
    INDEXED DB
-========================= */
+===================================================== */
 
 function openDB(){
 
- return new Promise((resolve,reject)=>{
+ return new Promise(
+  (resolve,reject)=>{
 
-  const request=
-   indexedDB.open("AuraProStudioV4",1);
-
-  request.onupgradeneeded=e=>{
-
-   const db=e.target.result;
-
-   if(!db.objectStoreNames.contains("songs")){
-
-    db.createObjectStore(
-     "songs",
-     {keyPath:"id"}
+   const request=
+    indexedDB.open(
+     "AuraProStudioV4",
+     1
     );
 
-   }
+   request.onupgradeneeded=e=>{
 
-  };
+    const db=e.target.result;
 
-  request.onsuccess=
-   ()=>resolve(request.result);
+    if(
+     !db.objectStoreNames
+      .contains("songs")
+    ){
 
-  request.onerror=
-   ()=>reject(request.error);
+     db.createObjectStore(
+      "songs",
+      {keyPath:"id"}
+     );
 
- });
+    }
+
+   };
+
+   request.onsuccess=
+    ()=>resolve(request.result);
+
+   request.onerror=
+    ()=>reject(request.error);
+
+  }
+ );
 
 }
 
 
 async function loadSongs(){
 
- const db=await openDB();
+ try{
 
- return new Promise((resolve,reject)=>{
+  const db=await openDB();
 
-  const r=
-   db.transaction("songs","readonly")
-   .objectStore("songs")
-   .getAll();
+  return await new Promise(
+   (resolve,reject)=>{
 
-  r.onsuccess=
-   ()=>resolve(r.result);
+    const r=
+     db.transaction(
+      "songs",
+      "readonly"
+     )
+     .objectStore("songs")
+     .getAll();
 
-  r.onerror=
-   ()=>reject(r.error);
+    r.onsuccess=
+     ()=>resolve(r.result||[]);
 
- });
+    r.onerror=
+     ()=>reject(r.error);
+
+   }
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+  toast(
+   "Não foi possível abrir a biblioteca"
+  );
+
+  return [];
+
+ }
 
 }
 
@@ -505,149 +1190,301 @@ async function saveSong(song){
 
  const db=await openDB();
 
- return new Promise((resolve,reject)=>{
+ return new Promise(
+  (resolve,reject)=>{
 
-  const t=
-   db.transaction("songs","readwrite");
+   const t=
+    db.transaction(
+     "songs",
+     "readwrite"
+    );
 
-  t.objectStore("songs").put(song);
+   t.objectStore(
+    "songs"
+   ).put(song);
 
-  t.oncomplete=resolve;
+   t.oncomplete=
+    ()=>resolve();
 
-  t.onerror=
-   ()=>reject(t.error);
+   t.onerror=
+    ()=>reject(t.error);
 
- });
-
-}
-
-
-/* =========================
-   IMPORTAR MÚSICAS
-========================= */
-
-async function importFiles(files){
-
- for(const file of files){
-
-  const song={
-   id:crypto.randomUUID(),
-   name:file.name.replace(/\.[^.]+$/,""),
-   artist:"Arquivo local",
-   blob:file
-  };
-
-  await saveSong(song);
-
-  songs.push(song);
-
- }
-
- render("library");
-
-}
-
-
-/* =========================
-   MOTOR DE ÁUDIO
-========================= */
-
-async function setupAudio(){
-
- if(ctx)return;
-
- ctx=
-  new(window.AudioContext||
-      window.webkitAudioContext)();
-
- source=
-  ctx.createMediaElementSource(audio);
-
- analyser=
-  ctx.createAnalyser();
-
- analyser.fftSize=2048;
-
- analyser.smoothingTimeConstant=.92;
-
- master=
-  ctx.createGain();
-
- master.gain.value=.85;
-
- let node=source;
-
- filters=[];
-
- frequencies.forEach(freq=>{
-
-  const filter=
-   ctx.createBiquadFilter();
-
-  filter.type="peaking";
-
-  filter.frequency.value=freq;
-
-  filter.Q.value=.8;
-
-  filter.gain.value=0;
-
-  node.connect(filter);
-
-  node=filter;
-
-  filters.push(filter);
-
- });
-
- node.connect(master);
-
- master.connect(analyser);
-
- analyser.connect(
-  ctx.destination
+  }
  );
 
 }
 
 
-/* =========================
+async function clearSongsDB(){
+
+ const db=await openDB();
+
+ return new Promise(
+  (resolve,reject)=>{
+
+   const t=
+    db.transaction(
+     "songs",
+     "readwrite"
+    );
+
+   t.objectStore(
+    "songs"
+   ).clear();
+
+   t.oncomplete=
+    ()=>resolve();
+
+   t.onerror=
+    ()=>reject(t.error);
+
+  }
+ );
+
+}
+
+
+/* =====================================================
+   IMPORTAÇÃO
+===================================================== */
+
+async function importFiles(files){
+
+ if(!files.length)return;
+
+ let imported=0;
+
+ for(const file of files){
+
+  if(!file.type.startsWith("audio/"))
+   continue;
+
+  const song={
+   id:
+    crypto.randomUUID
+    ?crypto.randomUUID()
+    :Date.now()+"-"+Math.random(),
+
+   name:
+    file.name.replace(
+     /\.[^.]+$/,""
+    ),
+
+   artist:"Arquivo local",
+
+   blob:file
+  };
+
+  try{
+
+   await saveSong(song);
+
+   songs.push(song);
+
+   imported++;
+
+  }catch(error){
+
+   console.error(error);
+
+  }
+
+ }
+
+ $("#files").value="";
+
+ render("library");
+
+ toast(
+  imported+
+  " música(s) adicionada(s)"
+ );
+
+}
+
+
+/* =====================================================
+   AUDIO ENGINE
+===================================================== */
+
+async function setupAudio(){
+
+ if(ctx){
+
+  if(ctx.state==="suspended")
+   await ctx.resume();
+
+  return;
+
+ }
+
+ try{
+
+  const AudioContext=
+   window.AudioContext||
+   window.webkitAudioContext;
+
+  if(!AudioContext){
+
+   toast(
+    "Web Audio não é suportado"
+   );
+
+   return;
+
+  }
+
+  ctx=new AudioContext();
+
+  source=
+   ctx.createMediaElementSource(
+    audio
+   );
+
+  analyser=
+   ctx.createAnalyser();
+
+  analyser.fftSize=2048;
+
+  analyser.smoothingTimeConstant=.92;
+
+  master=
+   ctx.createGain();
+
+  master.gain.value=
+   .85;
+
+  let node=source;
+
+  filters=[];
+
+  frequencies.forEach(
+   freq=>{
+
+    const filter=
+     ctx.createBiquadFilter();
+
+    filter.type="peaking";
+
+    filter.frequency.value=
+     freq;
+
+    filter.Q.value=.8;
+
+    filter.gain.value=0;
+
+    node.connect(filter);
+
+    node=filter;
+
+    filters.push(filter);
+
+   }
+  );
+
+  node.connect(master);
+
+  master.connect(analyser);
+
+  analyser.connect(
+   ctx.destination
+  );
+
+ }catch(error){
+
+  console.error(error);
+
+  toast(
+   "Erro ao iniciar o motor de áudio"
+  );
+
+ }
+
+}
+
+
+/* =====================================================
    PLAY
-========================= */
+===================================================== */
 
 async function playSong(index){
 
- if(!songs[index])return;
+ if(!songs[index])
+  return;
 
- current=index;
+ try{
 
- await setupAudio();
+  current=index;
 
- if(ctx.state==="suspended")
-  await ctx.resume();
+  await setupAudio();
 
- audio.src=
-  URL.createObjectURL(
-   songs[index].blob
+  if(!ctx)return;
+
+  if(ctx.state==="suspended")
+   await ctx.resume();
+
+  if(currentObjectURL){
+
+   URL.revokeObjectURL(
+    currentObjectURL
+   );
+
+   currentObjectURL=null;
+
+  }
+
+  currentObjectURL=
+   URL.createObjectURL(
+    songs[index].blob
+   );
+
+  audio.src=
+   currentObjectURL;
+
+  $("#title").textContent=
+   songs[index].name;
+
+  $("#artist").textContent=
+   songs[index].artist;
+
+  updateNowPage();
+
+  await audio.play();
+
+  toast(
+   "▶ "+songs[index].name
   );
 
- $("#title").textContent=
-  songs[index].name;
+ }catch(error){
 
- $("#artist").textContent=
-  songs[index].artist;
+  console.error(error);
 
- await audio.play();
+  toast(
+   "Não foi possível reproduzir esta música"
+  );
+
+ }
 
 }
 
 
 function nextSong(){
 
- if(!songs.length)return;
+ if(!songs.length)
+  return;
+
+ if(
+  current<0
+ ){
+
+  playSong(0);
+  return;
+
+ }
 
  playSong(
-  (current+1)%songs.length
+  (current+1)%
+  songs.length
  );
 
 }
@@ -655,85 +1492,236 @@ function nextSong(){
 
 function previousSong(){
 
- if(!songs.length)return;
+ if(!songs.length)
+  return;
+
+ if(
+  current<0
+ ){
+
+  playSong(0);
+  return;
+
+ }
 
  playSong(
-  (current-1+songs.length)%
+  (current-1+
+   songs.length)%
   songs.length
  );
 
 }
 
 
-function togglePlay(){
+async function togglePlay(){
 
- if(!audio.src){
+ if(!songs.length){
 
-  if(songs.length)
-   playSong(0);
+  toast(
+   "Adicione uma música primeiro"
+  );
 
   return;
 
  }
 
- if(audio.paused)
-  audio.play();
- else
-  audio.pause();
+ if(current<0){
+
+  await playSong(0);
+  return;
+
+ }
+
+ try{
+
+  await setupAudio();
+
+  if(audio.paused){
+
+   if(ctx&&ctx.state==="suspended")
+    await ctx.resume();
+
+   await audio.play();
+
+  }else{
+
+   audio.pause();
+
+  }
+
+ }catch(error){
+
+  console.error(error);
+
+ }
 
 }
 
 
-/* =========================
+/* =====================================================
    PRESET
-========================= */
+===================================================== */
 
 async function usePreset(name){
 
  await setupAudio();
 
+ if(!ctx)return;
+
  const values=
   presets[name];
 
- values.forEach((value,i)=>{
+ if(!values)return;
 
-  if(filters[i]){
+ values.forEach(
+  (value,i)=>{
 
-   filters[i].gain
-    .setTargetAtTime(
-     value,
-     ctx.currentTime,
-     .035
-    );
+   if(filters[i]){
+
+    filters[i].gain
+     .setTargetAtTime(
+      value,
+      ctx.currentTime,
+      .035
+     );
+
+   }
 
   }
-
- });
+ );
 
  $$(".eqBand").forEach(
-  (slider,i)=>
-   slider.value=values[i]
+  (slider,i)=>{
+
+   if(values[i]!==undefined)
+    slider.value=
+     values[i];
+
+  }
  );
 
 }
 
 
-/* =========================
+/* =====================================================
+   EQ
+===================================================== */
+
+async function setEQ(index,value){
+
+ await setupAudio();
+
+ if(!ctx||!filters[index])
+  return;
+
+ filters[index].gain
+  .setTargetAtTime(
+   Number(value),
+   ctx.currentTime,
+   .035
+  );
+
+}
+
+
+async function setPreamp(value){
+
+ await setupAudio();
+
+ if(!ctx||!master)
+  return;
+
+ preampValue=
+  Number(value);
+
+ master.gain
+  .setTargetAtTime(
+   .85*
+   Math.pow(
+    10,
+    preampValue/20
+   ),
+   ctx.currentTime,
+   .04
+  );
+
+}
+
+
+/* =====================================================
+   NOW PAGE
+===================================================== */
+
+function updateNowPage(){
+
+ if(currentPage!=="now")
+  return;
+
+ const name=
+  escapeHTML(
+   $("#title").textContent
+  );
+
+ const artist=
+  escapeHTML(
+   $("#artist").textContent
+  );
+
+ const nowTitle=
+  document.querySelector(
+   "#nowTitle"
+  );
+
+ const nowArtist=
+  document.querySelector(
+   "#nowArtist"
+  );
+
+ if(nowTitle)
+  nowTitle.textContent=
+   name;
+
+ if(nowArtist)
+  nowArtist.textContent=
+   artist;
+
+}
+
+
+/* =====================================================
    PÁGINAS
-========================= */
+===================================================== */
+
+function setActivePage(page){
+
+ currentPage=page;
+
+ $$("[data-page]").forEach(
+  button=>{
+
+   button.classList.toggle(
+    "active",
+    button.dataset.page===page
+   );
+
+  }
+ );
+
+}
+
 
 function render(page){
 
- $$("[data-page]").forEach(
-  b=>
-   b.classList.toggle(
-    "active",
-    b.dataset.page===page
-   )
- );
+ setActivePage(page);
 
  const c=$("#content");
 
+ if(!c)return;
+
+ c.innerHTML="";
+
+
+ /* HOME */
 
  if(page==="home"){
 
@@ -742,7 +1730,7 @@ function render(page){
   <div class="hero">
 
    <small>
-    AURA PRO STUDIO V4 ULTIMATE
+    AURA PRO STUDIO V4.1 ULTIMATE
    </small>
 
    <h1>
@@ -768,9 +1756,8 @@ function render(page){
    </p>
 
    <button
-    class="orange"
-    onclick="$('#files').click()"
-   >
+    id="uploadHome"
+    class="orange">
     ＋ Selecionar músicas
    </button>
 
@@ -784,23 +1771,51 @@ function render(page){
 
   `;
 
+  $("#uploadHome").onclick=
+   ()=>$("#files").click();
+
  }
 
 
- if(page==="library"){
+ /* LIBRARY */
+
+ else if(page==="library"){
 
   c.innerHTML=`
 
-   <h2>Biblioteca</h2>
+   <div
+    style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     gap:10px;
+    ">
+
+    <h2>
+     Biblioteca
+    </h2>
+
+    <button
+     id="uploadLibrary"
+     class="orange">
+     ＋ Adicionar
+    </button>
+
+   </div>
 
    ${songList()}
 
   `;
 
+  $("#uploadLibrary").onclick=
+   ()=>$("#files").click();
+
  }
 
 
- if(page==="now"){
+ /* PLAYER */
+
+ else if(page==="now"){
 
   c.innerHTML=`
 
@@ -816,13 +1831,15 @@ function render(page){
      TOCANDO AGORA
     </small>
 
-    <h2>
+    <h2 id="nowTitle">
      ${escapeHTML(
       $("#title").textContent
      )}
     </h2>
 
-    <p class="muted">
+    <p
+     class="muted"
+     id="nowArtist">
      ${escapeHTML(
       $("#artist").textContent
      )}
@@ -830,18 +1847,17 @@ function render(page){
 
     <div class="nowbuttons">
 
-     <button onclick="previousSong()">
+     <button id="nowPrev">
       ⏮ Anterior
      </button>
 
      <button
-      class="orange"
-      onclick="togglePlay()"
-     >
+      id="nowPlay"
+      class="orange">
       ▶ Play / Pause
      </button>
 
-     <button onclick="nextSong()">
+     <button id="nowNext">
       Próxima ⏭
      </button>
 
@@ -853,10 +1869,21 @@ function render(page){
 
   `;
 
+  $("#nowPrev").onclick=
+   previousSong;
+
+  $("#nowNext").onclick=
+   nextSong;
+
+  $("#nowPlay").onclick=
+   togglePlay;
+
  }
 
 
- if(page==="eq"){
+ /* EQ */
+
+ else if(page==="eq"){
 
   c.innerHTML=`
 
@@ -869,9 +1896,11 @@ function render(page){
    <select id="preset">
 
     ${Object.keys(presets)
-     .map(x=>`
-      <option>${x}</option>
-     `).join("")}
+     .map(
+      x=>`
+       <option>${x}</option>
+      `
+     ).join("")}
 
    </select>
 
@@ -884,11 +1913,10 @@ function render(page){
      type="range"
      min="-12"
      max="12"
-     value="0"
-    >
+     value="${preampValue}">
 
     <b id="preampValue">
-     0 dB
+     ${preampValue} dB
     </b>
 
    </div>
@@ -908,8 +1936,7 @@ function render(page){
         type="range"
         min="-12"
         max="12"
-        value="0"
-       >
+        value="0">
 
        <span>
         ${
@@ -940,31 +1967,18 @@ function render(page){
    slider=>{
 
     slider.oninput=
-     async()=>{
-
-      await setupAudio();
-
-      const i=
-       Number(
-        slider.dataset.index
-       );
-
-      filters[i].gain
-       .setTargetAtTime(
-        Number(slider.value),
-        ctx.currentTime,
-        .035
-       );
-
-     };
+     ()=>setEQ(
+      Number(
+       slider.dataset.index
+      ),
+      slider.value
+     );
 
    }
   );
 
   $("#preamp").oninput=
-   async e=>{
-
-    await setupAudio();
+   e=>{
 
     const value=
      Number(e.target.value);
@@ -973,19 +1987,16 @@ function render(page){
      .textContent=
       value+" dB";
 
-    master.gain
-     .setTargetAtTime(
-      .85*Math.pow(10,value/20),
-      ctx.currentTime,
-      .04
-     );
+    setPreamp(value);
 
    };
 
  }
 
 
- if(page==="visual"){
+ /* VISUALIZER */
+
+ else if(page==="visual"){
 
   c.innerHTML=`
 
@@ -1061,10 +2072,11 @@ function render(page){
     button.onclick=()=>{
 
      $$(".modes button")
-      .forEach(x=>
-       x.classList.remove(
-        "active"
-       )
+      .forEach(
+       x=>
+        x.classList.remove(
+         "active"
+        )
       );
 
      button.classList.add(
@@ -1083,7 +2095,21 @@ function render(page){
  }
 
 
- if(page==="lab"){
+ /* AUDIO LAB */
+
+ else if(page==="lab"){
+
+  const effects=[
+   "Bass Boost",
+   "Treble",
+   "Spatial",
+   "Loudness",
+   "Clarity",
+   "Dynamic Bass",
+   "Reverb",
+   "Stereo Width",
+   "Crossfeed"
+  ];
 
   c.innerHTML=`
 
@@ -1095,36 +2121,29 @@ function render(page){
 
    <div class="controls">
 
-    ${[
-     "Bass Boost",
-     "Treble",
-     "Spatial",
-     "Loudness",
-     "Clarity",
-     "Dynamic Bass",
-     "Reverb",
-     "Stereo Width",
-     "Crossfeed"
-    ].map(
+    ${effects.map(
      name=>`
 
      <div class="control">
 
       <label>
+
        <span>${name}</span>
+
        <b>0</b>
+
       </label>
 
       <input
        type="range"
        min="0"
        max="100"
-       value="0"
-      >
+       value="0">
 
      </div>
 
-    `).join("")}
+     `
+    ).join("")}
 
    </div>
 
@@ -1135,7 +2154,14 @@ function render(page){
  }
 
 
- if(page==="lyrics"){
+ /* LYRICS */
+
+ else if(page==="lyrics"){
+
+  const saved=
+   localStorage.getItem(
+    "auraLyrics"
+   )||"";
 
   c.innerHTML=`
 
@@ -1149,21 +2175,13 @@ function render(page){
     id="lyrics"
     placeholder="[00:00.00] Primeira linha
 [00:05.00] Segunda linha
-[00:10.00] Terceira linha"
-   ></textarea>
+[00:10.00] Terceira linha">${escapeHTML(saved)}</textarea>
 
    <br><br>
 
    <button
-    class="orange"
-    onclick="
-     localStorage.setItem(
-      'auraLyrics',
-      $('#lyrics').value
-     );
-     alert('Letras salvas!')
-    "
-   >
+    id="saveLyrics"
+    class="orange">
     Salvar letras
    </button>
 
@@ -1171,25 +2189,39 @@ function render(page){
 
   `;
 
+  $("#saveLyrics").onclick=()=>{
+
+   localStorage.setItem(
+    "auraLyrics",
+    $("#lyrics").value
+   );
+
+   toast(
+    "Letras salvas!"
+   );
+
+  };
+
  }
 
 }
 
 
-/* =========================
+/* =====================================================
    LISTA
-========================= */
+===================================================== */
 
 function songList(){
 
  const query=
-  $("#search").value
-   .toLowerCase();
+  ($("#search").value||"")
+   .toLowerCase()
+   .trim();
 
  const list=
   songs.filter(
    s=>
-    s.name
+    String(s.name)
      .toLowerCase()
      .includes(query)
   );
@@ -1198,7 +2230,13 @@ function songList(){
 
   return `
    <div class="empty">
-    Nenhuma música encontrada.
+
+    ${
+     query
+     ?"Nenhuma música encontrada."
+     :"Sua biblioteca está vazia."
+    }
+
    </div>
   `;
 
@@ -1230,8 +2268,8 @@ function songList(){
    </div>
 
    <button
-    onclick="playSong(${index})"
-   >
+    data-play-index="${index}"
+    aria-label="Reproduzir">
     ▶
    </button>
 
@@ -1244,9 +2282,9 @@ function songList(){
 }
 
 
-/* =========================
+/* =====================================================
    VISUALIZER
-========================= */
+===================================================== */
 
 function startVisualizer(){
 
@@ -1265,6 +2303,9 @@ function startVisualizer(){
   animation=
    requestAnimationFrame(frame);
 
+  if(!document.body.contains(canvas))
+   return;
+
   const w=
    canvas.clientWidth;
 
@@ -1275,11 +2316,15 @@ function startVisualizer(){
    window.devicePixelRatio||1;
 
   if(
-   canvas.width!==w*d
+   canvas.width!==Math.floor(w*d)||
+   canvas.height!==Math.floor(h*d)
   ){
 
-   canvas.width=w*d;
-   canvas.height=h*d;
+   canvas.width=
+    Math.floor(w*d);
+
+   canvas.height=
+    Math.floor(h*d);
 
    ctx2.setTransform(
     d,0,0,d,0,0
@@ -1300,9 +2345,12 @@ function startVisualizer(){
 
    ctx2.textAlign="center";
 
+   ctx2.font="14px Arial";
+
    ctx2.fillText(
     "Reproduza uma música para ativar o visualizer",
-    w/2,h/2
+    w/2,
+    h/2
    );
 
    return;
@@ -1323,29 +2371,28 @@ function startVisualizer(){
 
   analyser.getByteTimeDomainData(wave);
 
-  const average=
-   (a,b)=>{
+  const average=(a,b)=>{
 
-    let total=0;
-    let count=0;
+   let total=0;
+   let count=0;
 
-    for(
-     let i=a;
-     i<b &&
-     i<freq.length;
-     i++
-    ){
+   for(
+    let i=a;
+    i<b&&i<freq.length;
+    i++
+   ){
 
-     total+=freq[i];
-     count++;
+    total+=freq[i];
 
-    }
+    count++;
 
-    return count
-     ?total/count/255
-     :0;
+   }
 
-   };
+   return count
+    ?total/count/255
+    :0;
+
+  };
 
   const bass=
    average(0,18);
@@ -1356,19 +2403,28 @@ function startVisualizer(){
   const high=
    average(120,400);
 
-  $("#bass").textContent=
-   Math.round(bass*100)+"%";
+  const bassEl=$("#bass");
+  const midEl=$("#mid");
+  const highEl=$("#high");
+  const energyEl=$("#energy");
 
-  $("#mid").textContent=
-   Math.round(mid*100)+"%";
+  if(bassEl)
+   bassEl.textContent=
+    Math.round(bass*100)+"%";
 
-  $("#high").textContent=
-   Math.round(high*100)+"%";
+  if(midEl)
+   midEl.textContent=
+    Math.round(mid*100)+"%";
 
-  $("#energy").textContent=
-   Math.round(
-    (bass+mid+high)/3*100
-   )+"%";
+  if(highEl)
+   highEl.textContent=
+    Math.round(high*100)+"%";
+
+  if(energyEl)
+   energyEl.textContent=
+    Math.round(
+     (bass+mid+high)/3*100
+    )+"%";
 
   ctx2.strokeStyle=
    "#ff7417";
@@ -1407,7 +2463,7 @@ function startVisualizer(){
 
   }
 
-  /* CIRCULAR */
+  /* CIRCLE */
 
   else if(
    visualMode==="circle"
@@ -1459,8 +2515,11 @@ function startVisualizer(){
    ctx2.beginPath();
 
    ctx2.arc(
-    cx,cy,radius,
-    0,Math.PI*2
+    cx,
+    cy,
+    radius,
+    0,
+    Math.PI*2
    );
 
    ctx2.stroke();
@@ -1479,7 +2538,10 @@ function startVisualizer(){
    const gap=2;
 
    const barWidth=
-    (w-gap*(count-1))/count;
+    Math.max(
+     1,
+     (w-gap*(count-1))/count
+    );
 
    for(
     let i=0;
@@ -1537,101 +2599,461 @@ function startVisualizer(){
 }
 
 
-/* =========================
-   EVENTOS
-========================= */
+/* =====================================================
+   NAVEGAÇÃO — CORRIGIDA PARA TOUCH
+===================================================== */
 
-$("#nav").onclick=e=>{
+$("#nav").addEventListener(
+ "click",
+ e=>{
 
- const button=
-  e.target.closest(
-   "[data-page]"
-  );
+  const button=
+   e.target.closest(
+    "button[data-page]"
+   );
 
- if(button)
-  render(
-   button.dataset.page
-  );
+  if(!button)return;
 
-};
+  const page=
+   button.dataset.page;
+
+  render(page);
+
+  window.scrollTo({
+   top:0,
+   behavior:"smooth"
+  });
+
+ }
+);
 
 
-$("#files").onchange=
- e=>
+/* =====================================================
+   PLAY BUTTONS DA BIBLIOTECA
+===================================================== */
+
+$("#content").addEventListener(
+ "click",
+ e=>{
+
+  const button=
+   e.target.closest(
+    "[data-play-index]"
+   );
+
+  if(!button)return;
+
+  const index=
+   Number(
+    button.dataset.playIndex
+   );
+
+  playSong(index);
+
+ }
+);
+
+
+/* =====================================================
+   ARQUIVOS
+===================================================== */
+
+$("#files").addEventListener(
+ "change",
+ e=>{
+
   importFiles(
    [...e.target.files]
   );
 
+ }
+);
 
-$("#search").oninput=()=>{
 
- const active=
-  $("[data-page].active");
+/* =====================================================
+   BUSCA
+===================================================== */
 
- if(
-  active &&
-  (
-   active.dataset.page==="home"||
-   active.dataset.page==="library"
-  )
- ){
+$("#search").addEventListener(
+ "input",
+ ()=>{
 
-  render("library");
+  if(
+   currentPage==="home"||
+   currentPage==="library"
+  ){
+
+   render(
+    currentPage
+   );
+
+  }
 
  }
-
-};
-
-
-$("#play").onclick=
- togglePlay;
-
-$("#next").onclick=
- nextSong;
-
-$("#prev").onclick=
- previousSong;
+);
 
 
-audio.onplay=()=>{
+/* =====================================================
+   PLAYER INFERIOR
+===================================================== */
 
- $("#play").textContent="Ⅱ";
+$("#play").addEventListener(
+ "click",
+ togglePlay
+);
 
-};
+$("#next").addEventListener(
+ "click",
+ nextSong
+);
+
+$("#prev").addEventListener(
+ "click",
+ previousSong
+);
 
 
-audio.onpause=()=>{
+/* =====================================================
+   AUDIO EVENTS
+===================================================== */
 
- $("#play").textContent="▶";
+audio.addEventListener(
+ "play",
+ ()=>{
 
-};
-
-
-audio.ontimeupdate=()=>{
-
- if(audio.duration){
-
-  $("#progress").style.width=
-   (
-    audio.currentTime/
-    audio.duration*
-    100
-   )+"%";
+  $("#play").textContent="Ⅱ";
 
  }
-
-};
-
-
-audio.onended=
- nextSong;
+);
 
 
-/* =========================
+audio.addEventListener(
+ "pause",
+ ()=>{
+
+  $("#play").textContent="▶";
+
+ }
+);
+
+
+audio.addEventListener(
+ "timeupdate",
+ ()=>{
+
+  if(
+   audio.duration&&
+   Number.isFinite(audio.duration)
+  ){
+
+   $("#progress").style.width=
+    (
+     audio.currentTime/
+     audio.duration*
+     100
+    )+"%";
+
+  }
+
+ }
+);
+
+
+audio.addEventListener(
+ "ended",
+ ()=>{
+
+  if(autoNext){
+
+   nextSong();
+
+  }else{
+
+   $("#progress").style.width="0%";
+
+  }
+
+ }
+);
+
+
+/* =====================================================
+   ENGRENAGEM
+===================================================== */
+
+function openSettings(){
+
+ $("#settingsModal")
+  .classList.add("show");
+
+ updateSettingsUI();
+
+}
+
+
+function closeSettings(){
+
+ $("#settingsModal")
+  .classList.remove("show");
+
+}
+
+
+function updateSettingsUI(){
+
+ const volume=
+  Math.round(
+   audio.volume*100
+  );
+
+ $("#volumeSetting").value=
+  volume;
+
+ $("#volumeValue").textContent=
+  volume+"%";
+
+ $("#autoNextSwitch")
+  .classList.toggle(
+   "on",
+   autoNext
+  );
+
+}
+
+
+$("#gear").addEventListener(
+ "click",
+ openSettings
+);
+
+
+$("#closeSettings").addEventListener(
+ "click",
+ closeSettings
+);
+
+
+$("#settingsModal").addEventListener(
+ "click",
+ e=>{
+
+  if(e.target.id==="settingsModal")
+   closeSettings();
+
+ }
+);
+
+
+/* VOLUME */
+
+$("#volumeSetting").addEventListener(
+ "input",
+ e=>{
+
+  const value=
+   Number(e.target.value);
+
+  audio.volume=
+   value/100;
+
+  $("#volumeValue")
+   .textContent=
+    value+"%";
+
+  saveSettings();
+
+ }
+);
+
+
+/* AUTO NEXT */
+
+$("#autoNextSwitch").addEventListener(
+ "click",
+ ()=>{
+
+  autoNext=!autoNext;
+
+  updateSettingsUI();
+
+  saveSettings();
+
+  toast(
+   autoNext
+   ?"Reprodução automática ativada"
+   :"Reprodução automática desativada"
+  );
+
+ }
+);
+
+
+/* DIAGNÓSTICO */
+
+$("#diagnostic").addEventListener(
+ "click",
+ async()=>{
+
+  const el=
+   $("#diagnosticText");
+
+  try{
+
+   if(!window.AudioContext&&
+      !window.webkitAudioContext){
+
+    el.textContent=
+     "Web Audio não disponível";
+
+    return;
+
+   }
+
+   await setupAudio();
+
+   if(!ctx){
+
+    el.textContent=
+     "Motor de áudio não iniciado";
+
+    return;
+
+   }
+
+   el.innerHTML=
+    '<span class="success">Áudio funcionando ✓</span>';
+
+   toast(
+    "Sistema de áudio OK"
+   );
+
+  }catch(error){
+
+   console.error(error);
+
+   el.textContent=
+    "Erro no sistema de áudio";
+
+  }
+
+ }
+);
+
+
+/* LIMPAR BIBLIOTECA */
+
+$("#clearLibrary").addEventListener(
+ "click",
+ async()=>{
+
+  if(!confirm(
+   "Tem certeza que deseja apagar todas as músicas?"
+  ))return;
+
+  try{
+
+   await clearSongsDB();
+
+   songs=[];
+
+   current=-1;
+
+   audio.pause();
+
+   audio.removeAttribute("src");
+
+   audio.load();
+
+   $("#title").textContent=
+    "Nenhuma música";
+
+   $("#artist").textContent=
+    "Aura Pro Studio";
+
+   $("#progress").style.width=
+    "0%";
+
+   closeSettings();
+
+   render("library");
+
+   toast(
+    "Biblioteca limpa"
+   );
+
+  }catch(error){
+
+   console.error(error);
+
+   toast(
+    "Não foi possível limpar a biblioteca"
+   );
+
+  }
+
+ }
+);
+
+
+/* RESET SETTINGS */
+
+$("#resetSettings").addEventListener(
+ "click",
+ ()=>{
+
+  if(!confirm(
+   "Restaurar todas as configurações?"
+  ))return;
+
+  autoNext=true;
+
+  audio.volume=.85;
+
+  preampValue=0;
+
+  localStorage.removeItem(
+   "auraSettings"
+  );
+
+  saveSettings();
+
+  updateSettingsUI();
+
+  toast(
+   "Configurações restauradas"
+  );
+
+ }
+);
+
+
+/* =====================================================
+   LIMPEZA URL
+===================================================== */
+
+window.addEventListener(
+ "beforeunload",
+ ()=>{
+
+  if(currentObjectURL){
+
+   URL.revokeObjectURL(
+    currentObjectURL
+   );
+
+  }
+
+ }
+);
+
+
+/* =====================================================
    INICIAR
-========================= */
+===================================================== */
 
 (async()=>{
+
+ loadSettings();
 
  songs=
   await loadSongs();
