@@ -2,379 +2,298 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Aura Pro Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07080c">
+<title>Aura Pro Studio V4 Ultimate</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
-    margin:0;
-    background:#07080c;
-    color:#f5f7fb;
-    font-family:Arial,Helvetica,sans-serif;
+ margin:0;background:#07080c;color:#fff;
+ font-family:Arial,sans-serif;
 }
-
 button,input,select,textarea{font:inherit}
-
 button{cursor:pointer}
 
 header{
-    height:64px;
-    display:flex;
-    align-items:center;
-    padding:0 16px;
-    background:#090a0f;
-    border-bottom:1px solid #292e3a;
-    position:sticky;
-    top:0;
-    z-index:20;
+ height:64px;padding:0 16px;display:flex;
+ align-items:center;background:#090a0f;
+ border-bottom:1px solid #292e3a;
+ position:sticky;top:0;z-index:10
 }
+.logo{font-size:20px;font-weight:900}
+.logo span{color:#ff7417}
+.gear{margin-left:auto;background:#11151d;color:white;
+ border:1px solid #303644;border-radius:12px;padding:10px}
 
-.logo{
-    font-size:20px;
-    font-weight:900;
-}
-
-.logo span{
-    color:#ff7417;
-}
-
-.settings{
-    margin-left:auto;
-    width:42px;
-    height:42px;
-    border-radius:12px;
-    border:1px solid #292e3a;
-    background:#10131a;
-    color:white;
-}
-
-main{
-    max-width:1100px;
-    margin:auto;
-    padding:14px 14px 125px;
-}
+main{max-width:1150px;margin:auto;padding:14px 14px 140px}
 
 .search{
-    width:100%;
-    height:48px;
-    padding:0 15px;
-    border-radius:14px;
-    border:1px solid #292e3a;
-    background:#10131a;
-    color:white;
-    outline:none;
+ width:100%;height:48px;background:#10131a;
+ border:1px solid #292e3a;border-radius:14px;
+ color:white;padding:0 14px;outline:none
 }
 
-nav{
-    display:flex;
-    gap:7px;
-    overflow-x:auto;
-    padding:12px 0;
+nav,.modes{
+ display:flex;gap:7px;overflow:auto;padding:12px 0
 }
-
-nav button,
-.graphTabs button{
-    white-space:nowrap;
-    background:#10131a;
-    color:#9ba2b2;
-    border:1px solid #292e3a;
-    border-radius:11px;
-    padding:10px 13px;
+nav button,.modes button{
+ white-space:nowrap;padding:10px 13px;
+ border-radius:11px;background:#10131a;
+ border:1px solid #292e3a;color:#9ba2b2
 }
-
-nav button.active,
-.graphTabs button.active{
-    background:#ff7417;
-    color:#111;
-    border-color:#ff7417;
-    font-weight:bold;
+nav .active,.modes .active{
+ background:#ff7417;color:#111;
+ border-color:#ff7417;font-weight:bold
 }
 
 .hero{
-    padding:26px;
-    border-radius:24px;
-    border:1px solid #292e3a;
-    background:
-        radial-gradient(circle at 90% 10%,#ff741755,transparent 35%),
-        #151820;
+ padding:28px;border-radius:24px;
+ border:1px solid #292e3a;
+ background:
+ radial-gradient(circle at 90% 10%,#ff741755,transparent 35%),
+ #151820
+}
+.hero small{color:#ffb15c;font-weight:bold}
+.hero h1{font-size:31px;margin:8px 0}
+.muted{color:#8e96a7}
+
+.card{
+ margin:15px 0;padding:20px;
+ background:#10131a;
+ border:1px solid #292e3a;
+ border-radius:20px
 }
 
-.hero small{
-    color:#ffb15c;
-    font-weight:bold;
-}
-
-.hero h1{
-    margin:9px 0;
-    font-size:30px;
-}
-
-.hero p{
-    color:#8e96a7;
-}
-
-.upload{
-    margin:18px 0;
-    padding:25px;
-    display:grid;
-    gap:10px;
-    text-align:center;
-    border:1px dashed #3a404d;
-    border-radius:20px;
-    background:#10131a;
-}
-
-.upload span{
-    color:#8e96a7;
-}
+.upload{text-align:center;border-style:dashed}
 
 .orange{
-    background:#ff7417;
-    color:#111;
-    border:0;
-    padding:12px 16px;
-    border-radius:11px;
-    font-weight:bold;
-}
-
-h2{
-    margin:18px 0 10px;
+ background:#ff7417;color:#111;border:0;
+ border-radius:11px;padding:12px 16px;
+ font-weight:bold
 }
 
 .song{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:9px;
-    margin:7px 0;
-    border-radius:14px;
-    border:1px solid #292e3a;
-    background:#10131a;
+ display:flex;align-items:center;gap:11px;
+ padding:9px;margin:7px 0;
+ background:#10131a;
+ border:1px solid #292e3a;
+ border-radius:14px
 }
 
 .cover{
-    width:54px;
-    height:54px;
-    flex-shrink:0;
-    border-radius:12px;
-    display:grid;
-    place-items:center;
-    font-size:23px;
-    background:linear-gradient(135deg,#303644,#151820);
+ width:54px;height:54px;flex-shrink:0;
+ border-radius:12px;display:grid;place-items:center;
+ font-size:23px;
+ background:linear-gradient(135deg,#3b4252,#171a22)
 }
 
-.songInfo{
-    flex:1;
-    min-width:0;
+.info{flex:1;min-width:0}
+.info b,.info small{
+ display:block;overflow:hidden;
+ text-overflow:ellipsis;white-space:nowrap
 }
-
-.songInfo b,
-.songInfo small{
-    display:block;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-.songInfo small{
-    color:#8e96a7;
-    margin-top:4px;
-}
+.info small{color:#8e96a7;margin-top:4px}
 
 .song button{
-    width:40px;
-    height:40px;
-    border-radius:11px;
-    border:1px solid #292e3a;
-    background:#171b24;
-    color:#ffb15c;
+ width:40px;height:40px;
+ background:#171b24;color:#ffb15c;
+ border:1px solid #303644;border-radius:10px
 }
 
-.panel{
-    padding:22px;
-    border-radius:20px;
-    border:1px solid #292e3a;
-    background:#10131a;
+/* EQ */
+
+.eqbox{overflow-x:auto}
+
+.eq{
+ min-width:800px;height:330px;
+ display:flex;align-items:end;
+ justify-content:space-around;
+ padding:10px
 }
 
-.graphTabs{
-    display:flex;
-    gap:7px;
-    overflow-x:auto;
-    margin-bottom:10px;
+.eqband{
+ display:flex;flex-direction:column;
+ align-items:center;color:#8e96a7;
+ font-size:9px
 }
 
-.graph{
-    width:100%;
-    height:390px;
-    overflow:hidden;
-    border-radius:22px;
-    border:1px solid #292e3a;
-    background:#050609;
+.eqband input{
+ height:235px;
+ writing-mode:vertical-lr;
+ direction:rtl;
+ accent-color:#ff7417
+}
+
+.preamp{
+ display:flex;align-items:center;gap:12px;
+ margin-top:15px
+}
+.preamp input{
+ flex:1;accent-color:#ff7417
+}
+
+/* AUDIO LAB */
+
+.controls{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px
+}
+
+.control{
+ background:#171b24;
+ border:1px solid #303644;
+ border-radius:13px;
+ padding:12px
+}
+
+.control label{
+ display:flex;
+ justify-content:space-between;
+ color:#9ba2b2;
+ font-size:11px
+}
+
+.control input{
+ width:100%;
+ accent-color:#ff7417
+}
+
+/* VISUALIZER */
+
+.visual{
+ height:430px;
+ background:#050609;
+ border:1px solid #292e3a;
+ border-radius:22px;
+ overflow:hidden
 }
 
 canvas{
-    width:100%;
-    height:100%;
-    display:block;
+ width:100%;
+ height:100%;
+ display:block
 }
 
 .metrics{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-top:12px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:8px;margin-top:10px
 }
 
 .metric{
-    padding:12px;
-    border-radius:13px;
-    background:#10131a;
-    border:1px solid #292e3a;
-    color:#8e96a7;
-    font-size:11px;
+ background:#10131a;
+ border:1px solid #292e3a;
+ border-radius:12px;
+ padding:12px;
+ color:#8e96a7;
+ font-size:10px
 }
 
-.metric strong{
-    display:block;
-    color:#ffb15c;
-    font-size:18px;
-    margin-top:4px;
+.metric b{
+ display:block;
+ color:#ffb15c;
+ font-size:17px;
+ margin-top:4px
 }
 
-.eq{
-    display:flex;
-    justify-content:space-around;
-    align-items:end;
-    height:300px;
-    overflow-x:auto;
+/* NOW PLAYING */
+
+.now{
+ display:grid;
+ grid-template-columns:180px 1fr;
+ gap:22px;align-items:center
 }
 
-.eqBand{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    color:#8e96a7;
-    font-size:10px;
+.bigcover{
+ width:180px;height:180px;
+ border-radius:25px;
+ display:grid;place-items:center;
+ font-size:70px;
+ background:
+ radial-gradient(circle at 30% 20%,
+ #ff9b4a,#7b2708 35%,#161922 70%);
+ box-shadow:0 20px 60px #ff741722
 }
 
-.eqBand input{
-    height:220px;
-    writing-mode:vertical-lr;
-    direction:rtl;
-    accent-color:#ff7417;
+.nowbuttons{
+ display:flex;gap:8px;margin-top:18px
 }
 
-select,
-textarea{
-    width:100%;
-    background:#171b24;
-    color:white;
-    border:1px solid #292e3a;
-    border-radius:11px;
-    padding:12px;
+.nowbuttons button{
+ padding:10px 14px;
+ border-radius:11px;
+ background:#171b24;
+ color:white;border:1px solid #303644
 }
 
-textarea{
-    min-height:170px;
+textarea,select{
+ width:100%;
+ background:#171b24;
+ color:white;
+ border:1px solid #303644;
+ border-radius:11px;
+ padding:12px
 }
 
-.empty{
-    text-align:center;
-    color:#8e96a7;
-    padding:35px;
-}
+textarea{min-height:170px}
+
+/* PLAYER */
 
 footer{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index:30;
-    background:#0c0e13ee;
-    backdrop-filter:blur(18px);
-    border-top:1px solid #292e3a;
+ position:fixed;bottom:0;left:0;right:0;
+ background:#0c0e13ed;
+ backdrop-filter:blur(18px);
+ border-top:1px solid #292e3a;
+ z-index:30
 }
 
 .progress{
-    height:3px;
-    background:#292e3a;
+ height:3px;background:#292e3a
 }
 
-.progress span{
-    display:block;
-    width:0;
-    height:100%;
-    background:#ff7417;
+.progress i{
+ display:block;width:0;height:100%;
+ background:#ff7417
 }
 
 .player{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:8px;
+ max-width:1150px;margin:auto;
+ padding:8px;display:flex;
+ align-items:center;gap:10px
 }
 
 .player .cover{
-    width:46px;
-    height:46px;
+ width:46px;height:46px
 }
 
-.now{
-    flex:1;
-    min-width:0;
-}
-
-.now b,
-.now small{
-    display:block;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-.now small{
-    color:#8e96a7;
-    font-size:11px;
-    margin-top:3px;
-}
+.player .info{flex:1}
 
 .player button{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#171b24;
-    border:1px solid #292e3a;
-    color:white;
+ width:42px;height:42px;
+ border-radius:50%;
+ background:#171b24;
+ color:white;
+ border:1px solid #303644
 }
 
 .player .play{
-    background:#ff7417;
-    color:#111;
-    border:0;
+ background:#ff7417;
+ color:#111;border:0
 }
 
-@media(max-width:600px){
+.empty{
+ padding:30px;text-align:center;
+ color:#8e96a7
+}
 
-    .graph{
-        height:320px;
-    }
-
-    .metrics{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .eq{
-        height:270px;
-    }
-
-    .eqBand input{
-        height:190px;
-    }
+@media(max-width:650px){
+ .controls{grid-template-columns:1fr 1fr}
+ .metrics{grid-template-columns:1fr 1fr}
+ .visual{height:330px}
+ .now{grid-template-columns:1fr}
+ .bigcover{width:155px;height:155px}
 }
 </style>
 </head>
@@ -382,31 +301,25 @@ footer{
 <body>
 
 <header>
-    <div class="logo">
-        AURA <span>PRO</span> STUDIO
-    </div>
-
-    <button class="settings">⚙</button>
+ <div class="logo">
+  AURA <span>PRO</span> STUDIO
+ </div>
+ <button class="gear">⚙</button>
 </header>
 
 <main>
 
-<input
-    id="search"
-    class="search"
-    placeholder="🔎 Buscar músicas..."
->
+<input id="search" class="search"
+ placeholder="🔎 Buscar músicas...">
 
 <nav id="nav">
-
-<button class="active" data-page="home">Início</button>
-<button data-page="library">Biblioteca</button>
-<button data-page="favorites">Favoritos</button>
-<button data-page="playlists">Playlists</button>
-<button data-page="eq">EQ</button>
-<button data-page="visualizer">Visualizer</button>
-<button data-page="lyrics">Letras</button>
-
+ <button class="active" data-page="home">Início</button>
+ <button data-page="library">Biblioteca</button>
+ <button data-page="now">Player</button>
+ <button data-page="eq">EQ 20</button>
+ <button data-page="visual">Visualizer</button>
+ <button data-page="lab">Audio Lab</button>
+ <button data-page="lyrics">Letras</button>
 </nav>
 
 <section id="content"></section>
@@ -416,260 +329,284 @@ footer{
 <footer>
 
 <div class="progress">
-    <span id="progressBar"></span>
+ <i id="progress"></i>
 </div>
 
 <div class="player">
 
 <div class="cover">♪</div>
 
-<div class="now">
-    <b id="currentTitle">Nenhuma música</b>
-    <small id="currentArtist">Aura Pro Studio</small>
+<div class="info">
+ <b id="title">Nenhuma música</b>
+ <small class="muted" id="artist">
+  Aura Pro Studio
+ </small>
 </div>
 
-<button id="previous">⏮</button>
-
-<button id="playButton" class="play">▶</button>
-
+<button id="prev">⏮</button>
+<button id="play" class="play">▶</button>
 <button id="next">⏭</button>
 
 </div>
 
 </footer>
 
-<input
-    id="fileInput"
-    type="file"
-    accept="audio/*"
-    multiple
-    hidden
->
+<input id="files" type="file" accept="audio/*" multiple hidden>
 
 <script>
 
-const content = document.getElementById("content");
-const search = document.getElementById("search");
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
 
-let songs = [];
-let currentIndex = -1;
+let songs=[];
+let current=-1;
 
-let audio = new Audio();
+let audio=new Audio();
 
-let audioContext = null;
-let sourceNode = null;
-let analyser = null;
-let masterGain = null;
-let filters = [];
+let ctx=null;
+let source=null;
+let analyser=null;
+let master=null;
+let filters=[];
 
-let visualizerMode = "spectrum";
-let animationFrame = null;
+let visualMode="spectrum";
+let animation=0;
 
 
 /* =========================
-   DATABASE LOCAL
+   20 BANDAS
 ========================= */
 
-const DB_NAME = "AuraProStudioDB";
-const STORE = "songs";
+const frequencies=[
+20,32,50,80,125,
+200,315,500,800,
+1250,2000,3150,5000,
+6300,8000,10000,
+12500,14000,16000,20000
+];
+
+
+/* =========================
+   12 PRESETS
+========================= */
+
+const presets={
+
+"Normal":
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
+"Rap":
+[4,5,6,5,3,1,0,1,2,3,
+4,3,2,2,3,2,1,1,2,2],
+
+"Bass":
+[7,8,9,8,6,4,2,1,0,0,
+0,0,0,0,1,1,2,2,2,1],
+
+"Rock":
+[4,3,2,0,-1,-2,0,2,3,2,
+2,3,4,4,3,3,2,2,3,2],
+
+"Pop":
+[1,2,2,1,0,-1,1,2,3,3,
+3,3,2,2,2,2,2,1,1,1],
+
+"Vocal":
+[-2,-2,-1,0,2,3,4,4,5,5,
+4,3,2,2,1,0,0,-1,-1,-2],
+
+"Dance":
+[6,7,6,5,3,1,0,1,2,3,
+4,4,5,5,5,4,4,3,3,2],
+
+"Deep Bass":
+[8,10,10,9,7,4,2,0,0,0,
+0,0,0,0,1,1,2,2,2,1],
+
+"Clear Sound":
+[0,0,0,-1,0,1,2,2,3,3,
+4,4,4,3,3,3,2,2,1,1],
+
+"Stadium":
+[3,4,3,2,1,0,0,1,2,3,
+3,3,4,4,4,3,2,2,2,2],
+
+"Night Mode":
+[-2,-2,-1,0,1,1,2,2,2,2,
+1,1,0,0,-1,-1,-2,-2,-2,-2],
+
+"Ultra HD":
+[0,0,0,0,0,1,2,2,3,3,
+3,4,5,4,4,4,3,3,2,2]
+
+};
+
+
+/* =========================
+   INDEXED DB
+========================= */
 
 function openDB(){
 
-    return new Promise((resolve,reject)=>{
+ return new Promise((resolve,reject)=>{
 
-        const request =
-            indexedDB.open(DB_NAME,1);
+  const request=
+   indexedDB.open("AuraProStudioV4",1);
 
-        request.onupgradeneeded = e => {
+  request.onupgradeneeded=e=>{
 
-            const db = e.target.result;
+   const db=e.target.result;
 
-            if(!db.objectStoreNames.contains(STORE)){
+   if(!db.objectStoreNames.contains("songs")){
 
-                db.createObjectStore(
-                    STORE,
-                    {keyPath:"id"}
-                );
+    db.createObjectStore(
+     "songs",
+     {keyPath:"id"}
+    );
 
-            }
+   }
 
-        };
+  };
 
-        request.onsuccess =
-            () => resolve(request.result);
+  request.onsuccess=
+   ()=>resolve(request.result);
 
-        request.onerror =
-            () => reject(request.error);
+  request.onerror=
+   ()=>reject(request.error);
 
-    });
-
-}
-
-
-async function saveSong(song){
-
-    const db = await openDB();
-
-    return new Promise((resolve,reject)=>{
-
-        const tx =
-            db.transaction(STORE,"readwrite");
-
-        tx.objectStore(STORE).put(song);
-
-        tx.oncomplete = resolve;
-        tx.onerror = () => reject(tx.error);
-
-    });
+ });
 
 }
 
 
 async function loadSongs(){
 
-    const db = await openDB();
+ const db=await openDB();
 
-    return new Promise((resolve,reject)=>{
+ return new Promise((resolve,reject)=>{
 
-        const tx =
-            db.transaction(STORE,"readonly");
+  const r=
+   db.transaction("songs","readonly")
+   .objectStore("songs")
+   .getAll();
 
-        const request =
-            tx.objectStore(STORE).getAll();
+  r.onsuccess=
+   ()=>resolve(r.result);
 
-        request.onsuccess =
-            () => resolve(request.result);
+  r.onerror=
+   ()=>reject(r.error);
 
-        request.onerror =
-            () => reject(request.error);
+ });
 
-    });
+}
+
+
+async function saveSong(song){
+
+ const db=await openDB();
+
+ return new Promise((resolve,reject)=>{
+
+  const t=
+   db.transaction("songs","readwrite");
+
+  t.objectStore("songs").put(song);
+
+  t.oncomplete=resolve;
+
+  t.onerror=
+   ()=>reject(t.error);
+
+ });
 
 }
 
 
 /* =========================
-   UPLOAD
+   IMPORTAR MÚSICAS
 ========================= */
 
 async function importFiles(files){
 
-    for(const file of files){
+ for(const file of files){
 
-        const id =
-            Date.now()+"-"+Math.random();
+  const song={
+   id:crypto.randomUUID(),
+   name:file.name.replace(/\.[^.]+$/,""),
+   artist:"Arquivo local",
+   blob:file
+  };
 
-        const buffer =
-            await file.arrayBuffer();
+  await saveSong(song);
 
-        const blob =
-            new Blob(
-                [buffer],
-                {type:file.type}
-            );
+  songs.push(song);
 
-        const song = {
+ }
 
-            id:id,
-
-            name:
-                file.name.replace(/\.[^/.]+$/,""),
-
-            artist:
-                "Arquivo local",
-
-            blob:blob
-
-        };
-
-        await saveSong(song);
-
-        songs.push(song);
-
-    }
-
-    renderPage("library");
+ render("library");
 
 }
 
 
 /* =========================
-   AUDIO ENGINE
+   MOTOR DE ÁUDIO
 ========================= */
 
 async function setupAudio(){
 
-    if(audioContext)
-        return;
+ if(ctx)return;
 
-    audioContext =
-        new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+ ctx=
+  new(window.AudioContext||
+      window.webkitAudioContext)();
 
-    sourceNode =
-        audioContext.createMediaElementSource(audio);
+ source=
+  ctx.createMediaElementSource(audio);
 
-    analyser =
-        audioContext.createAnalyser();
+ analyser=
+  ctx.createAnalyser();
 
-    analyser.fftSize = 2048;
+ analyser.fftSize=2048;
 
-    analyser.smoothingTimeConstant = 0.90;
+ analyser.smoothingTimeConstant=.92;
 
-    masterGain =
-        audioContext.createGain();
+ master=
+  ctx.createGain();
 
-    masterGain.gain.value = 0.9;
+ master.gain.value=.85;
 
-    let node = sourceNode;
+ let node=source;
 
-    const frequencies =
-        [
-            32,
-            64,
-            125,
-            250,
-            500,
-            1000,
-            2000,
-            4000,
-            8000,
-            16000
-        ];
+ filters=[];
 
-    filters = [];
+ frequencies.forEach(freq=>{
 
-    for(const frequency of frequencies){
+  const filter=
+   ctx.createBiquadFilter();
 
-        const filter =
-            audioContext.createBiquadFilter();
+  filter.type="peaking";
 
-        filter.type = "peaking";
+  filter.frequency.value=freq;
 
-        filter.frequency.value =
-            frequency;
+  filter.Q.value=.8;
 
-        filter.Q.value = 0.8;
+  filter.gain.value=0;
 
-        filter.gain.value = 0;
+  node.connect(filter);
 
-        node.connect(filter);
+  node=filter;
 
-        node = filter;
+  filters.push(filter);
 
-        filters.push(filter);
+ });
 
-    }
+ node.connect(master);
 
-    node.connect(masterGain);
+ master.connect(analyser);
 
-    masterGain.connect(analyser);
-
-    analyser.connect(
-        audioContext.destination
-    );
+ analyser.connect(
+  ctx.destination
+ );
 
 }
 
@@ -680,1206 +617,1026 @@ async function setupAudio(){
 
 async function playSong(index){
 
-    if(index < 0 || index >= songs.length)
-        return;
+ if(!songs[index])return;
 
-    currentIndex = index;
+ current=index;
 
-    const song =
-        songs[index];
+ await setupAudio();
 
-    if(!song.blob)
-        return;
+ if(ctx.state==="suspended")
+  await ctx.resume();
 
-    await setupAudio();
+ audio.src=
+  URL.createObjectURL(
+   songs[index].blob
+  );
 
-    if(audioContext.state === "suspended")
-        await audioContext.resume();
+ $("#title").textContent=
+  songs[index].name;
 
-    const url =
-        URL.createObjectURL(song.blob);
+ $("#artist").textContent=
+  songs[index].artist;
 
-    audio.src = url;
-
-    document.getElementById(
-        "currentTitle"
-    ).textContent = song.name;
-
-    document.getElementById(
-        "currentArtist"
-    ).textContent = song.artist;
-
-    try{
-
-        await audio.play();
-
-    }catch(error){
-
-        console.log(error);
-
-    }
+ await audio.play();
 
 }
 
 
 function nextSong(){
 
-    if(!songs.length)
-        return;
+ if(!songs.length)return;
 
-    currentIndex =
-        (currentIndex+1) %
-        songs.length;
-
-    playSong(currentIndex);
+ playSong(
+  (current+1)%songs.length
+ );
 
 }
 
 
 function previousSong(){
 
-    if(!songs.length)
-        return;
+ if(!songs.length)return;
 
-    currentIndex =
-        (currentIndex-1+songs.length) %
-        songs.length;
-
-    playSong(currentIndex);
+ playSong(
+  (current-1+songs.length)%
+  songs.length
+ );
 
 }
 
 
-document
-    .getElementById("playButton")
-    .onclick = async ()=>{
+function togglePlay(){
 
-        if(!audio.src){
+ if(!audio.src){
 
-            if(songs.length)
-                await playSong(0);
+  if(songs.length)
+   playSong(0);
 
-            return;
+  return;
 
-        }
+ }
 
-        if(audio.paused){
+ if(audio.paused)
+  audio.play();
+ else
+  audio.pause();
 
-            if(audioContext &&
-               audioContext.state==="suspended"){
-
-                await audioContext.resume();
-
-            }
-
-            audio.play();
-
-        }else{
-
-            audio.pause();
-
-        }
-
-    };
+}
 
 
-document
-    .getElementById("next")
-    .onclick =
-        nextSong;
+/* =========================
+   PRESET
+========================= */
 
+async function usePreset(name){
 
-document
-    .getElementById("previous")
-    .onclick =
-        previousSong;
+ await setupAudio();
 
+ const values=
+  presets[name];
 
-audio.onplay = ()=>{
+ values.forEach((value,i)=>{
 
-    document.getElementById(
-        "playButton"
-    ).textContent = "Ⅱ";
+  if(filters[i]){
 
-};
+   filters[i].gain
+    .setTargetAtTime(
+     value,
+     ctx.currentTime,
+     .035
+    );
 
+  }
 
-audio.onpause = ()=>{
+ });
 
-    document.getElementById(
-        "playButton"
-    ).textContent = "▶";
+ $$(".eqBand").forEach(
+  (slider,i)=>
+   slider.value=values[i]
+ );
 
-};
-
-
-audio.ontimeupdate = ()=>{
-
-    if(!audio.duration)
-        return;
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        (
-            audio.currentTime /
-            audio.duration *
-            100
-        )+"%";
-
-};
-
-
-audio.onended =
-    nextSong;
+}
 
 
 /* =========================
    PÁGINAS
 ========================= */
 
-function renderPage(page){
+function render(page){
 
-    document
-        .querySelectorAll("[data-page]")
-        .forEach(button=>{
+ $$("[data-page]").forEach(
+  b=>
+   b.classList.toggle(
+    "active",
+    b.dataset.page===page
+   )
+ );
 
-            button.classList.toggle(
-                "active",
-                button.dataset.page===page
-            );
-
-        });
-
-    if(page==="home")
-        renderHome();
-
-    if(page==="library")
-        renderLibrary();
-
-    if(page==="favorites")
-        renderFavorites();
-
-    if(page==="playlists")
-        renderPlaylists();
-
-    if(page==="eq")
-        renderEQ();
-
-    if(page==="visualizer")
-        renderVisualizer();
-
-    if(page==="lyrics")
-        renderLyrics();
-
-}
+ const c=$("#content");
 
 
-function renderHome(){
+ if(page==="home"){
 
-    content.innerHTML = `
+  c.innerHTML=`
 
-    <div class="hero">
+  <div class="hero">
 
-        <small>AURA PRO STUDIO V3</small>
+   <small>
+    AURA PRO STUDIO V4 ULTIMATE
+   </small>
 
-        <h1>
-            Seu som. Seu estúdio.
-        </h1>
+   <h1>
+    Seu som. Seu estúdio.
+   </h1>
 
-        <p>
-            Player premium com biblioteca,
-            equalizador e visualizer.
-        </p>
+   <p class="muted">
+    20 bandas • 12 presets • Audio Lab
+    • Visualizer Pro
+   </p>
 
-    </div>
+  </div>
 
-    <div class="upload">
+  <div class="card upload">
 
-        <b>
-            Adicionar músicas
-        </b>
+   <b>
+    Adicionar músicas
+   </b>
 
-        <span>
-            As músicas ficam armazenadas
-            localmente no navegador.
-        </span>
+   <p class="muted">
+    Suas músicas ficam armazenadas
+    localmente no navegador.
+   </p>
 
-        <button
-            class="orange"
-            id="uploadButton"
-        >
-            ＋ Selecionar músicas
-        </button>
+   <button
+    class="orange"
+    onclick="$('#files').click()"
+   >
+    ＋ Selecionar músicas
+   </button>
 
-    </div>
+  </div>
+
+  <h2>
+   Biblioteca
+  </h2>
+
+  ${songList()}
+
+  `;
+
+ }
+
+
+ if(page==="library"){
+
+  c.innerHTML=`
+
+   <h2>Biblioteca</h2>
+
+   ${songList()}
+
+  `;
+
+ }
+
+
+ if(page==="now"){
+
+  c.innerHTML=`
+
+  <div class="card now">
+
+   <div class="bigcover">
+    ♪
+   </div>
+
+   <div>
+
+    <small class="muted">
+     TOCANDO AGORA
+    </small>
 
     <h2>
-        Suas músicas
+     ${escapeHTML(
+      $("#title").textContent
+     )}
     </h2>
 
-    <div id="songList"></div>
-
-    `;
-
-    document
-        .getElementById("uploadButton")
-        .onclick =
-            ()=>document
-                .getElementById("fileInput")
-                .click();
-
-    renderSongList();
-
-}
-
-
-function renderLibrary(){
-
-    content.innerHTML = `
-
-        <h2>
-            Biblioteca
-        </h2>
-
-        <div id="songList"></div>
-
-    `;
-
-    renderSongList();
-
-}
-
-
-function renderSongList(){
-
-    const list =
-        document.getElementById(
-            "songList"
-        );
-
-    if(!list)
-        return;
-
-    const query =
-        search.value.toLowerCase();
-
-    const filtered =
-        songs.filter(song=>
-            song.name
-                .toLowerCase()
-                .includes(query)
-        );
-
-    if(!filtered.length){
-
-        list.innerHTML =
-            `<div class="empty">
-                Nenhuma música encontrada.
-            </div>`;
-
-        return;
-
-    }
-
-    list.innerHTML =
-        filtered.map(song=>{
-
-            const index =
-                songs.indexOf(song);
-
-            return `
-
-            <article class="song">
-
-                <div class="cover">
-                    ♪
-                </div>
-
-                <div class="songInfo">
-
-                    <b>
-                        ${escapeHTML(song.name)}
-                    </b>
-
-                    <small>
-                        ${escapeHTML(song.artist)}
-                    </small>
-
-                </div>
-
-                <button
-                    onclick="playSong(${index})"
-                >
-                    ▶
-                </button>
-
-            </article>
-
-            `;
-
-        }).join("");
-
-}
-
-
-function renderFavorites(){
-
-    content.innerHTML = `
-
-        <h2>
-            Favoritos
-        </h2>
-
-        <div class="empty">
-
-            ❤️ Suas músicas favoritas
-            aparecerão aqui.
-
-        </div>
-
-    `;
-
-}
-
-
-function renderPlaylists(){
-
-    content.innerHTML = `
-
-        <h2>
-            Playlists
-        </h2>
-
-        <div class="panel">
-
-            <input
-                id="playlistName"
-                placeholder="Nome da playlist"
-            >
-
-            <br><br>
-
-            <button
-                class="orange"
-                onclick="createPlaylist()"
-            >
-                ＋ Criar playlist
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-function createPlaylist(){
-
-    const name =
-        document
-            .getElementById("playlistName")
-            .value;
-
-    if(!name)
-        return;
-
-    alert(
-        "Playlist criada: "+name
-    );
-
-}
-
-
-function renderEQ(){
-
-    content.innerHTML = `
-
-    <h2>
-        Equalizador
-    </h2>
-
-    <div class="panel">
-
-        <select id="preset">
-
-            <option value="normal">
-                Normal
-            </option>
-
-            <option value="bass">
-                Bass
-            </option>
-
-            <option value="rock">
-                Rock
-            </option>
-
-            <option value="pop">
-                Pop
-            </option>
-
-            <option value="vocal">
-                Vocal
-            </option>
-
-            <option value="dance">
-                Dance
-            </option>
-
-        </select>
-
-        <div class="eq">
-
-            ${[
-                "32",
-                "64",
-                "125",
-                "250",
-                "500",
-                "1K",
-                "2K",
-                "4K",
-                "8K",
-                "16K"
-            ].map((freq,i)=>`
-
-                <div class="eqBand">
-
-                    <input
-                        class="eqSlider"
-                        data-index="${i}"
-                        type="range"
-                        min="-12"
-                        max="12"
-                        value="0"
-                    >
-
-                    <span>
-                        ${freq}
-                    </span>
-
-                </div>
-
-            `).join("")}
-
-        </div>
+    <p class="muted">
+     ${escapeHTML(
+      $("#artist").textContent
+     )}
+    </p>
+
+    <div class="nowbuttons">
+
+     <button onclick="previousSong()">
+      ⏮ Anterior
+     </button>
+
+     <button
+      class="orange"
+      onclick="togglePlay()"
+     >
+      ▶ Play / Pause
+     </button>
+
+     <button onclick="nextSong()">
+      Próxima ⏭
+     </button>
 
     </div>
 
-    `;
+   </div>
 
-    document
-        .querySelectorAll(".eqSlider")
-        .forEach(slider=>{
+  </div>
 
-            slider.oninput =
-                ()=>{
+  `;
 
-                    const index =
-                        slider.dataset.index;
-
-                    const value =
-                        Number(slider.value);
-
-                    if(filters[index]){
-
-                        filters[index]
-                            .gain
-                            .setTargetAtTime(
-                                value,
-                                audioContext.currentTime,
-                                0.025
-                            );
-
-                    }
-
-                };
-
-        });
-
-    document
-        .getElementById("preset")
-        .onchange =
-            applyPreset;
-
-}
+ }
 
 
-function applyPreset(){
+ if(page==="eq"){
 
-    const value =
-        document
-            .getElementById("preset")
-            .value;
+  c.innerHTML=`
 
-    let gains =
-        new Array(10).fill(0);
+  <h2>
+   Equalizador Pro — 20 bandas
+  </h2>
 
-    if(value==="bass")
-        gains=[5,6,5,3,1,0,0,0,1,2];
+  <div class="card">
 
-    if(value==="rock")
-        gains=[4,3,2,-1,-2,2,3,4,4,3];
+   <select id="preset">
 
-    if(value==="pop")
-        gains=[1,2,1,0,-1,2,3,2,2,1];
+    ${Object.keys(presets)
+     .map(x=>`
+      <option>${x}</option>
+     `).join("")}
 
-    if(value==="vocal")
-        gains=[-2,-1,0,2,4,5,4,2,0,-1];
+   </select>
 
-    if(value==="dance")
-        gains=[5,4,3,0,-1,1,3,4,5,4];
+   <div class="preamp">
 
-    filters.forEach(
-        (filter,i)=>{
+    <span>Preamp</span>
 
-            filter.gain
-                .setTargetAtTime(
-                    gains[i],
-                    audioContext.currentTime,
-                    0.04
-                );
+    <input
+     id="preamp"
+     type="range"
+     min="-12"
+     max="12"
+     value="0"
+    >
 
+    <b id="preampValue">
+     0 dB
+    </b>
+
+   </div>
+
+   <div class="eqbox">
+
+    <div class="eq">
+
+     ${frequencies.map(
+      (f,i)=>`
+
+      <div class="eqband">
+
+       <input
+        class="eqBand"
+        data-index="${i}"
+        type="range"
+        min="-12"
+        max="12"
+        value="0"
+       >
+
+       <span>
+        ${
+         f>=1000
+         ?(f/1000)+"k"
+         :f
         }
-    );
+       </span>
+
+      </div>
+
+     `).join("")}
+
+    </div>
+
+   </div>
+
+  </div>
+
+  `;
+
+  $("#preset").onchange=
+   ()=>usePreset(
+    $("#preset").value
+   );
+
+  $$(".eqBand").forEach(
+   slider=>{
+
+    slider.oninput=
+     async()=>{
+
+      await setupAudio();
+
+      const i=
+       Number(
+        slider.dataset.index
+       );
+
+      filters[i].gain
+       .setTargetAtTime(
+        Number(slider.value),
+        ctx.currentTime,
+        .035
+       );
+
+     };
+
+   }
+  );
+
+  $("#preamp").oninput=
+   async e=>{
+
+    await setupAudio();
+
+    const value=
+     Number(e.target.value);
+
+    $("#preampValue")
+     .textContent=
+      value+" dB";
+
+    master.gain
+     .setTargetAtTime(
+      .85*Math.pow(10,value/20),
+      ctx.currentTime,
+      .04
+     );
+
+   };
+
+ }
+
+
+ if(page==="visual"){
+
+  c.innerHTML=`
+
+  <h2>
+   Visualizer Pro
+  </h2>
+
+  <div class="modes">
+
+   <button
+    class="active"
+    data-mode="spectrum">
+    Spectrum
+   </button>
+
+   <button data-mode="wave">
+    Wave
+   </button>
+
+   <button data-mode="bands">
+    20 Bandas
+   </button>
+
+   <button data-mode="circle">
+    Circular
+   </button>
+
+   <button data-mode="mirror">
+    Mirror
+   </button>
+
+   <button data-mode="beat">
+    Beat
+   </button>
+
+  </div>
+
+  <div class="visual">
+
+   <canvas id="canvas"></canvas>
+
+  </div>
+
+  <div class="metrics">
+
+   <div class="metric">
+    BASS
+    <b id="bass">0%</b>
+   </div>
+
+   <div class="metric">
+    MÉDIOS
+    <b id="mid">0%</b>
+   </div>
+
+   <div class="metric">
+    AGUDOS
+    <b id="high">0%</b>
+   </div>
+
+   <div class="metric">
+    ENERGIA
+    <b id="energy">0%</b>
+   </div>
+
+  </div>
+
+  `;
+
+  $$(".modes button")
+   .forEach(button=>{
+
+    button.onclick=()=>{
+
+     $$(".modes button")
+      .forEach(x=>
+       x.classList.remove(
+        "active"
+       )
+      );
+
+     button.classList.add(
+      "active"
+     );
+
+     visualMode=
+      button.dataset.mode;
+
+    };
+
+   });
+
+  startVisualizer();
+
+ }
+
+
+ if(page==="lab"){
+
+  c.innerHTML=`
+
+  <h2>
+   Audio Lab
+  </h2>
+
+  <div class="card">
+
+   <div class="controls">
+
+    ${[
+     "Bass Boost",
+     "Treble",
+     "Spatial",
+     "Loudness",
+     "Clarity",
+     "Dynamic Bass",
+     "Reverb",
+     "Stereo Width",
+     "Crossfeed"
+    ].map(
+     name=>`
+
+     <div class="control">
+
+      <label>
+       <span>${name}</span>
+       <b>0</b>
+      </label>
+
+      <input
+       type="range"
+       min="0"
+       max="100"
+       value="0"
+      >
+
+     </div>
+
+    `).join("")}
+
+   </div>
+
+  </div>
+
+  `;
+
+ }
+
+
+ if(page==="lyrics"){
+
+  c.innerHTML=`
+
+  <h2>
+   Letras sincronizadas
+  </h2>
+
+  <div class="card">
+
+   <textarea
+    id="lyrics"
+    placeholder="[00:00.00] Primeira linha
+[00:05.00] Segunda linha
+[00:10.00] Terceira linha"
+   ></textarea>
+
+   <br><br>
+
+   <button
+    class="orange"
+    onclick="
+     localStorage.setItem(
+      'auraLyrics',
+      $('#lyrics').value
+     );
+     alert('Letras salvas!')
+    "
+   >
+    Salvar letras
+   </button>
+
+  </div>
+
+  `;
+
+ }
 
 }
 
 
-function renderVisualizer(){
+/* =========================
+   LISTA
+========================= */
 
-    content.innerHTML = `
+function songList(){
 
-    <h2>
-        Visualizer & Gráficos
-    </h2>
+ const query=
+  $("#search").value
+   .toLowerCase();
 
-    <div class="graphTabs">
+ const list=
+  songs.filter(
+   s=>
+    s.name
+     .toLowerCase()
+     .includes(query)
+  );
 
-        <button
-            class="active"
-            data-mode="spectrum"
-        >
-            Spectrum
-        </button>
+ if(!list.length){
 
-        <button data-mode="wave">
-            Wave
-        </button>
+  return `
+   <div class="empty">
+    Nenhuma música encontrada.
+   </div>
+  `;
 
-        <button data-mode="bands">
-            10 Bandas
-        </button>
+ }
 
-        <button data-mode="circle">
-            Circular
-        </button>
+ return list.map(song=>{
 
-        <button data-mode="mirror">
-            Mirror
-        </button>
+  const index=
+   songs.indexOf(song);
 
-        <button data-mode="beat">
-            Beat
-        </button>
+  return `
 
-    </div>
+  <article class="song">
 
-    <div class="graph">
+   <div class="cover">
+    ♪
+   </div>
 
-        <canvas id="visualizerCanvas"></canvas>
+   <div class="info">
 
-    </div>
+    <b>
+     ${escapeHTML(song.name)}
+    </b>
 
-    <div class="metrics">
+    <small>
+     ${escapeHTML(song.artist)}
+    </small>
 
-        <div class="metric">
-            BASS
-            <strong id="bass">0%</strong>
-        </div>
+   </div>
 
-        <div class="metric">
-            MÉDIOS
-            <strong id="mids">0%</strong>
-        </div>
+   <button
+    onclick="playSong(${index})"
+   >
+    ▶
+   </button>
 
-        <div class="metric">
-            AGUDOS
-            <strong id="treble">0%</strong>
-        </div>
+  </article>
 
-        <div class="metric">
-            ENERGIA
-            <strong id="energy">0%</strong>
-        </div>
+  `;
 
-    </div>
-
-    `;
-
-    document
-        .querySelectorAll("[data-mode]")
-        .forEach(button=>{
-
-            button.onclick = ()=>{
-
-                document
-                    .querySelectorAll("[data-mode]")
-                    .forEach(b=>
-                        b.classList.remove(
-                            "active"
-                        )
-                    );
-
-                button.classList.add(
-                    "active"
-                );
-
-                visualizerMode =
-                    button.dataset.mode;
-
-            };
-
-        });
-
-    startVisualizer();
+ }).join("");
 
 }
 
+
+/* =========================
+   VISUALIZER
+========================= */
 
 function startVisualizer(){
 
-    cancelAnimationFrame(
-        animationFrame
-    );
+ cancelAnimationFrame(animation);
 
-    const canvas =
-        document.getElementById(
-            "visualizerCanvas"
-        );
+ const canvas=
+  $("#canvas");
 
-    if(!canvas)
-        return;
+ if(!canvas)return;
 
-    const ctx =
-        canvas.getContext("2d");
+ const ctx2=
+  canvas.getContext("2d");
 
-    function draw(){
+ function frame(){
 
-        animationFrame =
-            requestAnimationFrame(draw);
-
-        const width =
-            canvas.clientWidth;
-
-        const height =
-            canvas.clientHeight;
-
-        const dpr =
-            window.devicePixelRatio || 1;
-
-        if(
-            canvas.width !==
-            width*dpr
-        ){
-
-            canvas.width =
-                width*dpr;
-
-            canvas.height =
-                height*dpr;
-
-            ctx.setTransform(
-                dpr,0,0,dpr,0,0
-            );
-
-        }
-
-        ctx.clearRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-        ctx.fillStyle =
-            "#050609";
-
-        ctx.fillRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-        if(!analyser){
+  animation=
+   requestAnimationFrame(frame);
 
-            ctx.fillStyle =
-                "#777";
+  const w=
+   canvas.clientWidth;
 
-            ctx.textAlign =
-                "center";
+  const h=
+   canvas.clientHeight;
 
-            ctx.fillText(
-                "Reproduza uma música para ativar o gráfico",
-                width/2,
-                height/2
-            );
+  const d=
+   window.devicePixelRatio||1;
 
-            return;
+  if(
+   canvas.width!==w*d
+  ){
 
-        }
+   canvas.width=w*d;
+   canvas.height=h*d;
 
-        const frequencyData =
-            new Uint8Array(
-                analyser.frequencyBinCount
-            );
+   ctx2.setTransform(
+    d,0,0,d,0,0
+   );
 
-        const waveData =
-            new Uint8Array(
-                analyser.fftSize
-            );
+  }
 
-        analyser.getByteFrequencyData(
-            frequencyData
-        );
+  ctx2.fillStyle=
+   "#050609";
 
-        analyser.getByteTimeDomainData(
-            waveData
-        );
+  ctx2.fillRect(
+   0,0,w,h
+  );
 
-        let bass =
-            average(
-                frequencyData,
-                0,
-                15
-            );
-
-        let mids =
-            average(
-                frequencyData,
-                15,
-                100
-            );
+  if(!analyser){
 
-        let treble =
-            average(
-                frequencyData,
-                100,
-                350
-            );
-
-        document.getElementById(
-            "bass"
-        ).textContent =
-            Math.round(bass*100)+"%";
-
-        document.getElementById(
-            "mids"
-        ).textContent =
-            Math.round(mids*100)+"%";
-
-        document.getElementById(
-            "treble"
-        ).textContent =
-            Math.round(treble*100)+"%";
-
-        document.getElementById(
-            "energy"
-        ).textContent =
-            Math.round(
-                (bass+mids+treble)/3*100
-            )+"%";
-
-        ctx.strokeStyle =
-            "#ffffff12";
-
-        for(let i=1;i<8;i++){
-
-            ctx.beginPath();
-
-            ctx.moveTo(
-                0,
-                height*i/8
-            );
-
-            ctx.lineTo(
-                width,
-                height*i/8
-            );
-
-            ctx.stroke();
-
-        }
-
-        ctx.strokeStyle =
-            "#ff7417";
-
-        ctx.fillStyle =
-            "#ff7417";
-
-        if(visualizerMode==="wave"){
-
-            ctx.beginPath();
-
-            waveData.forEach(
-                (value,i)=>{
-
-                    const x =
-                        i/
-                        waveData.length*
-                        width;
-
-                    const y =
-                        height/2+
-                        (value-128)/
-                        128*
-                        height*.4;
-
-                    if(i===0)
-                        ctx.moveTo(x,y);
-                    else
-                        ctx.lineTo(x,y);
-
-                }
-            );
-
-            ctx.lineWidth=2.5;
-
-            ctx.stroke();
-
-        }else if(
-            visualizerMode==="circle"
-        ){
-
-            const cx =
-                width/2;
-
-            const cy =
-                height/2;
-
-            const radius =
-                Math.min(
-                    width,
-                    height
-                )*.16;
-
-            for(
-                let i=0;
-                i<100;
-                i++
-            ){
-
-                const angle =
-                    i/
-                    100*
-                    Math.PI*2;
-
-                const value =
-                    frequencyData[i]/
-                    255;
-
-                const r2 =
-                    radius+
-                    value*
-                    Math.min(
-                        width,
-                        height
-                    )*.35;
-
-                ctx.beginPath();
-
-                ctx.moveTo(
-                    cx+
-                    Math.cos(angle)*
-                    radius,
-                    cy+
-                    Math.sin(angle)*
-                    radius
-                );
-
-                ctx.lineTo(
-                    cx+
-                    Math.cos(angle)*
-                    r2,
-                    cy+
-                    Math.sin(angle)*
-                    r2
-                );
-
-                ctx.stroke();
-
-            }
-
-            ctx.beginPath();
-
-            ctx.arc(
-                cx,
-                cy,
-                radius,
-                0,
-                Math.PI*2
-            );
-
-            ctx.stroke();
-
-        }else{
-
-            const count =
-                visualizerMode==="bands"
-                ?10
-                :64;
-
-            const gap=2;
-
-            const barWidth =
-                (
-                    width-
-                    gap*(count-1)
-                )/
-                count;
-
-            for(
-                let i=0;
-                i<count;
-                i++
-            ){
-
-                const index =
-                    Math.floor(
-                        i/count*
-                        frequencyData.length
-                    );
-
-                const value =
-                    frequencyData[index]/
-                    255;
-
-                const barHeight =
-                    Math.max(
-                        3,
-                        value*height*.86
-                    );
-
-                const x =
-                    i*
-                    (barWidth+gap);
-
-                if(
-                    visualizerMode==="mirror"
-                ){
-
-                    ctx.fillRect(
-                        x,
-                        height/2-
-                        barHeight/2,
-                        barWidth,
-                        barHeight
-                    );
-
-                }else{
-
-                    ctx.fillRect(
-                        x,
-                        height-
-                        barHeight,
-                        barWidth,
-                        barHeight
-                    );
-
-                }
-
-            }
-
-        }
-
-    }
-
-    draw();
-
-}
-
-
-function average(data,start,end){
+   ctx2.fillStyle="#777";
+
+   ctx2.textAlign="center";
+
+   ctx2.fillText(
+    "Reproduza uma música para ativar o visualizer",
+    w/2,h/2
+   );
+
+   return;
+
+  }
+
+  const freq=
+   new Uint8Array(
+    analyser.frequencyBinCount
+   );
+
+  const wave=
+   new Uint8Array(
+    analyser.fftSize
+   );
+
+  analyser.getByteFrequencyData(freq);
+
+  analyser.getByteTimeDomainData(wave);
+
+  const average=
+   (a,b)=>{
 
     let total=0;
     let count=0;
 
     for(
-        let i=start;
-        i<end &&
-        i<data.length;
-        i++
+     let i=a;
+     i<b &&
+     i<freq.length;
+     i++
     ){
 
-        total+=data[i];
-        count++;
+     total+=freq[i];
+     count++;
 
     }
 
     return count
-        ? total/count/255
-        : 0;
+     ?total/count/255
+     :0;
 
-}
+   };
 
+  const bass=
+   average(0,18);
 
-/* =========================
-   LETRAS
-========================= */
+  const mid=
+   average(18,120);
 
-function renderLyrics(){
+  const high=
+   average(120,400);
 
-    content.innerHTML = `
+  $("#bass").textContent=
+   Math.round(bass*100)+"%";
 
-    <h2>
-        Letras sincronizadas
-    </h2>
+  $("#mid").textContent=
+   Math.round(mid*100)+"%";
 
-    <div class="panel">
+  $("#high").textContent=
+   Math.round(high*100)+"%";
 
-        <textarea
-            id="lyricsText"
-            placeholder="[00:00.00] Primeira linha
-[00:05.00] Segunda linha
-[00:10.00] Terceira linha"
-        ></textarea>
+  $("#energy").textContent=
+   Math.round(
+    (bass+mid+high)/3*100
+   )+"%";
 
-        <br><br>
+  ctx2.strokeStyle=
+   "#ff7417";
 
-        <button
-            class="orange"
-            onclick="saveLyrics()"
-        >
-            Salvar letras
-        </button>
+  ctx2.fillStyle=
+   "#ff7417";
 
-        <div
-            id="lyricsDisplay"
-            style="
-                margin-top:20px;
-                line-height:2;
-                color:#ffb15c;
-            "
-        ></div>
+  /* WAVE */
 
-    </div>
+  if(visualMode==="wave"){
 
-    `;
+   ctx2.beginPath();
 
-}
+   wave.forEach(
+    (value,i)=>{
 
+     const x=
+      i/wave.length*w;
 
-function saveLyrics(){
+     const y=
+      h/2+
+      (value-128)/
+      128*h*.4;
 
-    const text =
-        document
-            .getElementById(
-                "lyricsText"
-            )
-            .value;
-
-    localStorage.setItem(
-        "auraLyrics",
-        text
-    );
-
-    alert(
-        "Letras salvas!"
-    );
-
-}
-
-
-/* =========================
-   SEGURANÇA HTML
-========================= */
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-    div.textContent =
-        text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
-
-document
-    .getElementById("nav")
-    .addEventListener(
-        "click",
-        event=>{
-
-            const button =
-                event.target.closest(
-                    "[data-page]"
-                );
-
-            if(!button)
-                return;
-
-            renderPage(
-                button.dataset.page
-            );
-
-        }
-    );
-
-
-search.addEventListener(
-    "input",
-    ()=>{
-
-        const page =
-            document.querySelector(
-                "nav button.active"
-            )?.dataset.page;
-
-        if(
-            page==="home" ||
-            page==="library"
-        ){
-
-            renderPage("library");
-
-        }
+     if(i===0)
+      ctx2.moveTo(x,y);
+     else
+      ctx2.lineTo(x,y);
 
     }
-);
+   );
 
+   ctx2.lineWidth=2.5;
 
-document
-    .getElementById("fileInput")
-    .addEventListener(
-        "change",
-        event=>
-            importFiles(
-                [...event.target.files]
-            )
+   ctx2.stroke();
+
+  }
+
+  /* CIRCULAR */
+
+  else if(
+   visualMode==="circle"
+  ){
+
+   const cx=w/2;
+   const cy=h/2;
+
+   const radius=
+    Math.min(w,h)*.16;
+
+   for(
+    let i=0;
+    i<120;
+    i++
+   ){
+
+    const angle=
+     i/120*Math.PI*2;
+
+    const value=
+     freq[i]/255;
+
+    const radius2=
+     radius+
+     value*
+     Math.min(w,h)*.34;
+
+    ctx2.beginPath();
+
+    ctx2.moveTo(
+     cx+
+     Math.cos(angle)*radius,
+     cy+
+     Math.sin(angle)*radius
     );
+
+    ctx2.lineTo(
+     cx+
+     Math.cos(angle)*radius2,
+     cy+
+     Math.sin(angle)*radius2
+    );
+
+    ctx2.stroke();
+
+   }
+
+   ctx2.beginPath();
+
+   ctx2.arc(
+    cx,cy,radius,
+    0,Math.PI*2
+   );
+
+   ctx2.stroke();
+
+  }
+
+  /* BARRAS */
+
+  else{
+
+   const count=
+    visualMode==="bands"
+    ?20
+    :64;
+
+   const gap=2;
+
+   const barWidth=
+    (w-gap*(count-1))/count;
+
+   for(
+    let i=0;
+    i<count;
+    i++
+   ){
+
+    const value=
+     freq[
+      Math.floor(
+       i/count*
+       freq.length
+      )
+     ]/255;
+
+    const height=
+     Math.max(
+      3,
+      value*h*.85
+     );
+
+    const x=
+     i*(barWidth+gap);
+
+    if(
+     visualMode==="mirror"
+    ){
+
+     ctx2.fillRect(
+      x,
+      h/2-height/2,
+      barWidth,
+      height
+     );
+
+    }else{
+
+     ctx2.fillRect(
+      x,
+      h-height,
+      barWidth,
+      height
+     );
+
+    }
+
+   }
+
+  }
+
+ }
+
+ frame();
+
+}
 
 
 /* =========================
-   INICIALIZAÇÃO
+   EVENTOS
+========================= */
+
+$("#nav").onclick=e=>{
+
+ const button=
+  e.target.closest(
+   "[data-page]"
+  );
+
+ if(button)
+  render(
+   button.dataset.page
+  );
+
+};
+
+
+$("#files").onchange=
+ e=>
+  importFiles(
+   [...e.target.files]
+  );
+
+
+$("#search").oninput=()=>{
+
+ const active=
+  $("[data-page].active");
+
+ if(
+  active &&
+  (
+   active.dataset.page==="home"||
+   active.dataset.page==="library"
+  )
+ ){
+
+  render("library");
+
+ }
+
+};
+
+
+$("#play").onclick=
+ togglePlay;
+
+$("#next").onclick=
+ nextSong;
+
+$("#prev").onclick=
+ previousSong;
+
+
+audio.onplay=()=>{
+
+ $("#play").textContent="Ⅱ";
+
+};
+
+
+audio.onpause=()=>{
+
+ $("#play").textContent="▶";
+
+};
+
+
+audio.ontimeupdate=()=>{
+
+ if(audio.duration){
+
+  $("#progress").style.width=
+   (
+    audio.currentTime/
+    audio.duration*
+    100
+   )+"%";
+
+ }
+
+};
+
+
+audio.onended=
+ nextSong;
+
+
+/* =========================
+   INICIAR
 ========================= */
 
 (async()=>{
 
-    songs =
-        await loadSongs();
+ songs=
+  await loadSongs();
 
-    renderPage("home");
+ render("home");
 
 })();
 
