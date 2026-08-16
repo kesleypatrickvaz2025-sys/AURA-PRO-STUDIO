@@ -2,13 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#07080c">
-<meta name="mobile-web-app-capable" content="yes">
-
-<title>AURA PRO STUDIO V4.2</title>
+<title>Aura Pro Studio V4.2</title>
 
 <style>
 *{
@@ -16,17 +12,18 @@
  -webkit-tap-highlight-color:transparent;
 }
 
-html{
- scroll-behavior:smooth;
+html,body{
+ margin:0;
+ padding:0;
+ width:100%;
+ min-height:100%;
+ background:#07080c;
+ color:#fff;
+ font-family:Arial,sans-serif;
 }
 
 body{
- margin:0;
- background:#07080c;
- color:#fff;
- font-family:Arial,Helvetica,sans-serif;
  overflow-x:hidden;
- touch-action:pan-y;
 }
 
 button,
@@ -39,8 +36,6 @@ textarea{
 button{
  cursor:pointer;
  touch-action:manipulation;
- user-select:none;
- -webkit-user-select:none;
 }
 
 button:active{
@@ -62,7 +57,7 @@ header{
 .logo{
  font-size:19px;
  font-weight:900;
- letter-spacing:.2px;
+ letter-spacing:.3px;
 }
 
 .logo span{
@@ -77,15 +72,14 @@ header{
  background:#11151d;
  color:#fff;
  border:1px solid #303644;
- font-size:20px;
- display:grid;
- place-items:center;
+ font-size:21px;
 }
 
 main{
+ width:100%;
  max-width:1150px;
  margin:auto;
- padding:14px 14px 155px;
+ padding:14px 14px 145px;
 }
 
 .search{
@@ -94,8 +88,8 @@ main{
  background:#10131a;
  border:1px solid #292e3a;
  border-radius:14px;
- color:white;
- padding:0 15px;
+ color:#fff;
+ padding:0 14px;
  outline:none;
 }
 
@@ -127,13 +121,18 @@ nav button{
 
 nav button.active{
  background:#ff7417;
- border-color:#ff7417;
  color:#111;
+ border-color:#ff7417;
  font-weight:bold;
 }
 
 .page{
- animation:pageIn .18s ease;
+ display:none;
+ animation:pageIn .16s ease;
+}
+
+.page.active{
+ display:block;
 }
 
 @keyframes pageIn{
@@ -148,7 +147,7 @@ nav button.active{
 }
 
 .hero{
- padding:28px;
+ padding:27px;
  border-radius:24px;
  border:1px solid #292e3a;
  background:
@@ -162,7 +161,7 @@ nav button.active{
 }
 
 .hero h1{
- font-size:31px;
+ font-size:30px;
  margin:8px 0;
 }
 
@@ -197,7 +196,7 @@ nav button.active{
  color:#fff;
  border:1px solid #303644;
  border-radius:11px;
- padding:11px 15px;
+ padding:11px 14px;
 }
 
 .song{
@@ -209,12 +208,6 @@ nav button.active{
  background:#10131a;
  border:1px solid #292e3a;
  border-radius:14px;
- min-height:72px;
-}
-
-.song.active{
- border-color:#ff7417;
- background:#17130f;
 }
 
 .cover{
@@ -225,13 +218,7 @@ nav button.active{
  display:grid;
  place-items:center;
  font-size:23px;
- background:
- linear-gradient(135deg,#3b4252,#171a22);
-}
-
-.song.active .cover{
- background:
- linear-gradient(135deg,#ff7417,#7b2708);
+ background:linear-gradient(135deg,#3b4252,#171a22);
 }
 
 .info{
@@ -252,87 +239,42 @@ nav button.active{
  margin-top:4px;
 }
 
-.song-actions{
- display:flex;
- gap:6px;
-}
-
 .song button{
- width:42px;
- height:42px;
+ width:40px;
+ height:40px;
+ flex-shrink:0;
  background:#171b24;
  color:#ffb15c;
  border:1px solid #303644;
  border-radius:10px;
 }
 
-.empty{
- padding:40px 20px;
- text-align:center;
- color:#8e96a7;
+.song button.delete{
+ color:#ff5c5c;
+}
+
+.song.playing{
+ border-color:#ff7417;
+ box-shadow:0 0 0 1px #ff741722 inset;
 }
 
 .section-title{
  display:flex;
- align-items:center;
  justify-content:space-between;
- gap:10px;
- margin-top:22px;
-}
-
-.section-title h2{
- margin:0;
-}
-
-/* PLAYER PAGE */
-
-.now{
- display:grid;
- grid-template-columns:190px 1fr;
- gap:24px;
  align-items:center;
+ gap:10px;
 }
 
-.bigcover{
- width:190px;
- height:190px;
- border-radius:26px;
- display:grid;
- place-items:center;
- font-size:75px;
- background:
- radial-gradient(circle at 30% 20%,
- #ff9b4a,#7b2708 35%,#161922 70%);
- box-shadow:0 20px 60px #ff741722;
-}
-
-.now h2{
- margin:8px 0;
- overflow:hidden;
- text-overflow:ellipsis;
- white-space:nowrap;
-}
-
-.nowbuttons{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
- margin-top:18px;
-}
-
-.nowbuttons button{
- padding:10px 14px;
- border-radius:11px;
- background:#171b24;
- color:white;
- border:1px solid #303644;
+.empty{
+ padding:30px;
+ text-align:center;
+ color:#8e96a7;
 }
 
 /* EQ */
 
 .eqbox{
  overflow-x:auto;
- padding-bottom:5px;
 }
 
 .eq{
@@ -371,6 +313,12 @@ nav button.active{
  accent-color:#ff7417;
 }
 
+.value{
+ min-width:48px;
+ text-align:right;
+ color:#ffb15c;
+}
+
 /* LAB */
 
 .controls{
@@ -400,21 +348,6 @@ nav button.active{
 
 /* VISUALIZER */
 
-.visual{
- height:430px;
- background:#050609;
- border:1px solid #292e3a;
- border-radius:22px;
- overflow:hidden;
- position:relative;
-}
-
-canvas{
- width:100%;
- height:100%;
- display:block;
-}
-
 .modes{
  display:flex;
  gap:7px;
@@ -441,6 +374,21 @@ canvas{
  background:#ff7417;
  color:#111;
  border-color:#ff7417;
+ font-weight:bold;
+}
+
+.visual{
+ height:430px;
+ background:#050609;
+ border:1px solid #292e3a;
+ border-radius:22px;
+ overflow:hidden;
+}
+
+canvas{
+ width:100%;
+ height:100%;
+ display:block;
 }
 
 .metrics{
@@ -466,13 +414,50 @@ canvas{
  margin-top:4px;
 }
 
-/* TEXTAREA */
+/* NOW */
+
+.now{
+ display:grid;
+ grid-template-columns:180px 1fr;
+ gap:22px;
+ align-items:center;
+}
+
+.bigcover{
+ width:180px;
+ height:180px;
+ border-radius:25px;
+ display:grid;
+ place-items:center;
+ font-size:70px;
+ background:
+ radial-gradient(circle at 30% 20%,
+ #ff9b4a,#7b2708 35%,#161922 70%);
+ box-shadow:0 20px 60px #ff741722;
+}
+
+.nowbuttons{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:18px;
+}
+
+.nowbuttons button{
+ padding:10px 14px;
+ border-radius:11px;
+ background:#171b24;
+ color:white;
+ border:1px solid #303644;
+}
+
+/* FORM */
 
 textarea,
 select{
  width:100%;
  background:#171b24;
- color:white;
+ color:#fff;
  border:1px solid #303644;
  border-radius:11px;
  padding:12px;
@@ -480,27 +465,121 @@ select{
 }
 
 textarea{
- min-height:170px;
+ min-height:180px;
  resize:vertical;
 }
 
-/* FOOTER PLAYER */
+/* SETTINGS */
+
+.settings-overlay{
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:200;
+ display:none;
+}
+
+.settings-overlay.open{
+ display:block;
+}
+
+.settings-panel{
+ position:absolute;
+ top:0;
+ right:0;
+ width:min(380px,92vw);
+ height:100%;
+ background:#0d1016;
+ border-left:1px solid #303644;
+ padding:18px;
+ overflow-y:auto;
+ box-shadow:-20px 0 60px #0008;
+}
+
+.settings-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:20px;
+}
+
+.settings-head button{
+ width:40px;
+ height:40px;
+ border-radius:10px;
+ background:#171b24;
+ color:#fff;
+ border:1px solid #303644;
+}
+
+.setting-item{
+ padding:14px 0;
+ border-bottom:1px solid #292e3a;
+}
+
+.setting-item label{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ color:#ddd;
+}
+
+.setting-item input[type=range]{
+ width:100%;
+ accent-color:#ff7417;
+ margin-top:10px;
+}
+
+.setting-item select{
+ margin-top:10px;
+}
+
+.switch{
+ width:48px;
+ height:26px;
+ border-radius:20px;
+ background:#292e3a;
+ position:relative;
+ border:0;
+}
+
+.switch i{
+ position:absolute;
+ width:20px;
+ height:20px;
+ border-radius:50%;
+ background:#fff;
+ left:3px;
+ top:3px;
+ transition:.15s;
+}
+
+.switch.on{
+ background:#ff7417;
+}
+
+.switch.on i{
+ left:25px;
+}
+
+/* PLAYER */
 
 footer{
  position:fixed;
  bottom:0;
  left:0;
  right:0;
- background:#0c0e13f2;
+ background:#0c0e13ed;
  backdrop-filter:blur(18px);
- -webkit-backdrop-filter:blur(18px);
  border-top:1px solid #292e3a;
- z-index:90;
+ z-index:150;
 }
 
 .progress{
  height:3px;
  background:#292e3a;
+ cursor:pointer;
 }
 
 .progress i{
@@ -516,7 +595,7 @@ footer{
  padding:8px;
  display:flex;
  align-items:center;
- gap:9px;
+ gap:10px;
 }
 
 .player .cover{
@@ -531,11 +610,11 @@ footer{
 .player button{
  width:42px;
  height:42px;
- flex-shrink:0;
  border-radius:50%;
  background:#171b24;
  color:white;
  border:1px solid #303644;
+ flex-shrink:0;
 }
 
 .player .play{
@@ -544,128 +623,22 @@ footer{
  border:0;
 }
 
-/* SETTINGS */
-
-.overlay{
- position:fixed;
- inset:0;
- background:#0009;
- backdrop-filter:blur(5px);
- z-index:200;
- display:none;
- align-items:flex-end;
- justify-content:center;
-}
-
-.overlay.show{
- display:flex;
-}
-
-.settings{
- width:min(560px,100%);
- max-height:88vh;
- overflow:auto;
- background:#10131a;
- border:1px solid #303644;
- border-radius:24px 24px 0 0;
- padding:18px;
- animation:sheet .2s ease;
-}
-
-@keyframes sheet{
- from{
-  transform:translateY(100%);
- }
- to{
-  transform:none;
- }
-}
-
-.settings-head{
- display:flex;
- align-items:center;
- justify-content:space-between;
- margin-bottom:15px;
-}
-
-.settings-head h2{
- margin:0;
-}
-
-.close{
- width:40px;
- height:40px;
- border-radius:12px;
- border:1px solid #303644;
- background:#171b24;
- color:#fff;
-}
-
-.setting{
- padding:14px 0;
- border-bottom:1px solid #292e3a;
-}
-
-.setting:last-child{
- border-bottom:0;
-}
-
-.setting-title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:9px;
-}
-
-.setting-title small{
- color:#8e96a7;
-}
-
-.setting input[type="range"]{
- width:100%;
+.volume{
+ width:100px;
  accent-color:#ff7417;
 }
 
-.setting-buttons{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:8px;
-}
-
-/* TOAST */
-
-.toast{
- position:fixed;
- left:50%;
- bottom:115px;
- transform:translateX(-50%) translateY(20px);
- background:#171b24;
- border:1px solid #303644;
- padding:11px 15px;
- border-radius:12px;
- opacity:0;
- pointer-events:none;
- transition:.2s;
- z-index:300;
- white-space:nowrap;
-}
-
-.toast.show{
- opacity:1;
- transform:translateX(-50%);
-}
-
-/* MOBILE */
-
 @media(max-width:700px){
-
- .now{
-  grid-template-columns:1fr;
+ .volume{
+  display:none;
  }
+}
 
- .bigcover{
-  width:160px;
-  height:160px;
+@media(max-width:650px){
+
+ main{
+  padding-left:10px;
+  padding-right:10px;
  }
 
  .controls{
@@ -680,41 +653,63 @@ footer{
   height:330px;
  }
 
-}
-
-@media(max-width:430px){
-
- main{
-  padding-left:10px;
-  padding-right:10px;
+ .now{
+  grid-template-columns:1fr;
  }
 
- .hero{
-  padding:21px;
+ .bigcover{
+  width:155px;
+  height:155px;
  }
 
  .hero h1{
-  font-size:26px;
- }
-
- .player .info small{
-  display:none;
+  font-size:25px;
  }
 
  .player{
-  gap:5px;
- }
-
- .player .cover{
-  width:40px;
-  height:40px;
+  gap:6px;
  }
 
  .player button{
-  width:38px;
-  height:38px;
+  width:39px;
+  height:39px;
  }
 
+}
+
+@media(max-width:400px){
+
+ .player .info{
+  max-width:130px;
+ }
+
+ .controls{
+  grid-template-columns:1fr;
+ }
+
+}
+
+/* TOAST */
+
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:100px;
+ transform:translateX(-50%) translateY(20px);
+ background:#171b24;
+ border:1px solid #303644;
+ padding:11px 15px;
+ border-radius:12px;
+ color:#fff;
+ opacity:0;
+ pointer-events:none;
+ transition:.2s;
+ z-index:500;
+}
+
+.toast.show{
+ opacity:1;
+ transform:translateX(-50%) translateY(0);
 }
 </style>
 </head>
@@ -722,7 +717,6 @@ footer{
 <body>
 
 <header>
-
  <div class="logo">
   AURA <span>PRO</span> STUDIO
  </div>
@@ -730,10 +724,9 @@ footer{
  <button
   id="settingsBtn"
   class="gear"
-  type="button">
+  aria-label="Configurações">
   ⚙
  </button>
-
 </header>
 
 <main>
@@ -742,65 +735,406 @@ footer{
  id="search"
  class="search"
  type="search"
- autocomplete="off"
  placeholder="🔎 Buscar músicas...">
 
 <nav id="nav">
 
- <button
-  type="button"
-  class="active"
-  data-page="home">
+ <button class="active" data-page="home">
   Início
  </button>
 
- <button
-  type="button"
-  data-page="library">
+ <button data-page="library">
   Biblioteca
  </button>
 
- <button
-  type="button"
-  data-page="now">
+ <button data-page="now">
   Player
  </button>
 
- <button
-  type="button"
-  data-page="eq">
+ <button data-page="eq">
   EQ 20
  </button>
 
- <button
-  type="button"
-  data-page="visual">
+ <button data-page="visual">
   Visualizer
  </button>
 
- <button
-  type="button"
-  data-page="lab">
+ <button data-page="lab">
   Audio Lab
  </button>
 
- <button
-  type="button"
-  data-page="lyrics">
+ <button data-page="lyrics">
   Letras
  </button>
 
 </nav>
 
-<section id="content"></section>
+<!-- ===================== HOME ===================== -->
+
+<section
+ id="page-home"
+ class="page active">
+
+ <div class="hero">
+
+  <small>
+   AURA PRO STUDIO V4.2
+  </small>
+
+  <h1>
+   Seu som. Seu estúdio.
+  </h1>
+
+  <p class="muted">
+   20 bandas • 12 presets • Visualizer Pro
+   • Audio Lab • Player completo
+  </p>
+
+ </div>
+
+ <div class="card upload">
+
+  <b>
+   Adicionar músicas
+  </b>
+
+  <p class="muted">
+   Selecione arquivos de áudio do aparelho.
+  </p>
+
+  <button
+   id="homeImport"
+   class="orange">
+   ＋ Selecionar músicas
+  </button>
+
+ </div>
+
+ <div class="section-title">
+  <h2>Biblioteca</h2>
+
+  <button
+   id="homeLibrary"
+   class="secondary">
+   Ver tudo
+  </button>
+ </div>
+
+ <div id="homeSongs"></div>
+
+</section>
+
+
+<!-- ===================== LIBRARY ===================== -->
+
+<section
+ id="page-library"
+ class="page">
+
+ <div class="section-title">
+  <h2>Biblioteca</h2>
+
+  <button
+   id="libraryImport"
+   class="orange">
+   ＋ Adicionar
+  </button>
+ </div>
+
+ <div id="librarySongs"></div>
+
+</section>
+
+
+<!-- ===================== NOW ===================== -->
+
+<section
+ id="page-now"
+ class="page">
+
+ <div class="card now">
+
+  <div class="bigcover">
+   ♪
+  </div>
+
+  <div>
+
+   <small class="muted">
+    TOCANDO AGORA
+   </small>
+
+   <h2 id="nowTitle">
+    Nenhuma música
+   </h2>
+
+   <p
+    id="nowArtist"
+    class="muted">
+    Aura Pro Studio
+   </p>
+
+   <div class="nowbuttons">
+
+    <button id="nowPrev">
+     ⏮ Anterior
+    </button>
+
+    <button
+     id="nowPlay"
+     class="orange">
+     ▶ Play / Pause
+    </button>
+
+    <button id="nowNext">
+     Próxima ⏭
+    </button>
+
+   </div>
+
+  </div>
+
+ </div>
+
+ <div class="card">
+
+  <h3>Controles</h3>
+
+  <div class="setting-item">
+
+   <label>
+    <span>Volume</span>
+    <b id="nowVolumeValue">85%</b>
+   </label>
+
+   <input
+    id="nowVolume"
+    type="range"
+    min="0"
+    max="100"
+    value="85">
+
+  </div>
+
+  <div class="setting-item">
+
+   <label>
+    <span>Velocidade</span>
+    <b id="speedValue">1.00x</b>
+   </label>
+
+   <input
+    id="speed"
+    type="range"
+    min="0.5"
+    max="2"
+    step="0.05"
+    value="1">
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ===================== EQ ===================== -->
+
+<section
+ id="page-eq"
+ class="page">
+
+ <h2>
+  Equalizador Pro — 20 bandas
+ </h2>
+
+ <div class="card">
+
+  <select id="preset">
+
+   <option>Normal</option>
+   <option>Rap</option>
+   <option>Bass</option>
+   <option>Rock</option>
+   <option>Pop</option>
+   <option>Vocal</option>
+   <option>Dance</option>
+   <option>Deep Bass</option>
+   <option>Clear Sound</option>
+   <option>Stadium</option>
+   <option>Night Mode</option>
+   <option>Ultra HD</option>
+
+  </select>
+
+  <div class="preamp">
+
+   <span>Preamp</span>
+
+   <input
+    id="preamp"
+    type="range"
+    min="-12"
+    max="12"
+    value="0">
+
+   <b
+    id="preampValue"
+    class="value">
+    0 dB
+   </b>
+
+  </div>
+
+  <div class="eqbox">
+
+   <div
+    id="eqBands"
+    class="eq">
+   </div>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ===================== VISUALIZER ===================== -->
+
+<section
+ id="page-visual"
+ class="page">
+
+ <h2>
+  Visualizer Pro
+ </h2>
+
+ <div class="modes">
+
+  <button
+   class="active"
+   data-mode="spectrum">
+   Spectrum
+  </button>
+
+  <button data-mode="wave">
+   Wave
+  </button>
+
+  <button data-mode="bands">
+   20 Bandas
+  </button>
+
+  <button data-mode="circle">
+   Circular
+  </button>
+
+  <button data-mode="mirror">
+   Mirror
+  </button>
+
+  <button data-mode="beat">
+   Beat
+  </button>
+
+ </div>
+
+ <div class="visual">
+
+  <canvas id="canvas"></canvas>
+
+ </div>
+
+ <div class="metrics">
+
+  <div class="metric">
+   BASS
+   <b id="bass">0%</b>
+  </div>
+
+  <div class="metric">
+   MÉDIOS
+   <b id="mid">0%</b>
+  </div>
+
+  <div class="metric">
+   AGUDOS
+   <b id="high">0%</b>
+  </div>
+
+  <div class="metric">
+   ENERGIA
+   <b id="energy">0%</b>
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ===================== LAB ===================== -->
+
+<section
+ id="page-lab"
+ class="page">
+
+ <h2>
+  Audio Lab
+ </h2>
+
+ <div class="card">
+
+  <div
+   id="labControls"
+   class="controls">
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ===================== LYRICS ===================== -->
+
+<section
+ id="page-lyrics"
+ class="page">
+
+ <h2>
+  Letras
+ </h2>
+
+ <div class="card">
+
+  <textarea
+   id="lyrics"
+   placeholder="[00:00.00] Primeira linha
+[00:05.00] Segunda linha
+[00:10.00] Terceira linha"></textarea>
+
+  <br><br>
+
+  <button
+   id="saveLyrics"
+   class="orange">
+   Salvar letras
+  </button>
+
+ </div>
+
+</section>
 
 </main>
+
+
+<!-- ===================== FOOTER PLAYER ===================== -->
 
 <footer>
 
  <div
-  class="progress"
-  id="progressArea">
+  id="progressBar"
+  class="progress">
 
   <i id="progress"></i>
 
@@ -808,9 +1142,7 @@ footer{
 
  <div class="player">
 
-  <div
-   class="cover"
-   id="playerCover">
+  <div class="cover">
    ♪
   </div>
 
@@ -821,29 +1153,32 @@ footer{
    </b>
 
    <small
-    class="muted"
-    id="artist">
+    id="artist"
+    class="muted">
     Aura Pro Studio
    </small>
 
   </div>
 
-  <button
-   id="prev"
-   type="button">
+  <input
+   id="playerVolume"
+   class="volume"
+   type="range"
+   min="0"
+   max="100"
+   value="85">
+
+  <button id="prev">
    ⏮
   </button>
 
   <button
    id="play"
-   class="play"
-   type="button">
+   class="play">
    ▶
   </button>
 
-  <button
-   id="next"
-   type="button">
+  <button id="next">
    ⏭
   </button>
 
@@ -851,36 +1186,68 @@ footer{
 
 </footer>
 
-<!-- SETTINGS -->
+
+<!-- ===================== SETTINGS ===================== -->
 
 <div
  id="settingsOverlay"
- class="overlay">
+ class="settings-overlay">
 
- <div class="settings">
+ <div class="settings-panel">
 
   <div class="settings-head">
 
-   <h2>⚙ Configurações</h2>
+   <h2>
+    Configurações
+   </h2>
 
-   <button
-    id="closeSettings"
-    class="close"
-    type="button">
+   <button id="closeSettings">
     ✕
    </button>
 
   </div>
 
-  <div class="setting">
+  <div class="setting-item">
 
-   <div class="setting-title">
-    <b>Volume</b>
-    <small id="volumeValue">85%</small>
-   </div>
+   <label>
+    <span>Reprodução aleatória</span>
+
+    <button
+     id="shuffleSwitch"
+     class="switch">
+     <i></i>
+    </button>
+
+   </label>
+
+  </div>
+
+  <div class="setting-item">
+
+   <label>
+    <span>Repetir música</span>
+
+    <button
+     id="repeatSwitch"
+     class="switch">
+     <i></i>
+    </button>
+
+   </label>
+
+  </div>
+
+  <div class="setting-item">
+
+   <label>
+    <span>Volume geral</span>
+    <b id="settingsVolumeValue">
+     85%
+    </b>
+   </label>
 
    <input
-    id="volume"
+    id="settingsVolume"
     type="range"
     min="0"
     max="100"
@@ -888,94 +1255,65 @@ footer{
 
   </div>
 
-  <div class="setting">
+  <div class="setting-item">
 
-   <div class="setting-title">
-    <b>Reprodução automática</b>
-    <small id="autoValue">Ligada</small>
-   </div>
+   <label>
+    <span>Velocidade</span>
+    <b id="settingsSpeedValue">
+     1.00x
+    </b>
+   </label>
+
+   <input
+    id="settingsSpeed"
+    type="range"
+    min=".5"
+    max="2"
+    step=".05"
+    value="1">
+
+  </div>
+
+  <div class="setting-item">
+
+   <label>
+    <span>Qualidade visual</span>
+   </label>
+
+   <select id="visualQuality">
+    <option value="normal">
+     Normal
+    </option>
+    <option value="smooth">
+     Suave
+    </option>
+    <option value="high">
+     Alta
+    </option>
+   </select>
+
+  </div>
+
+  <div class="setting-item">
 
    <button
-    id="autoPlayBtn"
+    id="clearLibrary"
     class="secondary"
-    type="button">
-    Alterar
+    style="width:100%">
+    🗑 Apagar biblioteca
    </button>
 
   </div>
 
-  <div class="setting">
+  <div class="setting-item">
 
-   <div class="setting-title">
-    <b>Repetição</b>
-    <small id="repeatValue">Desligada</small>
-   </div>
+   <p class="muted">
+    Aura Pro Studio V4.2
+   </p>
 
-   <button
-    id="repeatBtn"
-    class="secondary"
-    type="button">
-    Alterar repetição
-   </button>
-
-  </div>
-
-  <div class="setting">
-
-   <div class="setting-title">
-    <b>Modo aleatório</b>
-    <small id="shuffleValue">Desligado</small>
-   </div>
-
-   <button
-    id="shuffleBtn"
-    class="secondary"
-    type="button">
-    Ativar / desativar
-   </button>
-
-  </div>
-
-  <div class="setting">
-
-   <div class="setting-title">
-    <b>Biblioteca</b>
-    <small>Músicas armazenadas no aparelho</small>
-   </div>
-
-   <div class="setting-buttons">
-
-    <button
-     id="importSettings"
-     class="orange"
-     type="button">
-     ＋ Importar
-    </button>
-
-    <button
-     id="clearLibrary"
-     class="secondary"
-     type="button">
-     Limpar biblioteca
-    </button>
-
-   </div>
-
-  </div>
-
-  <div class="setting">
-
-   <div class="setting-title">
-    <b>Aplicativo</b>
-    <small>Aura Pro Studio V4.2</small>
-   </div>
-
-   <button
-    id="resetSettings"
-    class="secondary"
-    type="button">
-    Restaurar configurações
-   </button>
+   <p class="muted">
+    Player • EQ 20 • Visualizer • Audio Lab
+   </p>
 
   </div>
 
@@ -983,11 +1321,6 @@ footer{
 
 </div>
 
-<div
- id="toast"
- class="toast">
- Operação concluída
-</div>
 
 <input
  id="files"
@@ -996,237 +1329,201 @@ footer{
  multiple
  hidden>
 
+<div
+ id="toast"
+ class="toast">
+</div>
+
+
 <script>
 "use strict";
 
 /* =========================================================
-   ELEMENTOS
+   AURA PRO STUDIO V4.2
+   NÚCLEO CENTRAL
 ========================================================= */
 
-const $ = selector =>
- document.querySelector(selector);
+const $ = id => document.getElementById(id);
 
-const $$ = selector =>
- [...document.querySelectorAll(selector)];
+const frequencies = [
+  20,32,50,80,125,
+  200,315,500,800,
+  1250,2000,3150,5000,
+  6300,8000,10000,
+  12500,14000,16000,20000
+];
 
+const presets = {
 
-/* =========================================================
-   ESTADO
-========================================================= */
+ Normal:[
+  0,0,0,0,0,
+  0,0,0,0,0,
+  0,0,0,0,0,
+  0,0,0,0,0
+ ],
 
-const state = {
+ Rap:[
+  4,5,6,5,3,
+  1,0,1,2,3,
+  4,3,2,2,3,
+  2,1,1,2,2
+ ],
 
- page:"home",
+ Bass:[
+  7,8,9,8,6,
+  4,2,1,0,0,
+  0,0,0,0,1,
+  1,2,2,2,1
+ ],
+
+ Rock:[
+  4,3,2,0,-1,
+  -2,0,2,3,2,
+  2,3,4,4,3,
+  3,2,2,3,2
+ ],
+
+ Pop:[
+  1,2,2,1,0,
+  -1,1,2,3,3,
+  3,3,2,2,2,
+  2,2,1,1,1
+ ],
+
+ Vocal:[
+  -2,-2,-1,0,2,
+  3,4,4,5,5,
+  4,3,2,2,1,
+  0,0,-1,-1,-2
+ ],
+
+ Dance:[
+  6,7,6,5,3,
+  1,0,1,2,3,
+  4,4,5,5,5,
+  4,4,3,3,2
+ ],
+
+ "Deep Bass":[
+  8,10,10,9,7,
+  4,2,0,0,0,
+  0,0,0,0,1,
+  1,2,2,2,1
+ ],
+
+ "Clear Sound":[
+  0,0,0,-1,0,
+  1,2,2,3,3,
+  4,4,4,3,3,
+  3,2,2,1,1
+ ],
+
+ Stadium:[
+  3,4,3,2,1,
+  0,0,1,2,3,
+  3,3,4,4,4,
+  3,2,2,2,2
+ ],
+
+ "Night Mode":[
+  -2,-2,-1,0,1,
+  1,2,2,2,2,
+  1,1,0,0,-1,
+  -1,-2,-2,-2,-2
+ ],
+
+ "Ultra HD":[
+  0,0,0,0,0,
+  1,2,2,3,3,
+  3,4,5,4,4,
+  4,3,3,2,2
+ ]
+
+};
+
+let state = {
 
  songs:[],
 
  current:-1,
 
- objectURL:null,
-
- visualMode:"spectrum",
-
- animation:0,
-
- repeat:false,
+ page:"home",
 
  shuffle:false,
 
- autoPlay:true,
+ repeat:false,
 
  volume:.85,
 
- preamp:0,
+ speed:1,
 
- db:null,
+ visualMode:"spectrum",
 
- audioReady:false
+ visualQuality:"normal",
 
-};
-
-
-/* =========================================================
-   ÁUDIO
-========================================================= */
-
-const audio = new Audio();
-
-audio.preload = "metadata";
-
-audio.volume = state.volume;
-
-
-/* =========================================================
-   FREQUÊNCIAS
-========================================================= */
-
-const frequencies = [
- 20,32,50,80,125,
- 200,315,500,800,
- 1250,2000,3150,5000,
- 6300,8000,10000,
- 12500,14000,16000,20000
-];
-
-
-/* =========================================================
-   PRESETS
-========================================================= */
-
-const presets = {
-
- "Normal":
- [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-
- "Rap":
- [4,5,6,5,3,1,0,1,2,3,
-  4,3,2,2,3,2,1,1,2,2],
-
- "Bass":
- [7,8,9,8,6,4,2,1,0,0,
-  0,0,0,0,1,1,2,2,2,1],
-
- "Rock":
- [4,3,2,0,-1,-2,0,2,3,2,
-  2,3,4,4,3,3,2,2,3,2],
-
- "Pop":
- [1,2,2,1,0,-1,1,2,3,3,
-  3,3,2,2,2,2,2,1,1,1],
-
- "Vocal":
- [-2,-2,-1,0,2,3,4,4,5,5,
-  4,3,2,2,1,0,0,-1,-1,-2],
-
- "Dance":
- [6,7,6,5,3,1,0,1,2,3,
-  4,4,5,5,5,4,4,3,3,2],
-
- "Deep Bass":
- [8,10,10,9,7,4,2,0,0,0,
-  0,0,0,0,1,1,2,2,2,1],
-
- "Clear Sound":
- [0,0,0,-1,0,1,2,2,3,3,
-  4,4,4,3,3,3,2,2,1,1],
-
- "Stadium":
- [3,4,3,2,1,0,0,1,2,3,
-  3,3,4,4,4,3,2,2,2,2],
-
- "Night Mode":
- [-2,-2,-1,0,1,1,2,2,2,2,
-  1,1,0,0,-1,-1,-2,-2,-2,-2],
-
- "Ultra HD":
- [0,0,0,0,0,1,2,2,3,3,
-  3,4,5,4,4,4,3,3,2,2]
+ db:null
 
 };
 
+let audio = new Audio();
 
-/* =========================================================
-   AUDIO ENGINE
-========================================================= */
+audio.preload="metadata";
+
+let audioURL = null;
 
 let audioCtx = null;
+
 let sourceNode = null;
+
 let analyser = null;
-let masterGain = null;
+
+let master = null;
+
 let filters = [];
 
+let labFilters = {};
 
-async function setupAudio(){
+let animationId = 0;
 
- if(state.audioReady){
+let visualizerRunning = false;
 
-  if(audioCtx.state === "suspended"){
-   await audioCtx.resume();
-  }
 
-  return;
+/* =========================================================
+   TOAST
+========================================================= */
 
- }
+let toastTimer=null;
 
- const AudioContext =
-  window.AudioContext ||
-  window.webkitAudioContext;
+function toast(message){
 
- if(!AudioContext){
+ const box=$("toast");
 
-  showToast("Áudio avançado não é suportado neste navegador.");
+ box.textContent=message;
 
-  return;
+ box.classList.add("show");
 
- }
+ clearTimeout(toastTimer);
 
- try{
+ toastTimer=setTimeout(
+  ()=>box.classList.remove("show"),
+  1800
+ );
 
-  audioCtx = new AudioContext();
+}
 
-  sourceNode =
-   audioCtx.createMediaElementSource(audio);
 
-  analyser =
-   audioCtx.createAnalyser();
+/* =========================================================
+   SAFE HTML
+========================================================= */
 
-  analyser.fftSize = 2048;
+function escapeHTML(value){
 
-  analyser.smoothingTimeConstant = .88;
-
-  masterGain =
-   audioCtx.createGain();
-
-  masterGain.gain.value =
-   .85;
-
-  let node = sourceNode;
-
-  filters = [];
-
-  frequencies.forEach(freq=>{
-
-   const filter =
-    audioCtx.createBiquadFilter();
-
-   filter.type = "peaking";
-
-   filter.frequency.value =
-    freq;
-
-   filter.Q.value = .8;
-
-   filter.gain.value = 0;
-
-   node.connect(filter);
-
-   node = filter;
-
-   filters.push(filter);
-
-  });
-
-  node.connect(masterGain);
-
-  masterGain.connect(analyser);
-
-  analyser.connect(
-   audioCtx.destination
-  );
-
-  state.audioReady = true;
-
-  if(audioCtx.state === "suspended"){
-   await audioCtx.resume();
-  }
-
- }catch(error){
-
-  console.error(error);
-
-  showToast("Não foi possível iniciar o motor de áudio.");
-
- }
+ return String(value)
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 
 }
 
@@ -1237,28 +1534,20 @@ async function setupAudio(){
 
 function openDB(){
 
+ if(state.db)
+  return Promise.resolve(state.db);
+
  return new Promise((resolve,reject)=>{
 
-  if(!("indexedDB" in window)){
-
-   reject(
-    new Error("IndexedDB indisponível")
-   );
-
-   return;
-
-  }
-
-  const request =
+  const request=
    indexedDB.open(
     "AuraProStudioV42",
     1
    );
 
-  request.onupgradeneeded = event=>{
+  request.onupgradeneeded=e=>{
 
-   const db =
-    event.target.result;
+   const db=e.target.result;
 
    if(
     !db.objectStoreNames
@@ -1274,12 +1563,15 @@ function openDB(){
 
   };
 
-  request.onsuccess = ()=>{
-   state.db = request.result;
-   resolve(request.result);
+  request.onsuccess=e=>{
+
+   state.db=e.target.result;
+
+   resolve(state.db);
+
   };
 
-  request.onerror = ()=>{
+  request.onerror=()=>{
    reject(request.error);
   };
 
@@ -1288,35 +1580,28 @@ function openDB(){
 }
 
 
-async function getAllSongs(){
+async function loadSongs(){
 
  try{
 
-  const db =
-   state.db ||
-   await openDB();
+  const db=await openDB();
 
   return await new Promise(
    (resolve,reject)=>{
 
-    const transaction =
+    const req=
      db.transaction(
       "songs",
       "readonly"
-     );
+     )
+     .objectStore("songs")
+     .getAll();
 
-    const request =
-     transaction
-      .objectStore("songs")
-      .getAll();
+    req.onsuccess=()=>
+     resolve(req.result||[]);
 
-    request.onsuccess = ()=>{
-     resolve(request.result || []);
-    };
-
-    request.onerror = ()=>{
-     reject(request.error);
-    };
+    req.onerror=()=>
+     reject(req.error);
 
    }
   );
@@ -1325,10 +1610,6 @@ async function getAllSongs(){
 
   console.error(error);
 
-  showToast(
-   "Erro ao carregar a biblioteca."
-  );
-
   return [];
 
  }
@@ -1336,16 +1617,14 @@ async function getAllSongs(){
 }
 
 
-async function putSong(song){
+async function saveSong(song){
 
- const db =
-  state.db ||
-  await openDB();
+ const db=await openDB();
 
  return new Promise(
   (resolve,reject)=>{
 
-   const transaction =
+   const transaction=
     db.transaction(
      "songs",
      "readwrite"
@@ -1355,10 +1634,10 @@ async function putSong(song){
     .objectStore("songs")
     .put(song);
 
-   transaction.oncomplete =
+   transaction.oncomplete=
     ()=>resolve();
 
-   transaction.onerror =
+   transaction.onerror=
     ()=>reject(
      transaction.error
     );
@@ -1366,20 +1645,49 @@ async function putSong(song){
   }
  );
 
-
 }
 
 
-async function deleteAllSongs(){
+async function deleteSong(id){
 
- const db =
-  state.db ||
-  await openDB();
+ const db=await openDB();
 
  return new Promise(
   (resolve,reject)=>{
 
-   const transaction =
+   const transaction=
+    db.transaction(
+     "songs",
+     "readwrite"
+    );
+
+   transaction
+    .objectStore("songs")
+    .delete(id);
+
+   transaction.oncomplete=
+    ()=>resolve();
+
+   transaction.onerror=
+    ()=>reject(
+     transaction.error
+    );
+
+  }
+);
+
+
+}
+
+
+async function clearSongsDB(){
+
+ const db=await openDB();
+
+ return new Promise(
+  (resolve,reject)=>{
+
+   const transaction=
     db.transaction(
      "songs",
      "readwrite"
@@ -1389,74 +1697,16 @@ async function deleteAllSongs(){
     .objectStore("songs")
     .clear();
 
-   transaction.oncomplete =
+   transaction.oncomplete=
     ()=>resolve();
 
-   transaction.onerror =
+   transaction.onerror=
     ()=>reject(
      transaction.error
     );
 
   }
- );
-
-
-}
-
-
-/* =========================================================
-   UTILITÁRIOS
-========================================================= */
-
-function escapeHTML(value){
-
- return String(value ?? "")
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
-
-}
-
-
-function formatTime(seconds){
-
- if(!Number.isFinite(seconds))
-  return "0:00";
-
- const min =
-  Math.floor(seconds/60);
-
- const sec =
-  Math.floor(seconds%60)
-   .toString()
-   .padStart(2,"0");
-
- return min+":"+sec;
-
-}
-
-
-function showToast(message){
-
- const toast =
-  $("#toast");
-
- toast.textContent =
-  message;
-
- toast.classList.add("show");
-
- clearTimeout(
-  showToast.timer
- );
-
- showToast.timer =
-  setTimeout(
-   ()=>toast.classList.remove("show"),
-   1800
-  );
+);
 
 }
 
@@ -1467,32 +1717,34 @@ function showToast(message){
 
 async function importFiles(fileList){
 
- const files =
-  [...fileList];
+ const files=[
+  ...fileList
+ ];
 
  if(!files.length)
   return;
 
- let imported = 0;
+ let added=0;
 
  for(const file of files){
 
   if(!file.type.startsWith("audio/"))
    continue;
 
-  const song = {
+  const song={
 
    id:
     crypto.randomUUID
-     ? crypto.randomUUID()
-     : Date.now()+"-"+Math.random(),
+    ? crypto.randomUUID()
+    : Date.now()+"-"+Math.random(),
 
    name:
-    file.name
-     .replace(/\.[^.]+$/,""),
+    file.name.replace(
+     /\.[^.]+$/,
+     ""
+    ),
 
-   artist:
-    "Arquivo local",
+   artist:"Arquivo local",
 
    blob:file
 
@@ -1500,11 +1752,11 @@ async function importFiles(fileList){
 
   try{
 
-   await putSong(song);
+   await saveSong(song);
 
    state.songs.push(song);
 
-   imported++;
+   added++;
 
   }catch(error){
 
@@ -1514,89 +1766,607 @@ async function importFiles(fileList){
 
  }
 
- $("#files").value = "";
+ $("files").value="";
 
- render(state.page);
+ renderSongs();
 
- if(imported){
-
-  showToast(
-   imported +
-   (imported === 1
-    ? " música adicionada."
-    : " músicas adicionadas.")
+ if(added)
+  toast(
+   added===1
+   ? "Música adicionada"
+   : added+" músicas adicionadas"
   );
-
- }
 
 }
 
 
 /* =========================================================
-   PLAYBACK
+   NAVEGAÇÃO
 ========================================================= */
 
-async function playSong(index){
+function goTo(page){
 
- if(
-  index < 0 ||
-  index >= state.songs.length
- )
+ const valid=[
+  "home",
+  "library",
+  "now",
+  "eq",
+  "visual",
+  "lab",
+  "lyrics"
+ ];
+
+ if(!valid.includes(page))
+  page="home";
+
+ state.page=page;
+
+ document
+  .querySelectorAll(
+   ".page"
+  )
+  .forEach(section=>{
+
+   section.classList.toggle(
+    "active",
+    section.id==="page-"+page
+   );
+
+  });
+
+ document
+  .querySelectorAll(
+   "#nav button[data-page]"
+  )
+  .forEach(button=>{
+
+   button.classList.toggle(
+    "active",
+    button.dataset.page===page
+   );
+
+  });
+
+ /*
+  NÃO reconstruímos o HTML da página.
+  Isso evita os bugs de eventos da V4 anterior.
+ */
+
+ if(page==="visual")
+  startVisualizer();
+
+ if(page==="lyrics")
+  loadLyrics();
+
+ if(page==="eq")
+  syncEQUI();
+
+}
+
+
+function setupNavigation(){
+
+ $("nav").addEventListener(
+  "click",
+  event=>{
+
+   const button=
+    event.target.closest(
+     "button[data-page]"
+    );
+
+   if(!button)
+    return;
+
+   event.preventDefault();
+
+   goTo(
+    button.dataset.page
+   );
+
+  }
+ );
+
+}
+
+
+/* =========================================================
+   LISTA
+========================================================= */
+
+function getFilteredSongs(){
+
+ const query=
+  $("search")
+   .value
+   .trim()
+   .toLowerCase();
+
+ if(!query)
+  return state.songs;
+
+ return state.songs.filter(
+  song=>
+   song.name
+    .toLowerCase()
+    .includes(query)
+ );
+
+}
+
+
+function songHTML(song,index){
+
+ const playing=
+  index===state.current;
+
+ return `
+
+ <article
+  class="song ${playing?"playing":""}"
+  data-song-index="${index}">
+
+  <div class="cover">
+   ♪
+  </div>
+
+  <div class="info">
+
+   <b>
+    ${escapeHTML(song.name)}
+   </b>
+
+   <small>
+    ${escapeHTML(song.artist||"Arquivo local")}
+   </small>
+
+  </div>
+
+  <button
+   class="song-play"
+   data-index="${index}"
+   aria-label="Reproduzir">
+   ${playing && !audio.paused ? "Ⅱ" : "▶"}
+  </button>
+
+  <button
+   class="delete"
+   data-delete="${escapeHTML(song.id)}"
+   aria-label="Excluir">
+   ×
+  </button>
+
+ </article>
+
+ `;
+
+}
+
+
+function songListHTML(){
+
+ const list=getFilteredSongs();
+
+ if(!list.length){
+
+  return `
+   <div class="empty">
+    ${
+     state.songs.length
+     ? "Nenhuma música corresponde à busca."
+     : "Nenhuma música adicionada ainda."
+    }
+   </div>
+  `;
+
+ }
+
+ return list
+  .map(song=>{
+
+   const index=
+    state.songs.indexOf(song);
+
+   return songHTML(
+    song,
+    index
+   );
+
+  })
+  .join("");
+
+}
+
+
+function renderSongs(){
+
+ $("homeSongs").innerHTML=
+  songListHTML();
+
+ $("librarySongs").innerHTML=
+  songListHTML();
+
+}
+
+
+function setupSongLists(){
+
+ document.addEventListener(
+  "click",
+  async event=>{
+
+   const playButton=
+    event.target.closest(
+     ".song-play"
+    );
+
+   if(playButton){
+
+    const index=
+     Number(
+      playButton.dataset.index
+     );
+
+    await playSong(index);
+
+    return;
+
+   }
+
+   const deleteButton=
+    event.target.closest(
+     "[data-delete]"
+    );
+
+   if(deleteButton){
+
+    const id=
+     deleteButton.dataset.delete;
+
+    await removeSong(id);
+
+   }
+
+  }
+ );
+
+}
+
+
+/* =========================================================
+   REMOVER MÚSICA
+========================================================= */
+
+async function removeSong(id){
+
+ const index=
+  state.songs.findIndex(
+   song=>song.id===id
+  );
+
+ if(index<0)
   return;
 
- const song =
-  state.songs[index];
-
- if(!song || !song.blob)
-  return;
+ const removingCurrent=
+  index===state.current;
 
  try{
 
-  await setupAudio();
-
-  if(!state.audioReady)
-   return;
-
-  state.current =
-   index;
-
-  if(state.objectURL){
-
-   URL.revokeObjectURL(
-    state.objectURL
-   );
-
-  }
-
-  state.objectURL =
-   URL.createObjectURL(
-    song.blob
-   );
-
-  audio.src =
-   state.objectURL;
-
-  audio.currentTime = 0;
-
-  updatePlayer();
-
-  if(audioCtx &&
-     audioCtx.state === "suspended"){
-
-   await audioCtx.resume();
-
-  }
-
-  await audio.play();
-
-  renderIfPageNeedsUpdate();
+  await deleteSong(id);
 
  }catch(error){
 
   console.error(error);
 
-  showToast(
-   "Não foi possível reproduzir esta música."
+  toast("Erro ao remover");
+
+  return;
+
+ }
+
+ state.songs.splice(
+  index,
+  1
+ );
+
+ if(removingCurrent){
+
+  audio.pause();
+
+  audio.removeAttribute("src");
+
+  audio.load();
+
+  if(audioURL){
+
+   URL.revokeObjectURL(
+    audioURL
+   );
+
+   audioURL=null;
+
+  }
+
+  state.current=-1;
+
+  updatePlayerUI();
+
+ }else if(
+  state.current>index
+ ){
+
+  state.current--;
+
+ }
+
+ renderSongs();
+
+ toast("Música removida");
+
+}
+
+
+/* =========================================================
+   AUDIO ENGINE
+========================================================= */
+
+async function setupAudio(){
+
+ if(audioCtx){
+
+  if(
+   audioCtx.state==="suspended"
+  ){
+
+   try{
+    await audioCtx.resume();
+   }catch(e){}
+
+  }
+
+  return;
+
+ }
+
+ const AudioContext=
+  window.AudioContext||
+  window.webkitAudioContext;
+
+ if(!AudioContext){
+
+  toast(
+   "Áudio avançado não suportado"
+  );
+
+  return;
+
+ }
+
+ audioCtx=
+  new AudioContext();
+
+ sourceNode=
+  audioCtx
+   .createMediaElementSource(
+    audio
+   );
+
+ analyser=
+  audioCtx.createAnalyser();
+
+ analyser.fftSize=2048;
+
+ analyser.smoothingTimeConstant=.82;
+
+ master=
+  audioCtx.createGain();
+
+ master.gain.value=
+  state.volume;
+
+ let node=sourceNode;
+
+ filters=[];
+
+ frequencies.forEach(
+  frequency=>{
+
+   const filter=
+    audioCtx
+     .createBiquadFilter();
+
+   filter.type="peaking";
+
+   filter.frequency.value=
+    frequency;
+
+   filter.Q.value=.8;
+
+   filter.gain.value=0;
+
+   node.connect(filter);
+
+   node=filter;
+
+   filters.push(filter);
+
+  }
+ );
+
+ /*
+  Audio Lab básico:
+  filtros dedicados entram antes do master.
+ */
+
+ labFilters.bass=
+  audioCtx.createBiquadFilter();
+
+ labFilters.bass.type="lowshelf";
+ labFilters.bass.frequency.value=100;
+ labFilters.bass.gain.value=0;
+
+ node.connect(
+  labFilters.bass
+ );
+
+ labFilters.treble=
+  audioCtx.createBiquadFilter();
+
+ labFilters.treble.type="highshelf";
+ labFilters.treble.frequency.value=7000;
+ labFilters.treble.gain.value=0;
+
+ labFilters.bass.connect(
+  labFilters.treble
+ );
+
+ labFilters.clarity=
+  audioCtx.createBiquadFilter();
+
+ labFilters.clarity.type="peaking";
+ labFilters.clarity.frequency.value=3000;
+ labFilters.clarity.Q.value=.7;
+ labFilters.clarity.gain.value=0;
+
+ labFilters.treble.connect(
+  labFilters.clarity
+ );
+
+ labFilters.width=
+  audioCtx.createGain();
+
+ labFilters.clarity.connect(
+  labFilters.width
+ );
+
+ labFilters.width.connect(
+  master
+ );
+
+ master.connect(
+  analyser
+ );
+
+ analyser.connect(
+  audioCtx.destination
+ );
+
+}
+
+
+function applyVolume(){
+
+ if(master){
+
+  master.gain.setTargetAtTime(
+   state.volume,
+   audioCtx.currentTime,
+   .03
+  );
+
+ }
+
+ audio.volume=1;
+
+ updateVolumeUI();
+
+}
+
+
+function applySpeed(){
+
+ audio.playbackRate=
+  state.speed;
+
+ $("speedValue").textContent=
+  state.speed.toFixed(2)+"x";
+
+ $("settingsSpeedValue").textContent=
+  state.speed.toFixed(2)+"x";
+
+}
+
+
+function updateVolumeUI(){
+
+ const value=
+  Math.round(
+   state.volume*100
+  );
+
+ $("playerVolume").value=
+  value;
+
+ $("nowVolume").value=
+  value;
+
+ $("settingsVolume").value=
+  value;
+
+ $("nowVolumeValue").textContent=
+  value+"%";
+
+ $("settingsVolumeValue").textContent=
+  value+"%";
+
+}
+
+
+/* =========================================================
+   PLAY
+========================================================= */
+
+async function playSong(index){
+
+ if(
+  index<0 ||
+  index>=state.songs.length
+ )
+  return;
+
+ const song=
+  state.songs[index];
+
+ state.current=index;
+
+ await setupAudio();
+
+ if(!audioCtx)
+  return;
+
+ if(audioURL){
+
+  URL.revokeObjectURL(
+   audioURL
+  );
+
+  audioURL=null;
+
+ }
+
+ try{
+
+  audioURL=
+   URL.createObjectURL(
+    song.blob
+   );
+
+  audio.src=
+   audioURL;
+
+  audio.playbackRate=
+   state.speed;
+
+  updatePlayerUI();
+
+  await audio.play();
+
+ }catch(error){
+
+  console.error(error);
+
+  toast(
+   "Não foi possível reproduzir"
   );
 
  }
@@ -1604,21 +2374,19 @@ async function playSong(index){
 }
 
 
-function togglePlay(){
+async function togglePlay(){
 
- if(state.current < 0){
+ if(
+  state.current<0
+ ){
 
-  if(state.songs.length){
+  if(state.songs.length)
+   await playSong(0);
 
-   playSong(0);
-
-  }else{
-
-   showToast(
-    "Adicione uma música primeiro."
+  else
+   toast(
+    "Adicione uma música primeiro"
    );
-
-  }
 
   return;
 
@@ -1626,9 +2394,17 @@ function togglePlay(){
 
  if(audio.paused){
 
-  audio.play().catch(
-   error=>console.error(error)
-  );
+  try{
+
+   await setupAudio();
+
+   await audio.play();
+
+  }catch(error){
+
+   console.error(error);
+
+  }
 
  }else{
 
@@ -1646,27 +2422,27 @@ function nextSong(){
 
  if(state.shuffle){
 
-  let next;
+  if(state.songs.length===1){
 
-  if(state.songs.length === 1){
+   playSong(0);
 
-   next = 0;
-
-  }else{
-
-   do{
-
-    next =
-     Math.floor(
-      Math.random() *
-      state.songs.length
-     );
-
-   }while(
-    next === state.current
-   );
+   return;
 
   }
+
+  let next;
+
+  do{
+
+   next=
+    Math.floor(
+     Math.random()*
+     state.songs.length
+    );
+
+  }while(
+   next===state.current
+  );
 
   playSong(next);
 
@@ -1674,11 +2450,11 @@ function nextSong(){
 
  }
 
- const next =
-  state.current < 0
-   ? 0
-   : (state.current + 1)
-      % state.songs.length;
+ let next=
+  state.current+1;
+
+ if(next>=state.songs.length)
+  next=0;
 
  playSong(next);
 
@@ -1690,863 +2466,506 @@ function previousSong(){
  if(!state.songs.length)
   return;
 
- if(audio.currentTime > 3){
+ if(
+  audio.currentTime>3
+ ){
 
-  audio.currentTime = 0;
+  audio.currentTime=0;
+
   return;
 
  }
 
- const previous =
-  state.current <= 0
-   ? state.songs.length - 1
-   : state.current - 1;
+ let previous=
+  state.current-1;
+
+ if(previous<0)
+  previous=
+   state.songs.length-1;
 
  playSong(previous);
 
 }
 
 
-function updatePlayer(){
+/* =========================================================
+   PLAYER UI
+========================================================= */
 
- if(state.current < 0){
+function updatePlayerUI(){
 
-  $("#title").textContent =
-   "Nenhuma música";
+ let title="Nenhuma música";
+ let artist="Aura Pro Studio";
 
-  $("#artist").textContent =
-   "Aura Pro Studio";
+ if(
+  state.current>=0 &&
+  state.songs[state.current]
+ ){
 
-  return;
+  title=
+   state.songs[
+    state.current
+   ].name;
+
+  artist=
+   state.songs[
+    state.current
+   ].artist ||
+   "Arquivo local";
 
  }
 
- const song =
-  state.songs[state.current];
+ $("title").textContent=
+  title;
 
- if(!song)
-  return;
+ $("artist").textContent=
+  artist;
 
- $("#title").textContent =
-  song.name;
+ $("nowTitle").textContent=
+  title;
 
- $("#artist").textContent =
-  song.artist;
+ $("nowArtist").textContent=
+  artist;
 
- $("#playerCover").textContent =
-  "♪";
+ $("play").textContent=
+  audio.paused
+  ? "▶"
+  : "Ⅱ";
 
-}
-
-
-/* =========================================================
-   PÁGINA HOME
-========================================================= */
-
-function renderHome(){
-
- return `
-
- <div class="page">
-
-  <div class="hero">
-
-   <small>
-    AURA PRO STUDIO V4.2
-   </small>
-
-   <h1>
-    Seu som. Seu estúdio.
-   </h1>
-
-   <p class="muted">
-    Equalizador de 20 bandas,
-    presets profissionais,
-    Audio Lab e Visualizer.
-   </p>
-
-  </div>
-
-  <div class="card upload">
-
-   <b>
-    Adicionar músicas
-   </b>
-
-   <p class="muted">
-    As músicas ficam armazenadas
-    localmente no navegador.
-   </p>
-
-   <button
-    class="orange"
-    data-action="import"
-    type="button">
-    ＋ Selecionar músicas
-   </button>
-
-  </div>
-
-  <div class="section-title">
-
-   <h2>
-    Biblioteca
-   </h2>
-
-   <button
-    class="secondary"
-    data-page="library"
-    type="button">
-    Ver tudo
-   </button>
-
-  </div>
-
-  ${songList(5)}
-
- </div>
-
- `;
+ renderSongs();
 
 }
 
 
 /* =========================================================
-   BIBLIOTECA
+   AUDIO EVENTS
 ========================================================= */
 
-function renderLibrary(){
+audio.addEventListener(
+ "play",
+ ()=>{
 
- return `
+  $("play").textContent="Ⅱ";
 
- <div class="page">
-
-  <div class="section-title">
-
-   <h2>
-    Biblioteca
-   </h2>
-
-   <span class="muted">
-    ${state.songs.length} música(s)
-   </span>
-
-  </div>
-
-  <div class="card">
-
-   <button
-    class="orange"
-    data-action="import"
-    type="button">
-    ＋ Adicionar músicas
-   </button>
-
-  </div>
-
-  ${songList()}
-
- </div>
-
- `;
-
-}
-
-
-/* =========================================================
-   LISTA
-========================================================= */
-
-function songList(limit = null){
-
- const query =
-  $("#search")
-   .value
-   .trim()
-   .toLowerCase();
-
- let list =
-  state.songs.filter(song=>
-   song.name
-    .toLowerCase()
-    .includes(query)
-  );
-
- if(limit)
-  list =
-   list.slice(0,limit);
-
- if(!list.length){
-
-  return `
-
-   <div class="empty">
-
-    <div style="font-size:38px">
-     ♪
-    </div>
-
-    <p>
-     ${
-      query
-       ? "Nenhuma música encontrada."
-       : "Sua biblioteca está vazia."
-     }
-    </p>
-
-    ${
-     !query
-      ? `
-       <button
-        class="orange"
-        data-action="import"
-        type="button">
-        Adicionar música
-       </button>
-      `
-      : ""
-    }
-
-   </div>
-
-  `;
+  renderSongs();
 
  }
+);
 
- return list.map(song=>{
+audio.addEventListener(
+ "pause",
+ ()=>{
 
-  const index =
-   state.songs.indexOf(song);
+  $("play").textContent="▶";
 
-  const active =
-   index === state.current;
+  renderSongs();
 
-  return `
+ }
+);
 
-   <article
-    class="song ${active ? "active":""}">
+audio.addEventListener(
+ "timeupdate",
+ ()=>{
 
-    <div class="cover">
-     ${active ? "♫":"♪"}
-    </div>
+  if(
+   Number.isFinite(
+    audio.duration
+   ) &&
+   audio.duration>0
+  ){
 
-    <div class="info">
+   const percent=
+    audio.currentTime/
+    audio.duration*
+    100;
 
-     <b>
-      ${escapeHTML(song.name)}
-     </b>
+   $("progress").style.width=
+    percent+"%";
 
-     <small>
-      ${escapeHTML(song.artist)}
-     </small>
-
-    </div>
-
-    <div class="song-actions">
-
-     <button
-      type="button"
-      data-play="${index}"
-      aria-label="Reproduzir">
-      ${active && !audio.paused ? "Ⅱ":"▶"}
-     </button>
-
-    </div>
-
-   </article>
-
-  `;
-
- }).join("");
-
-}
-
-
-/* =========================================================
-   PLAYER PAGE
-========================================================= */
-
-function renderNow(){
-
- const song =
-  state.current >= 0
-   ? state.songs[state.current]
-   : null;
-
- return `
-
- <div class="page">
-
-  <h2>
-   Player
-  </h2>
-
-  <div class="card now">
-
-   <div class="bigcover">
-    ${song ? "♫":"♪"}
-   </div>
-
-   <div>
-
-    <small class="muted">
-     TOCANDO AGORA
-    </small>
-
-    <h2>
-     ${
-      song
-       ? escapeHTML(song.name)
-       : "Nenhuma música"
-     }
-    </h2>
-
-    <p class="muted">
-     ${
-      song
-       ? escapeHTML(song.artist)
-       : "Escolha uma música da biblioteca"
-     }
-    </p>
-
-    <div class="nowbuttons">
-
-     <button
-      type="button"
-      data-action="previous">
-      ⏮ Anterior
-     </button>
-
-     <button
-      type="button"
-      class="orange"
-      data-action="toggle">
-      ${audio.paused ? "▶ Play":"Ⅱ Pause"}
-     </button>
-
-     <button
-      type="button"
-      data-action="next">
-      Próxima ⏭
-     </button>
-
-    </div>
-
-   </div>
-
-  </div>
-
-  ${
-   song
-    ? `
-     <div class="card">
-
-      <b>
-       Progresso
-      </b>
-
-      <p class="muted">
-       ${formatTime(audio.currentTime)}
-       /
-       ${formatTime(audio.duration)}
-      </p>
-
-     </div>
-    `
-    : ""
   }
 
- </div>
+ }
+);
 
- `;
+audio.addEventListener(
+ "ended",
+ ()=>{
 
-}
+  if(state.repeat){
 
+   audio.currentTime=0;
 
-/* =========================================================
-   EQ
-========================================================= */
+   audio.play();
 
-function renderEQ(){
+   return;
 
- return `
+  }
 
- <div class="page">
+  nextSong();
 
-  <h2>
-   Equalizador Pro — 20 bandas
-  </h2>
+ }
+);
 
-  <div class="card">
-
-   <select id="preset">
-
-    ${Object.keys(presets).map(
-     name=>`
-      <option value="${escapeHTML(name)}">
-       ${escapeHTML(name)}
-      </option>
-     `
-    ).join("")}
-
-   </select>
-
-   <div class="preamp">
-
-    <span>
-     Preamp
-    </span>
-
-    <input
-     id="preamp"
-     type="range"
-     min="-12"
-     max="12"
-     value="${state.preamp}">
-
-    <b id="preampValue">
-     ${state.preamp} dB
-    </b>
-
-   </div>
-
-   <div class="eqbox">
-
-    <div class="eq">
-
-     ${frequencies.map(
-      (frequency,index)=>`
-
-      <div class="eqband">
-
-       <input
-        class="eqBand"
-        data-index="${index}"
-        type="range"
-        min="-12"
-        max="12"
-        value="0">
-
-       <span>
-        ${
-         frequency >= 1000
-          ? frequency/1000+"k"
-          : frequency
-        }
-       </span>
-
-      </div>
-
-     `
-     ).join("")}
-
-    </div>
-
-   </div>
-
-  </div>
-
- </div>
-
- `;
-
-}
+audio.addEventListener(
+ "error",
+ ()=>{
+  toast(
+   "Erro ao carregar o áudio"
+  );
+ }
+);
 
 
 /* =========================================================
-   VISUALIZER
+   PROGRESS CLICK
 ========================================================= */
 
-function renderVisualizer(){
+$("progressBar").addEventListener(
+ "click",
+ event=>{
 
- return `
+  if(
+   !Number.isFinite(audio.duration)
+  )
+   return;
 
- <div class="page">
+  const rect=
+   $("progressBar")
+    .getBoundingClientRect();
 
-  <h2>
-   Visualizer Pro
-  </h2>
+  const percent=
+   (event.clientX-rect.left)/
+   rect.width;
 
-  <div class="modes">
+  audio.currentTime=
+   Math.max(
+    0,
+    Math.min(
+     audio.duration,
+     audio.duration*percent
+    )
+   );
 
-   ${[
-    ["spectrum","Spectrum"],
-    ["wave","Wave"],
-    ["bands","20 Bandas"],
-    ["circle","Circular"],
-    ["mirror","Mirror"],
-    ["beat","Beat"]
-   ].map(
-    mode=>`
+ }
+);
 
-    <button
-     type="button"
-     class="${
-      state.visualMode === mode[0]
-       ? "active":""
-     }"
-     data-mode="${mode[0]}">
-     ${mode[1]}
-    </button>
+
+/* =========================================================
+   EQ UI
+========================================================= */
+
+function buildEQ(){
+
+ $("eqBands").innerHTML=
+  frequencies
+   .map(
+    (frequency,index)=>`
+
+     <div class="eqband">
+
+      <input
+       class="eqBand"
+       data-index="${index}"
+       type="range"
+       min="-12"
+       max="12"
+       step=".1"
+       value="0">
+
+      <span>
+       ${
+        frequency>=1000
+        ? (frequency/1000)+"k"
+        : frequency
+       }
+      </span>
+
+     </div>
 
     `
-   ).join("")}
-
-  </div>
-
-  <div class="visual">
-
-   <canvas id="canvas"></canvas>
-
-  </div>
-
-  <div class="metrics">
-
-   <div class="metric">
-    BASS
-    <b id="bass">0%</b>
-   </div>
-
-   <div class="metric">
-    MÉDIOS
-    <b id="mid">0%</b>
-   </div>
-
-   <div class="metric">
-    AGUDOS
-    <b id="high">0%</b>
-   </div>
-
-   <div class="metric">
-    ENERGIA
-    <b id="energy">0%</b>
-   </div>
-
-  </div>
-
- </div>
-
- `;
+   )
+   .join("");
 
 }
+
+
+async function setEQBand(index,value){
+
+ await setupAudio();
+
+ if(
+  !filters[index] ||
+  !audioCtx
+ )
+  return;
+
+ filters[index]
+  .gain
+  .setTargetAtTime(
+   Number(value),
+   audioCtx.currentTime,
+   .025
+  );
+
+}
+
+
+function syncEQUI(){
+
+ const sliders=
+  document.querySelectorAll(
+   ".eqBand"
+  );
+
+ sliders.forEach(
+  slider=>{
+
+   const index=
+    Number(
+     slider.dataset.index
+    );
+
+   const value=
+    filters[index]
+    ? filters[index].gain.value
+    : 0;
+
+   slider.value=
+    Math.max(
+     -12,
+     Math.min(
+      12,
+      value
+     )
+    );
+
+  }
+ );
+
+}
+
+
+$("eqBands").addEventListener(
+ "input",
+ async event=>{
+
+  const slider=
+   event.target.closest(
+    ".eqBand"
+   );
+
+  if(!slider)
+   return;
+
+  await setEQBand(
+   Number(slider.dataset.index),
+   slider.value
+  );
+
+ }
+);
+
+
+$("preset").addEventListener(
+ "change",
+ async ()=>{
+
+  const name=
+   $("preset").value;
+
+  const values=
+   presets[name];
+
+  await setupAudio();
+
+  if(!audioCtx)
+   return;
+
+  values.forEach(
+   (value,index)=>{
+
+    if(filters[index]){
+
+     filters[index]
+      .gain
+      .setTargetAtTime(
+       value,
+       audioCtx.currentTime,
+       .025
+      );
+
+    }
+
+   }
+  );
+
+  syncEQUI();
+
+  toast(
+   "Preset: "+name
+  );
+
+ }
+);
+
+
+$("preamp").addEventListener(
+ "input",
+ async event=>{
+
+  const value=
+   Number(event.target.value);
+
+  $("preampValue").textContent=
+   value+" dB";
+
+  await setupAudio();
+
+  if(!master || !audioCtx)
+   return;
+
+  const gain=
+   state.volume*
+   Math.pow(
+    10,
+    value/20
+   );
+
+  master.gain.setTargetAtTime(
+   gain,
+   audioCtx.currentTime,
+   .03
+  );
+
+ }
+);
 
 
 /* =========================================================
    AUDIO LAB
 ========================================================= */
 
-function renderLab(){
+const labNames=[
+ "Bass Boost",
+ "Treble",
+ "Spatial",
+ "Loudness",
+ "Clarity",
+ "Dynamic Bass",
+ "Reverb",
+ "Stereo Width",
+ "Crossfeed"
+];
 
- const controls = [
-  "Bass Boost",
-  "Treble",
-  "Spatial",
-  "Loudness",
-  "Clarity",
-  "Dynamic Bass",
-  "Reverb",
-  "Stereo Width",
-  "Crossfeed"
- ];
 
- return `
+function buildLab(){
 
- <div class="page">
+ $("labControls").innerHTML=
+  labNames
+   .map(
+    (name,index)=>`
 
-  <h2>
-   Audio Lab
-  </h2>
+    <div class="control">
 
-  <div class="card">
+     <label>
 
-   <div class="controls">
+      <span>
+       ${name}
+      </span>
 
-    ${controls.map(
-     name=>`
+      <b id="labValue${index}">
+       0
+      </b>
 
-     <div class="control">
+     </label>
 
-      <label>
+     <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      data-lab="${index}">
 
-       <span>
-        ${name}
-       </span>
+    </div>
 
-       <b>
-        0
-       </b>
-
-      </label>
-
-      <input
-       type="range"
-       min="0"
-       max="100"
-       value="0">
-
-     </div>
-
-     `
-    ).join("")}
-
-   </div>
-
-  </div>
-
- </div>
-
- `;
+   `
+   )
+   .join("");
 
 }
 
 
-/* =========================================================
-   LETRAS
-========================================================= */
+$("labControls").addEventListener(
+ "input",
+ async event=>{
 
-function renderLyrics(){
+  const slider=
+   event.target.closest(
+    "input[data-lab]"
+   );
 
- const saved =
-  localStorage.getItem(
-   "auraLyrics"
-  ) || "";
+  if(!slider)
+   return;
 
- return `
+  const index=
+   Number(
+    slider.dataset.lab
+   );
 
- <div class="page">
+  const value=
+   Number(
+    slider.value
+   );
 
-  <h2>
-   Letras sincronizadas
-  </h2>
+  $("labValue"+index)
+   .textContent=value;
 
-  <div class="card">
+  await setupAudio();
 
-   <textarea
-    id="lyrics"
-    placeholder="[00:00.00] Primeira linha
-[00:05.00] Segunda linha
-[00:10.00] Terceira linha">${escapeHTML(saved)}</textarea>
+  if(!audioCtx)
+   return;
 
-   <br><br>
+  /*
+   Os controles principais têm
+   efeito real no Web Audio.
+  */
 
-   <button
-    class="orange"
-    data-action="saveLyrics"
-    type="button">
-    Salvar letras
-   </button>
+  if(index===0){
 
-  </div>
-
- </div>
-
- `;
-
-}
-
-
-/* =========================================================
-   RENDER PRINCIPAL
-========================================================= */
-
-function render(page = state.page){
-
- state.page = page;
-
- $$("#nav [data-page]").forEach(button=>{
-
-  button.classList.toggle(
-   "active",
-   button.dataset.page === page
-  );
-
- });
-
- const content =
-  $("#content");
-
- if(page === "home")
-  content.innerHTML =
-   renderHome();
-
- else if(page === "library")
-  content.innerHTML =
-   renderLibrary();
-
- else if(page === "now")
-  content.innerHTML =
-   renderNow();
-
- else if(page === "eq")
-  content.innerHTML =
-   renderEQ();
-
- else if(page === "visual")
-  content.innerHTML =
-   renderVisualizer();
-
- else if(page === "lab")
-  content.innerHTML =
-   renderLab();
-
- else if(page === "lyrics")
-  content.innerHTML =
-   renderLyrics();
-
- if(page === "eq")
-  setupEQEvents();
-
- if(page === "visual")
-  startVisualizer();
-
-}
-
-
-function renderIfPageNeedsUpdate(){
-
- if(
-  state.page === "home" ||
-  state.page === "library" ||
-  state.page === "now"
- ){
-
-  render(state.page);
-
- }
-
-}
-
-
-/* =========================================================
-   EQ EVENTOS
-========================================================= */
-
-function setupEQEvents(){
-
- const preset =
-  $("#preset");
-
- if(preset){
-
-  preset.addEventListener(
-   "change",
-   ()=>{
-    usePreset(
-     preset.value
-    );
-   }
-  );
-
- }
-
- $$(".eqBand").forEach(slider=>{
-
-  slider.addEventListener(
-   "input",
-   async()=>{
-
-    await setupAudio();
-
-    if(!filters.length)
-     return;
-
-    const index =
-     Number(
-      slider.dataset.index
-     );
-
-    const value =
-     Number(
-      slider.value
-     );
-
-    filters[index].gain.value =
-     value;
-
-   }
-  );
-
- });
-
- const preamp =
-  $("#preamp");
-
- if(preamp){
-
-  preamp.addEventListener(
-   "input",
-   async()=>{
-
-    await setupAudio();
-
-    const value =
-     Number(preamp.value);
-
-    state.preamp =
-     value;
-
-    $("#preampValue")
-     .textContent =
-      value+" dB";
-
-    if(masterGain){
-
-     masterGain.gain.value =
-      state.volume *
-      Math.pow(10,value/20);
-
-    }
-
-   }
-  );
-
- }
-
-}
-
-
-async function usePreset(name){
-
- await setupAudio();
-
- if(!state.audioReady)
-  return;
-
- const values =
-  presets[name];
-
- values.forEach(
-  (value,index)=>{
-
-   if(filters[index]){
-
-    filters[index]
-     .gain
-     .setTargetAtTime(
-      value,
-      audioCtx.currentTime,
-      .025
-     );
-
-   }
+   labFilters.bass.gain.value=
+    value*.12;
 
   }
- );
 
- $$(".eqBand").forEach(
-  (slider,index)=>{
+  if(index===1){
 
-   slider.value =
-    values[index];
+   labFilters.treble.gain.value=
+    value*.10;
 
   }
- );
 
- showToast(
-  "Preset "+name+" aplicado."
- );
+  if(index===4){
 
-}
+   labFilters.clarity.gain.value=
+    value*.08;
+
+  }
+
+  if(index===7){
+
+   /*
+    Controle de presença estéreo
+    simplificado para manter
+    compatibilidade.
+   */
+
+   labFilters.width.gain.value=
+    1+value/200;
+
+  }
+
+ }
+);
 
 
 /* =========================================================
@@ -2555,189 +2974,217 @@ async function usePreset(name){
 
 function startVisualizer(){
 
- cancelAnimationFrame(
-  state.animation
- );
-
- const canvas =
-  $("#canvas");
-
- if(!canvas)
+ if(visualizerRunning)
   return;
 
- const ctx2 =
+ visualizerRunning=true;
+
+ const canvas=
+  $("canvas");
+
+ const ctx2=
   canvas.getContext("2d");
 
- function frame(){
+ function resize(){
 
-  state.animation =
-   requestAnimationFrame(frame);
+  const rect=
+   canvas.getBoundingClientRect();
 
-  const width =
-   canvas.clientWidth;
+  const ratio=
+   window.devicePixelRatio||1;
 
-  const height =
-   canvas.clientHeight;
+  const width=
+   Math.max(
+    1,
+    Math.floor(
+     rect.width*ratio
+    )
+   );
 
-  const dpr =
-   window.devicePixelRatio || 1;
-
-  const targetWidth =
-   Math.floor(width*dpr);
-
-  const targetHeight =
-   Math.floor(height*dpr);
+  const height=
+   Math.max(
+    1,
+    Math.floor(
+     rect.height*ratio
+    )
+   );
 
   if(
-   canvas.width !== targetWidth ||
-   canvas.height !== targetHeight
+   canvas.width!==width ||
+   canvas.height!==height
   ){
 
-   canvas.width =
-    targetWidth;
-
-   canvas.height =
-    targetHeight;
-
-   ctx2.setTransform(
-    dpr,0,0,dpr,0,0
-   );
+   canvas.width=width;
+   canvas.height=height;
 
   }
 
-  ctx2.fillStyle =
+  ctx2.setTransform(
+   ratio,
+   0,
+   0,
+   ratio,
+   0,
+   0
+  );
+
+  return {
+   width:rect.width,
+   height:rect.height
+  };
+
+ }
+
+
+ function draw(){
+
+  animationId=
+   requestAnimationFrame(draw);
+
+  const size=
+   resize();
+
+  const w=size.width;
+  const h=size.height;
+
+  ctx2.fillStyle=
    "#050609";
 
   ctx2.fillRect(
-   0,0,width,height
+   0,
+   0,
+   w,
+   h
   );
 
   if(!analyser){
 
-   ctx2.fillStyle =
-    "#777";
+   ctx2.fillStyle="#777";
 
-   ctx2.textAlign =
-    "center";
+   ctx2.textAlign="center";
 
-   ctx2.font =
-    "14px Arial";
+   ctx2.font="14px Arial";
 
    ctx2.fillText(
     "Reproduza uma música para ativar o visualizer",
-    width/2,
-    height/2
+    w/2,
+    h/2
    );
 
    return;
 
   }
 
-  const freq =
+  const frequencyData=
    new Uint8Array(
     analyser.frequencyBinCount
    );
 
-  const wave =
+  const waveData=
    new Uint8Array(
     analyser.fftSize
    );
 
-  analyser.getByteFrequencyData(freq);
+  analyser.getByteFrequencyData(
+   frequencyData
+  );
 
-  analyser.getByteTimeDomainData(wave);
+  analyser.getByteTimeDomainData(
+   waveData
+  );
 
-  const average =
-   (start,end)=>{
+  function average(start,end){
 
-    let total = 0;
-    let count = 0;
+   let total=0;
+   let count=0;
 
-    for(
-     let i=start;
-     i<end &&
-     i<freq.length;
-     i++
-    ){
+   for(
+    let i=start;
+    i<end &&
+    i<frequencyData.length;
+    i++
+   ){
 
-     total +=
-      freq[i];
+    total+=
+     frequencyData[i];
 
-     count++;
+    count++;
 
-    }
+   }
 
-    return count
-     ? total/count/255
-     : 0;
+   return count
+    ? total/count/255
+    : 0;
 
-   };
+  }
 
-  const bass =
+  const bass=
    average(0,18);
 
-  const mid =
+  const mid=
    average(18,120);
 
-  const high =
+  const high=
    average(120,400);
 
-  const energy =
+  const energy=
    (bass+mid+high)/3;
 
-  const bassEl =
-   $("#bass");
+  $("bass").textContent=
+   Math.round(
+    bass*100
+   )+"%";
 
-  const midEl =
-   $("#mid");
+  $("mid").textContent=
+   Math.round(
+    mid*100
+   )+"%";
 
-  const highEl =
-   $("#high");
+  $("high").textContent=
+   Math.round(
+    high*100
+   )+"%";
 
-  const energyEl =
-   $("#energy");
+  $("energy").textContent=
+   Math.round(
+    energy*100
+   )+"%";
 
-  if(bassEl)
-   bassEl.textContent =
-    Math.round(bass*100)+"%";
-
-  if(midEl)
-   midEl.textContent =
-    Math.round(mid*100)+"%";
-
-  if(highEl)
-   highEl.textContent =
-    Math.round(high*100)+"%";
-
-  if(energyEl)
-   energyEl.textContent =
-    Math.round(energy*100)+"%";
-
-  ctx2.strokeStyle =
+  ctx2.strokeStyle=
    "#ff7417";
 
-  ctx2.fillStyle =
+  ctx2.fillStyle=
    "#ff7417";
+
+  ctx2.lineWidth=2;
+
 
   /* WAVE */
 
-  if(state.visualMode === "wave"){
+  if(
+   state.visualMode==="wave"
+  ){
 
    ctx2.beginPath();
 
    for(
     let i=0;
-    i<wave.length;
+    i<waveData.length;
     i++
    ){
 
-    const x =
-     i/wave.length*width;
+    const x=
+     i/
+     (waveData.length-1)*
+     w;
 
-    const y =
-     height/2 +
-     (wave[i]-128)/128 *
-     height*.4;
+    const y=
+     h/2+
+     (
+      waveData[i]-128
+     )/
+     128*
+     h*.4;
 
     if(i===0)
      ctx2.moveTo(x,y);
@@ -2746,60 +3193,68 @@ function startVisualizer(){
 
    }
 
-   ctx2.lineWidth = 2.5;
-
    ctx2.stroke();
 
    return;
 
   }
 
+
   /* CIRCLE */
 
-  if(state.visualMode === "circle"){
+  if(
+   state.visualMode==="circle"
+  ){
 
-   const cx =
-    width/2;
+   const cx=w/2;
+   const cy=h/2;
 
-   const cy =
-    height/2;
+   const radius=
+    Math.min(w,h)*.15;
 
-   const radius =
-    Math.min(width,height)*.16;
+   const count=120;
 
    for(
     let i=0;
-    i<120;
+    i<count;
     i++
    ){
 
-    const angle =
-     i/120*Math.PI*2;
+    const angle=
+     i/count*
+     Math.PI*2;
 
-    const value =
-     freq[
-      i % freq.length
+    const value=
+     frequencyData[
+      Math.floor(
+       i/count*
+       frequencyData.length
+      )
      ]/255;
 
-    const radius2 =
-     radius +
+    const radius2=
+     radius+
      value*
-     Math.min(width,height)*.34;
+     Math.min(w,h)*.34;
 
     ctx2.beginPath();
 
     ctx2.moveTo(
      cx+
-     Math.cos(angle)*radius,
+      Math.cos(angle)*
+      radius,
      cy+
-     Math.sin(angle)*radius
+      Math.sin(angle)*
+      radius
     );
 
     ctx2.lineTo(
      cx+
-     Math.cos(angle)*radius2,
+      Math.cos(angle)*
+      radius2,
      cy+
-     Math.sin(angle)*radius2
+      Math.sin(angle)*
+      radius2
     );
 
     ctx2.stroke();
@@ -2822,17 +3277,26 @@ function startVisualizer(){
 
   }
 
+
   /* BARRAS */
 
-  const count =
-   state.visualMode === "bands"
-    ? 20
-    : 64;
+  const count=
+   state.visualMode==="bands"
+   ?20
+   :state.visualMode==="beat"
+   ?48
+   :64;
 
-  const gap = 2;
+  const gap=2;
 
-  const barWidth =
-   (width-gap*(count-1))/count;
+  const barWidth=
+   Math.max(
+    1,
+    (
+     w-
+     gap*(count-1)
+    )/count
+   );
 
   for(
    let i=0;
@@ -2840,64 +3304,56 @@ function startVisualizer(){
    i++
   ){
 
-   const value =
-    freq[
+   const value=
+    frequencyData[
      Math.floor(
       i/count*
-      freq.length
+      frequencyData.length
      )
     ]/255;
 
-   const barHeight =
+   let amount=value;
+
+   if(
+    state.visualMode==="beat"
+   ){
+
+    amount=
+     Math.min(
+      1,
+      value*
+      (1+energy*1.8)
+     );
+
+   }
+
+   const height=
     Math.max(
      3,
-     value*height*.85
+     amount*h*.85
     );
 
-   const x =
+   const x=
     i*(barWidth+gap);
 
    if(
-    state.visualMode === "mirror"
+    state.visualMode==="mirror"
    ){
 
     ctx2.fillRect(
      x,
-     height/2-barHeight/2,
+     h/2-height/2,
      barWidth,
-     barHeight
-    );
-
-   }else if(
-    state.visualMode === "beat"
-   ){
-
-    const boosted =
-     Math.min(
-      1,
-      value*(1+energy*1.5)
-     );
-
-    const boostedHeight =
-     Math.max(
-      3,
-      boosted*height*.9
-     );
-
-    ctx2.fillRect(
-     x,
-     height-boostedHeight,
-     barWidth,
-     boostedHeight
+     height
     );
 
    }else{
 
     ctx2.fillRect(
      x,
-     height-barHeight,
+     h-height,
      barWidth,
-     barHeight
+     height
     );
 
    }
@@ -2906,9 +3362,216 @@ function startVisualizer(){
 
  }
 
- frame();
+ draw();
 
 }
+
+
+/* =========================================================
+   VISUALIZER MODES
+========================================================= */
+
+document
+ .querySelector(".modes")
+ .addEventListener(
+  "click",
+  event=>{
+
+   const button=
+    event.target.closest(
+     "button[data-mode]"
+    );
+
+   if(!button)
+    return;
+
+   document
+    .querySelectorAll(
+     ".modes button"
+    )
+    .forEach(
+     b=>
+      b.classList.remove(
+       "active"
+      )
+    );
+
+   button.classList.add(
+    "active"
+   );
+
+   state.visualMode=
+    button.dataset.mode;
+
+  }
+ );
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+$("search").addEventListener(
+ "input",
+ ()=>{
+  renderSongs();
+ }
+);
+
+
+/* =========================================================
+   IMPORT BUTTONS
+========================================================= */
+
+$("homeImport").addEventListener(
+ "click",
+ ()=>{
+  $("files").click();
+ }
+);
+
+$("libraryImport").addEventListener(
+ "click",
+ ()=>{
+  $("files").click();
+ }
+);
+
+$("files").addEventListener(
+ "change",
+ event=>{
+  importFiles(
+   event.target.files
+  );
+ }
+);
+
+
+/* =========================================================
+   HOME / LIBRARY
+========================================================= */
+
+$("homeLibrary").addEventListener(
+ "click",
+ ()=>{
+  goTo("library");
+ }
+);
+
+
+/* =========================================================
+   PLAYER BUTTONS
+========================================================= */
+
+$("play").addEventListener(
+ "click",
+ togglePlay
+);
+
+$("prev").addEventListener(
+ "click",
+ previousSong
+);
+
+$("next").addEventListener(
+ "click",
+ nextSong
+);
+
+$("nowPlay").addEventListener(
+ "click",
+ togglePlay
+);
+
+$("nowPrev").addEventListener(
+ "click",
+ previousSong
+);
+
+$("nowNext").addEventListener(
+ "click",
+ nextSong
+);
+
+
+/* =========================================================
+   VOLUME
+========================================================= */
+
+function setVolume(value){
+
+ state.volume=
+  Math.max(
+   0,
+   Math.min(
+    1,
+    Number(value)/100
+   )
+  );
+
+ applyVolume();
+
+}
+
+
+$("playerVolume").addEventListener(
+ "input",
+ event=>{
+  setVolume(
+   event.target.value
+  );
+ }
+);
+
+$("nowVolume").addEventListener(
+ "input",
+ event=>{
+  setVolume(
+   event.target.value
+  );
+ }
+);
+
+$("settingsVolume").addEventListener(
+ "input",
+ event=>{
+  setVolume(
+   event.target.value
+  );
+ }
+);
+
+
+/* =========================================================
+   SPEED
+========================================================= */
+
+function setSpeed(value){
+
+ state.speed=
+  Number(value);
+
+ applySpeed();
+
+}
+
+$("speed").addEventListener(
+ "input",
+ event=>{
+  setSpeed(
+   event.target.value
+  );
+ }
+);
+
+$("settingsSpeed").addEventListener(
+ "input",
+ event=>{
+  setSpeed(
+   event.target.value
+  );
+ }
+);
 
 
 /* =========================================================
@@ -2917,374 +3580,37 @@ function startVisualizer(){
 
 function openSettings(){
 
- $("#settingsOverlay")
-  .classList.add("show");
+ $("settingsOverlay")
+  .classList.add("open");
 
 }
+
 
 function closeSettings(){
 
- $("#settingsOverlay")
-  .classList.remove("show");
+ $("settingsOverlay")
+  .classList.remove("open");
 
 }
 
 
-function updateSettingsUI(){
-
- $("#volume").value =
-  Math.round(state.volume*100);
-
- $("#volumeValue")
-  .textContent =
-  Math.round(state.volume*100)+"%";
-
- $("#autoValue")
-  .textContent =
-  state.autoPlay
-   ? "Ligada"
-   : "Desligada";
-
- $("#repeatValue")
-  .textContent =
-  state.repeat
-   ? "Ligada"
-   : "Desligada";
-
- $("#shuffleValue")
-  .textContent =
-  state.shuffle
-   ? "Ligado"
-   : "Desligado";
-
-}
-
-
-/* =========================================================
-   EVENT DELEGATION
-========================================================= */
-
-$("#nav").addEventListener(
- "click",
- event=>{
-
-  const button =
-   event.target.closest(
-    "[data-page]"
-   );
-
-  if(!button)
-   return;
-
-  render(
-   button.dataset.page
-  );
-
-  window.scrollTo({
-   top:0,
-   behavior:"smooth"
-  });
-
- }
-);
-
-
-/*
-   Um único listener para toda
-   a área de conteúdo.
-   Isso evita perder eventos
-   depois de innerHTML.
-*/
-
-$("#content").addEventListener(
- "click",
- event=>{
-
-  const pageButton =
-   event.target.closest(
-    "[data-page]"
-   );
-
-  if(pageButton){
-
-   render(
-    pageButton.dataset.page
-   );
-
-   return;
-
-  }
-
-  const playButton =
-   event.target.closest(
-    "[data-play]"
-   );
-
-  if(playButton){
-
-   const index =
-    Number(
-     playButton.dataset.play
-    );
-
-   if(
-    index === state.current &&
-    !audio.paused
-   ){
-
-    audio.pause();
-
-   }else{
-
-    playSong(index);
-
-   }
-
-   return;
-
-  }
-
-  const action =
-   event.target.closest(
-    "[data-action]"
-   );
-
-  if(!action)
-   return;
-
-  const type =
-   action.dataset.action;
-
-  if(type === "import"){
-
-   $("#files").click();
-
-  }
-
-  else if(type === "toggle"){
-
-   togglePlay();
-
-  }
-
-  else if(type === "next"){
-
-   nextSong();
-
-  }
-
-  else if(type === "previous"){
-
-   previousSong();
-
-  }
-
-  else if(type === "saveLyrics"){
-
-   const textarea =
-    $("#lyrics");
-
-   if(textarea){
-
-    localStorage.setItem(
-     "auraLyrics",
-     textarea.value
-    );
-
-    showToast(
-     "Letras salvas."
-    );
-
-   }
-
-  }
-
- });
-
-
-/* =========================================================
-   BUSCA
-========================================================= */
-
-$("#search").addEventListener(
- "input",
- ()=>{
-
-  if(
-   state.page === "home" ||
-   state.page === "library"
-  ){
-
-   render(state.page);
-
-  }
-
- }
-);
-
-
-/* =========================================================
-   PLAYER
-========================================================= */
-
-$("#play").addEventListener(
- "click",
- togglePlay
-);
-
-$("#next").addEventListener(
- "click",
- nextSong
-);
-
-$("#prev").addEventListener(
- "click",
- previousSong
-);
-
-
-$("#progressArea").addEventListener(
- "click",
- event=>{
-
-  if(!audio.duration)
-   return;
-
-  const rect =
-   event.currentTarget
-    .getBoundingClientRect();
-
-  const position =
-   (event.clientX-rect.left)/
-   rect.width;
-
-  audio.currentTime =
-   Math.max(
-    0,
-    Math.min(
-     1,
-     position
-    )
-   )*
-   audio.duration;
-
- }
-);
-
-
-/* =========================================================
-   ÁUDIO EVENTS
-========================================================= */
-
-audio.addEventListener(
- "play",
- ()=>{
-
-  $("#play")
-   .textContent =
-   "Ⅱ";
-
-  renderIfPageNeedsUpdate();
-
- }
-);
-
-
-audio.addEventListener(
- "pause",
- ()=>{
-
-  $("#play")
-   .textContent =
-   "▶";
-
-  renderIfPageNeedsUpdate();
-
- }
-);
-
-
-audio.addEventListener(
- "timeupdate",
- ()=>{
-
-  if(
-   audio.duration &&
-   Number.isFinite(audio.duration)
-  ){
-
-   $("#progress")
-    .style.width =
-    (
-     audio.currentTime/
-     audio.duration*
-     100
-    )+"%";
-
-  }
-
- }
-);
-
-
-audio.addEventListener(
- "ended",
- ()=>{
-
-  if(state.repeat){
-
-   audio.currentTime = 0;
-
-   audio.play();
-
-   return;
-
-  }
-
-  if(state.autoPlay){
-
-   nextSong();
-
-  }
-
- }
-);
-
-
-audio.addEventListener(
- "error",
- ()=>{
-
-  showToast(
-   "Erro ao carregar o áudio."
-  );
-
- }
-);
-
-
-/* =========================================================
-   SETTINGS EVENTS
-========================================================= */
-
-$("#settingsBtn").addEventListener(
+$("settingsBtn").addEventListener(
  "click",
  openSettings
 );
 
-$("#closeSettings").addEventListener(
+$("closeSettings").addEventListener(
  "click",
  closeSettings
 );
 
-
-$("#settingsOverlay").addEventListener(
+$("settingsOverlay").addEventListener(
  "click",
  event=>{
 
   if(
-   event.target ===
-   $("#settingsOverlay")
+   event.target===
+   $("settingsOverlay")
   ){
 
    closeSettings();
@@ -3295,275 +3621,256 @@ $("#settingsOverlay").addEventListener(
 );
 
 
-$("#volume").addEventListener(
- "input",
+/* =========================================================
+   SWITCHES
+========================================================= */
+
+function updateSwitch(
+ element,
+ enabled
+){
+
+ element.classList.toggle(
+  "on",
+  enabled
+ );
+
+}
+
+
+$("shuffleSwitch").addEventListener(
+ "click",
+ ()=>{
+
+  state.shuffle=
+   !state.shuffle;
+
+  updateSwitch(
+   $("shuffleSwitch"),
+   state.shuffle
+  );
+
+  toast(
+   state.shuffle
+   ? "Aleatório ativado"
+   : "Aleatório desativado"
+  );
+
+ }
+);
+
+
+$("repeatSwitch").addEventListener(
+ "click",
+ ()=>{
+
+  state.repeat=
+   !state.repeat;
+
+  updateSwitch(
+   $("repeatSwitch"),
+   state.repeat
+  );
+
+  toast(
+   state.repeat
+   ? "Repetição ativada"
+   : "Repetição desativada"
+  );
+
+ }
+);
+
+
+/* =========================================================
+   QUALITY
+========================================================= */
+
+$("visualQuality").addEventListener(
+ "change",
  event=>{
 
-  state.volume =
-   Number(event.target.value)/100;
+  state.visualQuality=
+   event.target.value;
 
-  audio.volume =
-   state.volume;
+  if(analyser){
 
-  if(masterGain){
+   if(
+    state.visualQuality==="smooth"
+   ){
 
-   masterGain.gain.value =
-    state.volume *
-    Math.pow(
-     10,
-     state.preamp/20
-    );
+    analyser.smoothingTimeConstant=
+     .94;
+
+   }else if(
+    state.visualQuality==="high"
+   ){
+
+    analyser.smoothingTimeConstant=
+     .72;
+
+   }else{
+
+    analyser.smoothingTimeConstant=
+     .82;
+
+   }
 
   }
 
-  updateSettingsUI();
-
- }
-);
-
-
-$("#autoPlayBtn").addEventListener(
- "click",
- ()=>{
-
-  state.autoPlay =
-   !state.autoPlay;
-
-  updateSettingsUI();
-
- }
-);
-
-
-$("#repeatBtn").addEventListener(
- "click",
- ()=>{
-
-  state.repeat =
-   !state.repeat;
-
-  updateSettingsUI();
-
-  showToast(
-   state.repeat
-    ? "Repetição ativada."
-    : "Repetição desativada."
+  toast(
+   "Qualidade: "+
+   event.target.options[
+    event.target.selectedIndex
+   ].text
   );
 
  }
 );
 
 
-$("#shuffleBtn").addEventListener(
+/* =========================================================
+   LYRICS
+========================================================= */
+
+function loadLyrics(){
+
+ $("lyrics").value=
+  localStorage.getItem(
+   "auraProLyrics"
+  )||"";
+
+}
+
+
+$("saveLyrics").addEventListener(
  "click",
  ()=>{
 
-  state.shuffle =
-   !state.shuffle;
+  localStorage.setItem(
+   "auraProLyrics",
+   $("lyrics").value
+  );
 
-  updateSettingsUI();
-
-  showToast(
-   state.shuffle
-    ? "Modo aleatório ativado."
-    : "Modo aleatório desativado."
+  toast(
+   "Letras salvas"
   );
 
  }
 );
 
 
-$("#importSettings").addEventListener(
+/* =========================================================
+   CLEAR LIBRARY
+========================================================= */
+
+$("clearLibrary").addEventListener(
  "click",
- ()=>{
-
-  $("#files").click();
-
- }
-);
-
-
-$("#clearLibrary").addEventListener(
- "click",
- async()=>{
+ async ()=>{
 
   if(!state.songs.length){
 
-   showToast(
-    "A biblioteca já está vazia."
+   toast(
+    "Biblioteca já está vazia"
    );
 
    return;
 
   }
 
-  const confirmed =
+  const ok=
    confirm(
     "Apagar todas as músicas da biblioteca?"
    );
 
-  if(!confirmed)
+  if(!ok)
    return;
 
-  try{
+  audio.pause();
 
-   await deleteAllSongs();
+  audio.removeAttribute(
+   "src"
+  );
 
-   state.songs = [];
+  audio.load();
 
-   state.current = -1;
+  if(audioURL){
 
-   audio.pause();
-
-   audio.removeAttribute("src");
-
-   audio.load();
-
-   if(state.objectURL){
-
-    URL.revokeObjectURL(
-     state.objectURL
-    );
-
-    state.objectURL = null;
-
-   }
-
-   updatePlayer();
-
-   closeSettings();
-
-   render("home");
-
-   showToast(
-    "Biblioteca limpa."
+   URL.revokeObjectURL(
+    audioURL
    );
 
-  }catch(error){
-
-   console.error(error);
-
-   showToast(
-    "Não foi possível limpar a biblioteca."
-   );
+   audioURL=null;
 
   }
 
- }
-);
+  await clearSongsDB();
 
+  state.songs=[];
 
-$("#resetSettings").addEventListener(
- "click",
- ()=>{
+  state.current=-1;
 
-  state.volume = .85;
-  state.repeat = false;
-  state.shuffle = false;
-  state.autoPlay = true;
-  state.preamp = 0;
+  updatePlayerUI();
 
-  audio.volume =
-   state.volume;
-
-  if(masterGain){
-
-   masterGain.gain.value =
-    state.volume;
-
-  }
-
-  updateSettingsUI();
-
-  showToast(
-   "Configurações restauradas."
+  toast(
+   "Biblioteca apagada"
   );
 
- }
-);
-
-
-/* =========================================================
-   VISUALIZER MODE
-========================================================= */
-
-$("#content").addEventListener(
- "click",
- event=>{
-
-  const button =
-   event.target.closest(
-    "[data-mode]"
-   );
-
-  if(!button)
-   return;
-
-  state.visualMode =
-   button.dataset.mode;
-
-  $$(".modes button")
-   .forEach(
-    item=>
-     item.classList.toggle(
-      "active",
-      item.dataset.mode ===
-       state.visualMode
-     )
-   );
+  closeSettings();
 
  }
 );
 
 
 /* =========================================================
-   ARQUIVOS
-========================================================= */
-
-$("#files").addEventListener(
- "change",
- event=>{
-
-  importFiles(
-   event.target.files
-  );
-
- }
-);
-
-
-/* =========================================================
-   TECLADO
+   KEYBOARD / ANDROID
 ========================================================= */
 
 document.addEventListener(
  "keydown",
  event=>{
 
-  if(event.code === "Space"){
+  /*
+   Não interfere enquanto
+   o usuário digita.
+  */
 
-   const tag =
-    document.activeElement.tagName;
+  const tag=
+   event.target.tagName;
 
-   if(
-    tag !== "INPUT" &&
-    tag !== "TEXTAREA" &&
-    tag !== "SELECT"
-   ){
+  if(
+   tag==="INPUT" ||
+   tag==="TEXTAREA" ||
+   tag==="SELECT"
+  )
+   return;
 
-    event.preventDefault();
+  if(
+   event.code==="Space"
+  ){
 
-    togglePlay();
+   event.preventDefault();
 
-   }
+   togglePlay();
 
   }
 
-  if(event.code === "Escape"){
+ }
+);
 
-   closeSettings();
 
-  }
+/* =========================================================
+   VISIBILITY
+========================================================= */
+
+document.addEventListener(
+ "visibilitychange",
+ ()=>{
+
+  /*
+   Não pausa automaticamente.
+   O áudio continua quando possível.
+  */
 
  }
 );
@@ -3573,28 +3880,50 @@ document.addEventListener(
    INICIALIZAÇÃO
 ========================================================= */
 
-(async function init(){
+async function init(){
 
- try{
+ buildEQ();
 
-  state.songs =
-   await getAllSongs();
+ buildLab();
 
- }catch(error){
+ setupNavigation();
 
-  console.error(error);
+ setupSongLists();
 
-  state.songs = [];
+ updateVolumeUI();
 
- }
+ applySpeed();
 
- updateSettingsUI();
+ updateSwitch(
+  $("shuffleSwitch"),
+  state.shuffle
+ );
 
- updatePlayer();
+ updateSwitch(
+  $("repeatSwitch"),
+  state.repeat
+ );
 
- render("home");
+ state.songs=
+  await loadSongs();
 
-})();
+ renderSongs();
+
+ updatePlayerUI();
+
+ goTo("home");
+
+ /*
+  O AudioContext só é criado
+  quando o usuário realmente
+  toca em alguma função de áudio.
+ */
+
+}
+
+
+init();
+
 </script>
 
 </body>
