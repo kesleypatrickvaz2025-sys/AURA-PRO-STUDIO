@@ -1,625 +1,1336 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#090b12">
-  <title>AURA PRO STUDIO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#050608">
+<title>AURA PRO STUDIO</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+:root{
+  --bg:#050608;
+  --panel:#090b0f;
+  --panel2:#0d1015;
+  --line:#20242b;
+  --text:#f2f2f2;
+  --muted:#8b9099;
+  --orange:#ff5b13;
+  --orange2:#ff7a18;
+  --glow:rgba(255,91,19,.35);
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #090b12;
-      color: #fff;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
 
-    button {
-      border: 0;
-      cursor: pointer;
-      color: white;
-    }
+body{
+  background:#000;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
 
-    /* APP */
-    .app {
-      min-height: 100vh;
-      padding-bottom: 90px;
-      background:
-        radial-gradient(circle at 50% 0%, #22284a 0%, #0e1120 35%, #090b12 70%);
-    }
+button,input{
+  font:inherit;
+}
 
-    /* TOPO */
-    .topbar {
-      height: 65px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(9, 11, 18, .88);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+button{
+  border:0;
+  color:inherit;
+  cursor:pointer;
+}
 
-    .logo {
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
+.app{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(255,75,10,.06),transparent 30%),
+    linear-gradient(135deg,#050608,#080a0d 60%,#040507);
+  display:grid;
+  grid-template-columns:158px 1fr;
+}
 
-    .logo span {
-      color: #7c5cff;
-    }
+/* =========================
+   SIDEBAR
+========================= */
 
-    .menu-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: rgba(255,255,255,.08);
-      font-size: 21px;
-    }
+.sidebar{
+  border-right:1px solid #20242b;
+  background:#07090c;
+  padding:24px 9px 18px;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
 
-    /* CONTEÚDO */
-    main {
-      padding: 20px 16px;
-    }
+.logo{
+  text-align:center;
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:1px;
+  line-height:1.05;
+  margin-bottom:25px;
+}
 
-    .welcome {
-      margin: 10px 0 25px;
-    }
+.logo span{
+  color:var(--orange);
+}
 
-    .welcome small {
-      color: #969bad;
-      font-size: 13px;
-    }
+.logo small{
+  display:block;
+  color:#fff;
+  font-size:13px;
+  letter-spacing:2px;
+  margin-top:3px;
+}
 
-    .welcome h1 {
-      font-size: 29px;
-      margin-top: 6px;
-    }
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
 
-    /* CAPA */
-    .cover {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      max-width: 390px;
-      margin: 0 auto 25px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 35% 30%, #a48cff, transparent 20%),
-        radial-gradient(circle at 70% 65%, #5c39ff, transparent 25%),
-        linear-gradient(145deg, #25224a, #090b12);
-      box-shadow:
-        0 25px 70px rgba(80,50,255,.25),
-        inset 0 0 50px rgba(255,255,255,.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
+.nav button{
+  background:transparent;
+  color:#c7c9cd;
+  padding:13px 12px;
+  border-radius:9px;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+}
 
-    .cover::before,
-    .cover::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.12);
-    }
+.nav button span{
+  width:20px;
+  text-align:center;
+  font-size:19px;
+}
 
-    .cover::before {
-      width: 70%;
-      height: 70%;
-    }
+.nav button.active,
+.nav button:hover{
+  color:var(--orange);
+  background:linear-gradient(90deg,rgba(255,91,19,.18),rgba(255,91,19,.04));
+  box-shadow:inset 0 0 0 1px rgba(255,91,19,.12),
+             0 0 18px rgba(255,91,19,.08);
+}
 
-    .cover::after {
-      width: 45%;
-      height: 45%;
-    }
+.theme{
+  margin-top:auto;
+  border:1px solid #252930;
+  border-radius:10px;
+  padding:11px;
+}
 
-    .aura-symbol {
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      z-index: 2;
-      box-shadow: 0 0 50px rgba(124,92,255,.45);
-    }
+.theme-title{
+  font-size:9px;
+  color:#92969d;
+  margin-bottom:10px;
+}
 
-    /* INFORMAÇÕES */
-    .track-info {
-      text-align: center;
-      margin-bottom: 22px;
-    }
+.theme button{
+  width:100%;
+  background:transparent;
+  color:#aaa;
+  padding:5px;
+  text-align:left;
+  font-size:11px;
+}
 
-    .track-info h2 {
-      font-size: 21px;
-      margin-bottom: 7px;
-    }
+.theme button.active{
+  color:#fff;
+}
 
-    .track-info p {
-      color: #9296a9;
-      font-size: 14px;
-    }
+.dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  margin-right:7px;
+  background:var(--orange);
+}
 
-    /* PROGRESSO */
-    .progress-area {
-      margin: 0 auto;
-      max-width: 500px;
-    }
+/* =========================
+   MAIN
+========================= */
 
-    .progress {
-      width: 100%;
-      height: 5px;
-      appearance: none;
-      background: #292d3d;
-      border-radius: 10px;
-      outline: none;
-    }
+.main{
+  min-width:0;
+  padding:18px 20px 135px;
+}
 
-    .progress::-webkit-slider-thumb {
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: #8c6cff;
-      box-shadow: 0 0 12px rgba(140,108,255,.7);
-    }
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:25px;
+}
 
-    .time {
-      display: flex;
-      justify-content: space-between;
-      color: #777c90;
-      font-size: 11px;
-      margin-top: 8px;
-    }
+.search{
+  flex:1;
+  max-width:420px;
+  height:38px;
+  border:1px solid #292d34;
+  background:#080a0e;
+  border-radius:9px;
+  color:#fff;
+  padding:0 14px;
+  outline:none;
+  font-size:12px;
+}
 
-    /* CONTROLES */
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      margin: 25px 0;
-    }
+.search:focus{
+  border-color:var(--orange);
+  box-shadow:0 0 15px rgba(255,91,19,.1);
+}
 
-    .control {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: transparent;
-      font-size: 20px;
-    }
+.top-icons{
+  margin-left:auto;
+  display:flex;
+  gap:20px;
+}
 
-    .play {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      background: #fff;
-      color: #0b0c13;
-      font-size: 25px;
-      box-shadow: 0 10px 35px rgba(255,255,255,.15);
-    }
+.top-icons button{
+  background:transparent;
+  font-size:20px;
+  color:#c7c9cd;
+  position:relative;
+}
 
-    /* AÇÕES */
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 20px;
-    }
+.notification::after{
+  content:"";
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:var(--orange);
+  border-radius:50%;
+  right:-2px;
+  top:1px;
+}
 
-    .action {
-      padding: 16px;
-      border-radius: 17px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.07);
-      text-align: center;
-      font-size: 14px;
-    }
+.heading{
+  margin-bottom:18px;
+}
 
-    .action:active {
-      transform: scale(.97);
-    }
+.heading h1{
+  font-size:29px;
+  margin-bottom:5px;
+}
 
-    /* UPLOAD */
-    .upload {
-      margin-top: 15px;
-      width: 100%;
-      padding: 17px;
-      border-radius: 17px;
-      background: linear-gradient(135deg, #7456ff, #4d36d9);
-      font-weight: bold;
-      font-size: 15px;
-    }
+.heading p{
+  color:#999da5;
+  font-size:13px;
+}
 
-    /* MENU INFERIOR */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 76px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: rgba(12,14,23,.93);
-      backdrop-filter: blur(18px);
-      border-top: 1px solid rgba(255,255,255,.08);
-      z-index: 20;
-      padding-bottom: env(safe-area-inset-bottom);
-    }
+.new-playlist{
+  background:var(--orange);
+  color:#080808;
+  padding:9px 14px;
+  border-radius:7px;
+  font-weight:700;
+  font-size:12px;
+  margin-top:15px;
+  box-shadow:0 5px 20px rgba(255,91,19,.2);
+}
 
-    .nav-item {
-      background: transparent;
-      color: #74798d;
-      font-size: 11px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
+/* =========================
+   PLAYER
+========================= */
 
-    .nav-item span {
-      font-size: 21px;
-    }
+.player{
+  border:1px solid #282c32;
+  border-radius:12px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.005)),
+    #080a0e;
+  padding:18px;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+}
 
-    .nav-item.active {
-      color: #9a83ff;
-    }
+.player-main{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:18px;
+  align-items:center;
+}
 
-    /* PAINEL */
-    .panel {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      background: rgba(5,7,12,.75);
-      backdrop-filter: blur(8px);
-      display: none;
-    }
+.cover{
+  width:160px;
+  height:160px;
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 44%,#ff5b13 0 2%,transparent 3%),
+    radial-gradient(circle at 50% 45%,transparent 18%,#ff5b13 19%,transparent 20%),
+    linear-gradient(145deg,#13232b,#080b0e);
+  border:1px solid #34383e;
+  box-shadow:0 0 25px rgba(255,91,19,.12);
+}
 
-    .panel.open {
-      display: block;
-    }
+.cover::before{
+  content:"";
+  position:absolute;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  left:50%;
+  top:43%;
+  transform:translate(-50%,-50%);
+  border:2px solid var(--orange);
+  box-shadow:0 0 25px var(--orange);
+}
 
-    .side-menu {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 82%;
-      max-width: 340px;
-      height: 100%;
-      background: #111421;
-      padding: 25px 20px;
-      box-shadow: -20px 0 50px rgba(0,0,0,.35);
-    }
+.mountain{
+  position:absolute;
+  bottom:20px;
+  left:23px;
+  width:115px;
+  height:65px;
+  background:#050608;
+  clip-path:polygon(0 100%,40% 35%,60% 65%,78% 20%,100% 100%);
+}
 
-    .close {
-      float: right;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.07);
-      font-size: 20px;
-    }
+.cover-label{
+  position:absolute;
+  bottom:6px;
+  left:8px;
+  font-size:7px;
+  letter-spacing:1px;
+  color:#fff;
+}
 
-    .side-menu h2 {
-      clear: both;
-      padding-top: 35px;
-      margin-bottom: 25px;
-    }
+.track{
+  min-width:0;
+}
 
-    .menu-option {
-      width: 100%;
-      padding: 16px;
-      margin-bottom: 10px;
-      border-radius: 14px;
-      text-align: left;
-      background: rgba(255,255,255,.06);
-    }
+.badge{
+  display:inline-block;
+  color:var(--orange);
+  border:1px solid rgba(255,91,19,.5);
+  padding:3px 6px;
+  border-radius:5px;
+  font-size:8px;
+  margin-bottom:10px;
+}
 
-    /* DESKTOP */
-    @media (min-width: 700px) {
-      .app {
-        max-width: 600px;
-        margin: auto;
-        box-shadow: 0 0 80px rgba(0,0,0,.4);
-      }
+.track h2{
+  font-size:20px;
+  margin-bottom:5px;
+}
 
-      .bottom-nav {
-        max-width: 600px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-  </style>
+.track .artist{
+  color:var(--orange);
+  font-size:14px;
+  font-weight:600;
+}
+
+.track .album{
+  color:#8e929a;
+  font-size:13px;
+  margin-top:7px;
+}
+
+.tags{
+  display:flex;
+  gap:5px;
+  margin-top:13px;
+}
+
+.tags span{
+  border:1px solid #363a40;
+  border-radius:4px;
+  padding:3px 5px;
+  color:#aaa;
+  font-size:7px;
+}
+
+.wave{
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  margin-top:10px;
+}
+
+.wave i{
+  display:block;
+  width:3px;
+  background:linear-gradient(to top,var(--orange),#ff8a3d);
+  border-radius:5px;
+  opacity:.85;
+}
+
+.wave i:nth-child(1){height:12px}
+.wave i:nth-child(2){height:20px}
+.wave i:nth-child(3){height:34px}
+.wave i:nth-child(4){height:24px}
+.wave i:nth-child(5){height:48px}
+.wave i:nth-child(6){height:28px}
+.wave i:nth-child(7){height:62px}
+.wave i:nth-child(8){height:42px}
+.wave i:nth-child(9){height:70px}
+.wave i:nth-child(10){height:30px}
+.wave i:nth-child(11){height:56px}
+.wave i:nth-child(12){height:22px}
+.wave i:nth-child(13){height:43px}
+.wave i:nth-child(14){height:17px}
+.wave i:nth-child(15){height:35px}
+.wave i:nth-child(16){height:24px}
+.wave i:nth-child(17){height:48px}
+.wave i:nth-child(18){height:16px}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-row{
+  margin-top:2px;
+}
+
+.progress{
+  appearance:none;
+  width:100%;
+  height:3px;
+  background:#292d33;
+  border-radius:5px;
+  outline:none;
+}
+
+.progress::-webkit-slider-thumb{
+  appearance:none;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 9px var(--orange);
+}
+
+.time{
+  display:flex;
+  justify-content:space-between;
+  color:#92969e;
+  font-size:10px;
+  margin-top:6px;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  margin-top:9px;
+}
+
+.controls button{
+  background:transparent;
+  font-size:22px;
+  color:#e7e7e7;
+}
+
+.controls .shuffle,
+.controls .repeat{
+  color:var(--orange);
+  font-size:19px;
+}
+
+.play{
+  width:70px;
+  height:70px;
+  border:1px solid var(--orange)!important;
+  border-radius:50%;
+  color:#fff!important;
+  box-shadow:
+    0 0 0 5px rgba(255,91,19,.06),
+    0 0 25px rgba(255,91,19,.28);
+  font-size:25px!important;
+}
+
+/* =========================
+   VOLUME
+========================= */
+
+.volume-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:5px;
+}
+
+.volume-row span{
+  font-size:17px;
+}
+
+.volume{
+  flex:1;
+  max-width:260px;
+  appearance:none;
+  height:3px;
+  background:#292d33;
+}
+
+.volume::-webkit-slider-thumb{
+  appearance:none;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--orange);
+}
+
+.volume-value{
+  font-size:11px;
+  color:#aaa;
+}
+
+/* =========================
+   PLAYLISTS
+========================= */
+
+.playlists-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:20px 0 9px;
+}
+
+.playlists-head h3{
+  font-size:14px;
+}
+
+.playlist-search{
+  width:200px;
+  height:30px;
+  border:1px solid #24282e;
+  border-radius:7px;
+  background:#080a0e;
+  color:#fff;
+  padding:0 10px;
+  font-size:10px;
+}
+
+.playlist-list{
+  border:1px solid #22262c;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.playlist{
+  height:62px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:7px 10px;
+  border-bottom:1px solid #20242a;
+  background:#0a0c10;
+}
+
+.playlist:last-child{
+  border-bottom:0;
+}
+
+.playlist-cover{
+  width:43px;
+  height:43px;
+  border-radius:5px;
+  flex-shrink:0;
+  background:
+    radial-gradient(circle,#ff5b13 0 7%,transparent 8%),
+    linear-gradient(145deg,#252c35,#08090b);
+}
+
+.playlist:nth-child(2) .playlist-cover{
+  background:linear-gradient(145deg,#43134d,#0a182e);
+}
+
+.playlist:nth-child(3) .playlist-cover{
+  background:linear-gradient(145deg,#305344,#172b3b);
+}
+
+.playlist:nth-child(4) .playlist-cover{
+  background:linear-gradient(145deg,#7b4b28,#111);
+}
+
+.playlist-info{
+  min-width:0;
+  flex:1;
+}
+
+.playlist-info strong{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.playlist-info span{
+  color:#8b8f97;
+  font-size:10px;
+}
+
+.playlist-duration{
+  color:#92969d;
+  font-size:10px;
+}
+
+.more{
+  background:transparent;
+  color:#aaa;
+  font-size:17px;
+}
+
+/* =========================
+   MINI PLAYER
+========================= */
+
+.mini-player{
+  position:fixed;
+  left:168px;
+  right:10px;
+  bottom:65px;
+  height:78px;
+  background:rgba(8,10,14,.96);
+  border:1px solid var(--orange);
+  border-radius:10px;
+  box-shadow:
+    0 0 25px rgba(255,91,19,.12),
+    0 15px 40px rgba(0,0,0,.5);
+  z-index:30;
+  display:flex;
+  align-items:center;
+  padding:8px 13px;
+  gap:14px;
+}
+
+.mini-cover{
+  width:55px;
+  height:55px;
+  border-radius:6px;
+  flex-shrink:0;
+  background:
+    radial-gradient(circle at 50% 40%,transparent 20%,#ff5b13 21%,transparent 24%),
+    linear-gradient(145deg,#17242c,#080a0d);
+}
+
+.mini-info{
+  width:130px;
+}
+
+.mini-info strong{
+  display:block;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.mini-info span{
+  color:#8d9198;
+  font-size:10px;
+}
+
+.mini-controls{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex:1;
+}
+
+.mini-controls button{
+  background:transparent;
+  color:#fff;
+  font-size:19px;
+}
+
+.mini-play{
+  width:48px;
+  height:48px;
+  border:1px solid var(--orange)!important;
+  border-radius:50%;
+}
+
+.mini-progress{
+  position:absolute;
+  left:55px;
+  right:205px;
+  bottom:8px;
+  height:2px;
+  background:#292d33;
+}
+
+.mini-progress::before{
+  content:"";
+  display:block;
+  width:36%;
+  height:100%;
+  background:var(--orange);
+}
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav{
+  display:none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  body{
+    background:#050608;
+  }
+
+  .app{
+    display:block;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .main{
+    padding:12px 10px 155px;
+  }
+
+  .topbar{
+    margin-bottom:18px;
+    gap:8px;
+  }
+
+  .search{
+    height:38px;
+    font-size:10px;
+  }
+
+  .top-icons{
+    gap:10px;
+  }
+
+  .top-icons button{
+    font-size:17px;
+  }
+
+  .heading h1{
+    font-size:27px;
+  }
+
+  .heading p{
+    font-size:12px;
+  }
+
+  .new-playlist{
+    margin-top:12px;
+  }
+
+  .player{
+    padding:10px;
+    border-radius:10px;
+  }
+
+  .player-main{
+    grid-template-columns:155px 1fr;
+    gap:12px;
+  }
+
+  .cover{
+    width:155px;
+    height:155px;
+  }
+
+  .track h2{
+    font-size:18px;
+  }
+
+  .track .artist{
+    font-size:12px;
+  }
+
+  .track .album{
+    font-size:11px;
+  }
+
+  .wave{
+    height:60px;
+  }
+
+  .controls{
+    gap:20px;
+  }
+
+  .play{
+    width:62px;
+    height:62px;
+  }
+
+  .volume-row{
+    margin-top:3px;
+  }
+
+  .playlists-head{
+    margin-top:18px;
+  }
+
+  .playlist-search{
+    width:170px;
+  }
+
+  .mini-player{
+    left:7px;
+    right:7px;
+    bottom:67px;
+    height:72px;
+    padding:7px;
+    gap:8px;
+  }
+
+  .mini-cover{
+    width:52px;
+    height:52px;
+  }
+
+  .mini-info{
+    width:100px;
+  }
+
+  .mini-info strong{
+    font-size:12px;
+  }
+
+  .mini-controls{
+    gap:12px;
+    justify-content:flex-end;
+  }
+
+  .mini-controls button{
+    font-size:17px;
+  }
+
+  .mini-play{
+    width:43px;
+    height:43px;
+  }
+
+  .mini-progress{
+    left:62px;
+    right:15px;
+    bottom:5px;
+  }
+
+  .mobile-nav{
+    display:flex;
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:62px;
+    background:rgba(7,9,12,.98);
+    border-top:1px solid #25282e;
+    z-index:40;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .mobile-nav button{
+    background:transparent;
+    color:#7f838b;
+    font-size:9px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+  }
+
+  .mobile-nav button span{
+    font-size:20px;
+  }
+
+  .mobile-nav button.active{
+    color:var(--orange);
+  }
+}
+
+@media(max-width:480px){
+
+  .player-main{
+    grid-template-columns:125px 1fr;
+  }
+
+  .cover{
+    width:125px;
+    height:125px;
+  }
+
+  .track h2{
+    font-size:16px;
+  }
+
+  .tags{
+    display:none;
+  }
+
+  .wave{
+    height:45px;
+  }
+
+  .controls{
+    gap:14px;
+  }
+
+  .controls button{
+    font-size:18px;
+  }
+
+  .play{
+    width:56px;
+    height:56px;
+  }
+
+  .playlist-search{
+    width:145px;
+  }
+
+  .mini-info{
+    width:82px;
+  }
+
+  .mini-controls{
+    gap:8px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-  <header class="topbar">
-    <div class="logo">AURA<span>PRO</span></div>
-    <button class="menu-btn" onclick="openMenu()">☰</button>
-  </header>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-  <main>
+    <div class="logo">
+      AURA <span>PRO</span>
+      <small>STUDIO</small>
+    </div>
 
-    <section class="welcome">
-      <small>SEU ESTÚDIO MOBILE</small>
-      <h1>AURA PRO STUDIO</h1>
-    </section>
+    <nav class="nav">
 
-    <section class="cover">
-      <div class="aura-symbol">✦</div>
-    </section>
+      <button class="active">
+        <span>⌂</span> Início
+      </button>
 
-    <section class="track-info">
-      <h2 id="songTitle">Nenhuma música selecionada</h2>
-      <p id="songArtist">Escolha um arquivo de áudio</p>
-    </section>
+      <button>
+        <span>♫</span> Biblioteca
+      </button>
 
-    <section class="progress-area">
+      <button>
+        <span>♡</span> Favoritos
+      </button>
+
+      <button class="active">
+        <span>☷</span> Playlists
+      </button>
+
+      <button>
+        <span>♬</span> Equalizador
+      </button>
+
+      <button>
+        <span>✧</span> Efeitos
+      </button>
+
+      <button>
+        <span>▥</span> Visualizer
+      </button>
+
+      <button>
+        <span>◉</span> Rádio
+      </button>
+
+      <button>
+        <span>↶</span> Histórico
+      </button>
+
+      <button>
+        <span>⚙</span> Configurações
+      </button>
+
+    </nav>
+
+    <div class="theme">
+      <div class="theme-title">MODO TEMA</div>
+
+      <button class="active">
+        <span class="dot"></span> Escuro
+      </button>
+
+      <button>
+        <span class="dot"></span> Âmbar
+      </button>
+
+      <button>
+        <span class="dot"></span> Azul
+      </button>
+
+      <button>
+        <span class="dot"></span> Roxo
+      </button>
+
+      <button>
+        <span class="dot"></span> Verde
+      </button>
+    </div>
+
+  </aside>
+
+
+  <!-- CONTEÚDO -->
+  <main class="main">
+
+    <header class="topbar">
 
       <input
-        id="progress"
-        class="progress"
-        type="range"
-        min="0"
-        max="100"
-        value="0"
+        class="search"
+        type="search"
+        placeholder="⌕  Pesquisar músicas, artistas, álbuns..."
       >
 
-      <div class="time">
-        <span id="currentTime">0:00</span>
-        <span id="duration">0:00</span>
+      <div class="top-icons">
+        <button>⌁</button>
+        <button class="notification">♧</button>
+        <button>⚙</button>
+      </div>
+
+    </header>
+
+
+    <section class="heading">
+
+      <h1>Playlists</h1>
+
+      <p>Organize suas músicas do seu jeito.</p>
+
+      <button class="new-playlist">
+        ＋ Nova playlist
+      </button>
+
+    </section>
+
+
+    <!-- PLAYER -->
+    <section class="player">
+
+      <div class="player-main">
+
+        <div class="cover">
+          <div class="mountain"></div>
+          <span class="cover-label">AURA PRO</span>
+        </div>
+
+
+        <div class="track">
+
+          <span class="badge">TOCANDO AGORA</span>
+
+          <h2 id="songName">Dreams</h2>
+
+          <div class="artist">The Weeknd ✓</div>
+
+          <div class="album">After Hours</div>
+
+          <div class="tags">
+            <span>AAC</span>
+            <span>320 kbps</span>
+            <span>44.1 kHz</span>
+          </div>
+
+          <div class="wave">
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-row">
+
+        <input
+          id="progress"
+          class="progress"
+          type="range"
+          min="0"
+          max="100"
+          value="36"
+        >
+
+        <div class="time">
+          <span id="current">1:24</span>
+          <span id="total">3:41</span>
+        </div>
+
+      </div>
+
+
+      <div class="controls">
+
+        <button class="shuffle">⤨</button>
+
+        <button onclick="previousSong()">◀</button>
+
+        <button
+          id="play"
+          class="play"
+          onclick="togglePlay()"
+        >
+          ❚❚
+        </button>
+
+        <button onclick="nextSong()">▶</button>
+
+        <button class="repeat">↻</button>
+
+      </div>
+
+
+      <div class="volume-row">
+
+        <span>🔊</span>
+
+        <input
+          id="volume"
+          class="volume"
+          type="range"
+          min="0"
+          max="100"
+          value="70"
+        >
+
+        <span class="volume-value" id="volumeText">
+          70%
+        </span>
+
       </div>
 
     </section>
 
-    <div class="controls">
 
-      <button class="control" onclick="audio.currentTime -= 10">
-        ↶
-      </button>
+    <!-- PLAYLISTS -->
+    <div class="playlists-head">
 
-      <button class="play" id="playButton" onclick="togglePlay()">
-        ▶
-      </button>
+      <h3>Suas playlists</h3>
 
-      <button class="control" onclick="audio.currentTime += 10">
-        ↷
-      </button>
+      <input
+        class="playlist-search"
+        placeholder="⌕ Buscar playlists..."
+      >
 
     </div>
 
-    <section class="actions">
 
-      <button class="action" onclick="document.getElementById('fileInput').click()">
-        🎵<br>
-        Abrir áudio
-      </button>
+    <section class="playlist-list">
 
-      <button class="action" onclick="toggleLoop()">
-        🔁<br>
-        Repetir
-      </button>
+      <div class="playlist">
+
+        <div class="playlist-cover"></div>
+
+        <div class="playlist-info">
+          <strong>🔥 As Melhores</strong>
+          <span>32 músicas</span>
+        </div>
+
+        <span class="playlist-duration">2h 15m</span>
+
+        <button class="more">⋮</button>
+
+      </div>
+
+
+      <div class="playlist">
+
+        <div class="playlist-cover"></div>
+
+        <div class="playlist-info">
+          <strong>Festa e Balada</strong>
+          <span>48 músicas</span>
+        </div>
+
+        <span class="playlist-duration">3h 42m</span>
+
+        <button class="more">⋮</button>
+
+      </div>
+
+
+      <div class="playlist">
+
+        <div class="playlist-cover"></div>
+
+        <div class="playlist-info">
+          <strong>Relax e Chill</strong>
+          <span>27 músicas</span>
+        </div>
+
+        <span class="playlist-duration">1h 38m</span>
+
+        <button class="more">⋮</button>
+
+      </div>
+
+
+      <div class="playlist">
+
+        <div class="playlist-cover"></div>
+
+        <div class="playlist-info">
+          <strong>Sertanejo Top</strong>
+          <span>56 músicas</span>
+        </div>
+
+        <span class="playlist-duration">3h 10m</span>
+
+        <button class="more">⋮</button>
+
+      </div>
 
     </section>
 
-    <input
-      id="fileInput"
-      type="file"
-      accept="audio/*"
-      hidden
-      onchange="loadAudio(event)"
-    >
-
-    <button
-      class="upload"
-      onclick="document.getElementById('fileInput').click()"
-    >
-      ＋ ADICIONAR MÚSICA
-    </button>
-
   </main>
 
-  <nav class="bottom-nav">
 
-    <button class="nav-item active">
+  <!-- MINI PLAYER -->
+  <section class="mini-player">
+
+    <div class="mini-cover"></div>
+
+    <div class="mini-info">
+      <strong>Dreams</strong>
+      <span>The Weeknd · After Hours</span>
+    </div>
+
+    <div class="mini-controls">
+
+      <button>▥</button>
+
+      <button>◀</button>
+
+      <button
+        class="mini-play"
+        onclick="togglePlay()"
+      >
+        ❚❚
+      </button>
+
+      <button>▶</button>
+
+      <button>↻</button>
+
+      <button>☷</button>
+
+    </div>
+
+    <div class="mini-progress"></div>
+
+  </section>
+
+
+  <!-- NAVEGAÇÃO MOBILE -->
+  <nav class="mobile-nav">
+
+    <button class="active">
       <span>⌂</span>
       Início
     </button>
 
-    <button class="nav-item">
+    <button>
       <span>♫</span>
-      Música
+      Biblioteca
     </button>
 
-    <button class="nav-item">
+    <button>
       <span>♡</span>
       Favoritos
     </button>
 
-    <button class="nav-item">
-      <span>⚙</span>
-      Ajustes
+    <button class="active">
+      <span>☷</span>
+      Playlists
+    </button>
+
+    <button>
+      <span>♬</span>
+      Equalizador
+    </button>
+
+    <button>
+      <span>✧</span>
+      Efeitos
     </button>
 
   </nav>
 
 </div>
 
-<!-- MENU LATERAL -->
-
-<div class="panel" id="panel" onclick="closeMenu(event)">
-
-  <aside class="side-menu">
-
-    <button class="close" onclick="closeMenu()">
-      ×
-    </button>
-
-    <h2>AURA PRO</h2>
-
-    <button class="menu-option">
-      🎵 Biblioteca
-    </button>
-
-    <button class="menu-option">
-      ❤️ Favoritos
-    </button>
-
-    <button class="menu-option">
-      🎧 Player
-    </button>
-
-    <button class="menu-option">
-      ⚙ Configurações
-    </button>
-
-    <button class="menu-option">
-      ℹ Sobre o AURA
-    </button>
-
-  </aside>
-
-</div>
-
-<audio id="audio"></audio>
 
 <script>
 
-  const audio = document.getElementById("audio");
-  const playButton = document.getElementById("playButton");
-  const progress = document.getElementById("progress");
-  const currentTime = document.getElementById("currentTime");
-  const duration = document.getElementById("duration");
-  const songTitle = document.getElementById("songTitle");
-  const songArtist = document.getElementById("songArtist");
+let playing = true;
 
-  let loop = false;
+const playButton = document.getElementById("play");
+const progress = document.getElementById("progress");
+const volume = document.getElementById("volume");
+const volumeText = document.getElementById("volumeText");
 
-  function togglePlay() {
+function togglePlay(){
 
-    if (!audio.src) {
-      alert("Escolha uma música primeiro.");
-      return;
-    }
+  playing = !playing;
 
-    if (audio.paused) {
-      audio.play();
-      playButton.textContent = "Ⅱ";
-    } else {
-      audio.pause();
-      playButton.textContent = "▶";
-    }
+  playButton.textContent =
+    playing ? "❚❚" : "▶";
 
-  }
+  document.querySelector(".mini-play").textContent =
+    playing ? "❚❚" : "▶";
+}
 
-  function loadAudio(event) {
+function previousSong(){
+  document.getElementById("songName").textContent = "Midnight";
+}
 
-    const file = event.target.files[0];
+function nextSong(){
+  document.getElementById("songName").textContent = "After Hours";
+}
 
-    if (!file) return;
+progress.addEventListener("input",function(){
 
-    audio.src = URL.createObjectURL(file);
+  const value = Number(this.value);
 
-    songTitle.textContent = file.name.replace(/\.[^/.]+$/, "");
-    songArtist.textContent = "Arquivo local";
+  const totalSeconds = 221;
+  const seconds =
+    Math.floor((value / 100) * totalSeconds);
 
-    audio.load();
+  const min = Math.floor(seconds / 60);
+  const sec = String(seconds % 60).padStart(2,"0");
 
-    audio.onloadedmetadata = () => {
-      duration.textContent = formatTime(audio.duration);
-    };
+  document.getElementById("current").textContent =
+    min + ":" + sec;
+});
 
-  }
+volume.addEventListener("input",function(){
 
-  audio.addEventListener("timeupdate", () => {
+  volumeText.textContent =
+    this.value + "%";
 
-    if (!audio.duration) return;
-
-    progress.value =
-      (audio.currentTime / audio.duration) * 100;
-
-    currentTime.textContent =
-      formatTime(audio.currentTime);
-
-  });
-
-  progress.addEventListener("input", () => {
-
-    if (!audio.duration) return;
-
-    audio.currentTime =
-      (progress.value / 100) * audio.duration;
-
-  });
-
-  audio.addEventListener("ended", () => {
-
-    if (!loop) {
-      playButton.textContent = "▶";
-    }
-
-  });
-
-  function toggleLoop() {
-
-    loop = !loop;
-    audio.loop = loop;
-
-    alert(loop ? "Repetição ativada" : "Repetição desativada");
-
-  }
-
-  function formatTime(seconds) {
-
-    if (!seconds || isNaN(seconds)) return "0:00";
-
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-
-    return minutes + ":" + String(secs).padStart(2, "0");
-
-  }
-
-  function openMenu() {
-
-    document.getElementById("panel")
-      .classList.add("open");
-
-  }
-
-  function closeMenu(event) {
-
-    if (
-      !event ||
-      event.target.id === "panel"
-    ) {
-
-      document.getElementById("panel")
-        .classList.remove("open");
-
-    }
-
-  }
+});
 
 </script>
 
