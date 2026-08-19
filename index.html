@@ -1,1 +1,628 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#090b12">
+  <title>AURA PRO STUDIO</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #090b12;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* APP */
+    .app {
+      min-height: 100vh;
+      padding-bottom: 90px;
+      background:
+        radial-gradient(circle at 50% 0%, #22284a 0%, #0e1120 35%, #090b12 70%);
+    }
+
+    /* TOPO */
+    .topbar {
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9, 11, 18, .88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.08);
+      font-size: 21px;
+    }
+
+    /* CONTEÚDO */
+    main {
+      padding: 20px 16px;
+    }
+
+    .welcome {
+      margin: 10px 0 25px;
+    }
+
+    .welcome small {
+      color: #969bad;
+      font-size: 13px;
+    }
+
+    .welcome h1 {
+      font-size: 29px;
+      margin-top: 6px;
+    }
+
+    /* CAPA */
+    .cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 390px;
+      margin: 0 auto 25px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 35% 30%, #a48cff, transparent 20%),
+        radial-gradient(circle at 70% 65%, #5c39ff, transparent 25%),
+        linear-gradient(145deg, #25224a, #090b12);
+      box-shadow:
+        0 25px 70px rgba(80,50,255,.25),
+        inset 0 0 50px rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before,
+    .cover::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .cover::before {
+      width: 70%;
+      height: 70%;
+    }
+
+    .cover::after {
+      width: 45%;
+      height: 45%;
+    }
+
+    .aura-symbol {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      z-index: 2;
+      box-shadow: 0 0 50px rgba(124,92,255,.45);
+    }
+
+    /* INFORMAÇÕES */
+    .track-info {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .track-info h2 {
+      font-size: 21px;
+      margin-bottom: 7px;
+    }
+
+    .track-info p {
+      color: #9296a9;
+      font-size: 14px;
+    }
+
+    /* PROGRESSO */
+    .progress-area {
+      margin: 0 auto;
+      max-width: 500px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 5px;
+      appearance: none;
+      background: #292d3d;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .progress::-webkit-slider-thumb {
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #8c6cff;
+      box-shadow: 0 0 12px rgba(140,108,255,.7);
+    }
+
+    .time {
+      display: flex;
+      justify-content: space-between;
+      color: #777c90;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    /* CONTROLES */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin: 25px 0;
+    }
+
+    .control {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: transparent;
+      font-size: 20px;
+    }
+
+    .play {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #fff;
+      color: #0b0c13;
+      font-size: 25px;
+      box-shadow: 0 10px 35px rgba(255,255,255,.15);
+    }
+
+    /* AÇÕES */
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .action {
+      padding: 16px;
+      border-radius: 17px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.07);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .action:active {
+      transform: scale(.97);
+    }
+
+    /* UPLOAD */
+    .upload {
+      margin-top: 15px;
+      width: 100%;
+      padding: 17px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #7456ff, #4d36d9);
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    /* MENU INFERIOR */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(12,14,23,.93);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      z-index: 20;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .nav-item {
+      background: transparent;
+      color: #74798d;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-item span {
+      font-size: 21px;
+    }
+
+    .nav-item.active {
+      color: #9a83ff;
+    }
+
+    /* PAINEL */
+    .panel {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(5,7,12,.75);
+      backdrop-filter: blur(8px);
+      display: none;
+    }
+
+    .panel.open {
+      display: block;
+    }
+
+    .side-menu {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 82%;
+      max-width: 340px;
+      height: 100%;
+      background: #111421;
+      padding: 25px 20px;
+      box-shadow: -20px 0 50px rgba(0,0,0,.35);
+    }
+
+    .close {
+      float: right;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      font-size: 20px;
+    }
+
+    .side-menu h2 {
+      clear: both;
+      padding-top: 35px;
+      margin-bottom: 25px;
+    }
+
+    .menu-option {
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 10px;
+      border-radius: 14px;
+      text-align: left;
+      background: rgba(255,255,255,.06);
+    }
+
+    /* DESKTOP */
+    @media (min-width: 700px) {
+      .app {
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 0 80px rgba(0,0,0,.4);
+      }
+
+      .bottom-nav {
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="logo">AURA<span>PRO</span></div>
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+  </header>
+
+  <main>
+
+    <section class="welcome">
+      <small>SEU ESTÚDIO MOBILE</small>
+      <h1>AURA PRO STUDIO</h1>
+    </section>
+
+    <section class="cover">
+      <div class="aura-symbol">✦</div>
+    </section>
+
+    <section class="track-info">
+      <h2 id="songTitle">Nenhuma música selecionada</h2>
+      <p id="songArtist">Escolha um arquivo de áudio</p>
+    </section>
+
+    <section class="progress-area">
+
+      <input
+        id="progress"
+        class="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      >
+
+      <div class="time">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+
+    </section>
+
+    <div class="controls">
+
+      <button class="control" onclick="audio.currentTime -= 10">
+        ↶
+      </button>
+
+      <button class="play" id="playButton" onclick="togglePlay()">
+        ▶
+      </button>
+
+      <button class="control" onclick="audio.currentTime += 10">
+        ↷
+      </button>
+
+    </div>
+
+    <section class="actions">
+
+      <button class="action" onclick="document.getElementById('fileInput').click()">
+        🎵<br>
+        Abrir áudio
+      </button>
+
+      <button class="action" onclick="toggleLoop()">
+        🔁<br>
+        Repetir
+      </button>
+
+    </section>
+
+    <input
+      id="fileInput"
+      type="file"
+      accept="audio/*"
+      hidden
+      onchange="loadAudio(event)"
+    >
+
+    <button
+      class="upload"
+      onclick="document.getElementById('fileInput').click()"
+    >
+      ＋ ADICIONAR MÚSICA
+    </button>
+
+  </main>
+
+  <nav class="bottom-nav">
+
+    <button class="nav-item active">
+      <span>⌂</span>
+      Início
+    </button>
+
+    <button class="nav-item">
+      <span>♫</span>
+      Música
+    </button>
+
+    <button class="nav-item">
+      <span>♡</span>
+      Favoritos
+    </button>
+
+    <button class="nav-item">
+      <span>⚙</span>
+      Ajustes
+    </button>
+
+  </nav>
+
+</div>
+
+<!-- MENU LATERAL -->
+
+<div class="panel" id="panel" onclick="closeMenu(event)">
+
+  <aside class="side-menu">
+
+    <button class="close" onclick="closeMenu()">
+      ×
+    </button>
+
+    <h2>AURA PRO</h2>
+
+    <button class="menu-option">
+      🎵 Biblioteca
+    </button>
+
+    <button class="menu-option">
+      ❤️ Favoritos
+    </button>
+
+    <button class="menu-option">
+      🎧 Player
+    </button>
+
+    <button class="menu-option">
+      ⚙ Configurações
+    </button>
+
+    <button class="menu-option">
+      ℹ Sobre o AURA
+    </button>
+
+  </aside>
+
+</div>
+
+<audio id="audio"></audio>
+
+<script>
+
+  const audio = document.getElementById("audio");
+  const playButton = document.getElementById("playButton");
+  const progress = document.getElementById("progress");
+  const currentTime = document.getElementById("currentTime");
+  const duration = document.getElementById("duration");
+  const songTitle = document.getElementById("songTitle");
+  const songArtist = document.getElementById("songArtist");
+
+  let loop = false;
+
+  function togglePlay() {
+
+    if (!audio.src) {
+      alert("Escolha uma música primeiro.");
+      return;
+    }
+
+    if (audio.paused) {
+      audio.play();
+      playButton.textContent = "Ⅱ";
+    } else {
+      audio.pause();
+      playButton.textContent = "▶";
+    }
+
+  }
+
+  function loadAudio(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    audio.src = URL.createObjectURL(file);
+
+    songTitle.textContent = file.name.replace(/\.[^/.]+$/, "");
+    songArtist.textContent = "Arquivo local";
+
+    audio.load();
+
+    audio.onloadedmetadata = () => {
+      duration.textContent = formatTime(audio.duration);
+    };
+
+  }
+
+  audio.addEventListener("timeupdate", () => {
+
+    if (!audio.duration) return;
+
+    progress.value =
+      (audio.currentTime / audio.duration) * 100;
+
+    currentTime.textContent =
+      formatTime(audio.currentTime);
+
+  });
+
+  progress.addEventListener("input", () => {
+
+    if (!audio.duration) return;
+
+    audio.currentTime =
+      (progress.value / 100) * audio.duration;
+
+  });
+
+  audio.addEventListener("ended", () => {
+
+    if (!loop) {
+      playButton.textContent = "▶";
+    }
+
+  });
+
+  function toggleLoop() {
+
+    loop = !loop;
+    audio.loop = loop;
+
+    alert(loop ? "Repetição ativada" : "Repetição desativada");
+
+  }
+
+  function formatTime(seconds) {
+
+    if (!seconds || isNaN(seconds)) return "0:00";
+
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+
+    return minutes + ":" + String(secs).padStart(2, "0");
+
+  }
+
+  function openMenu() {
+
+    document.getElementById("panel")
+      .classList.add("open");
+
+  }
+
+  function closeMenu(event) {
+
+    if (
+      !event ||
+      event.target.id === "panel"
+    ) {
+
+      document.getElementById("panel")
+        .classList.remove("open");
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
