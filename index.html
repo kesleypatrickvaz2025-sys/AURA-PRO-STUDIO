@@ -1,1 +1,2136 @@
 
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#030405">
+<title>AURA PRO STUDIO V5.2.0</title>
+
+<style>
+:root{
+ --bg:#030405;
+ --panel:#080b0f;
+ --panel2:#0d1116;
+ --line:#1c232b;
+ --text:#f5f5f5;
+ --muted:#8b929c;
+ --orange:#ff7417;
+ --orange2:#ff9a45;
+ --good:#37d47b;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+ margin:0;
+ background:#000;
+ color:var(--text);
+ font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+ height:100%;
+ overflow:hidden;
+}
+
+button,input,select{
+ font:inherit;
+}
+
+button{
+ color:inherit;
+}
+
+.app{
+ height:100vh;
+ display:flex;
+ background:
+ radial-gradient(circle at 70% 10%,#111820 0,#030405 40%);
+ overflow:hidden;
+}
+
+/* SIDEBAR */
+
+.side{
+ width:220px;
+ border-right:1px solid var(--line);
+ padding:24px 12px 18px;
+ background:rgba(4,6,8,.96);
+ display:flex;
+ flex-direction:column;
+ gap:16px;
+}
+
+.logo{
+ font-weight:900;
+ letter-spacing:1.5px;
+ text-align:center;
+ font-size:19px;
+}
+
+.logo b{
+ color:var(--orange);
+}
+
+.logo span{
+ display:block;
+ font-size:13px;
+ letter-spacing:4px;
+}
+
+.nav{
+ display:grid;
+ gap:5px;
+}
+
+.nav button{
+ border:1px solid transparent;
+ background:transparent;
+ text-align:left;
+ padding:12px 14px;
+ border-radius:10px;
+ cursor:pointer;
+ color:#c8cdd3;
+}
+
+.nav button.active,
+.nav button:hover{
+ background:linear-gradient(90deg,#29160c,#0e1115);
+ border-color:#6e3011;
+ color:var(--orange);
+ box-shadow:0 0 22px #ff741715;
+}
+
+/* TEMAS */
+
+.theme{
+ margin-top:auto;
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:12px;
+}
+
+.theme small{
+ color:#777;
+ display:block;
+ margin-bottom:8px;
+}
+
+.themes{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+}
+
+.dot{
+ width:18px;
+ height:18px;
+ border-radius:50%;
+ border:1px solid #555;
+ cursor:pointer;
+}
+
+.d-orange{background:#ff7417}
+.d-blue{background:#2586ff}
+.d-purple{background:#8c49ff}
+.d-green{background:#29bd72}
+
+/* MAIN */
+
+.main{
+ flex:1;
+ min-width:0;
+ overflow:auto;
+ padding:20px 22px 120px;
+}
+
+.top{
+ display:flex;
+ gap:12px;
+ align-items:center;
+ margin-bottom:20px;
+}
+
+.search{
+ flex:1;
+ max-width:520px;
+ background:#080b0f;
+ border:1px solid #222a32;
+ border-radius:10px;
+ padding:12px 15px;
+ color:white;
+ outline:none;
+}
+
+.top .icon{
+ background:none;
+ border:0;
+ font-size:20px;
+ cursor:pointer;
+}
+
+/* TELAS */
+
+.screen{
+ display:none;
+ animation:in .18s ease;
+}
+
+.screen.active{
+ display:block;
+}
+
+@keyframes in{
+ from{
+  opacity:.4;
+  transform:translateY(4px)
+ }
+ to{
+  opacity:1;
+  transform:none
+ }
+}
+
+h1{
+ font-size:30px;
+ margin:8px 0 4px;
+}
+
+.sub{
+ color:var(--muted);
+ margin-bottom:20px;
+}
+
+/* CARDS */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+ gap:12px;
+}
+
+.card{
+ background:linear-gradient(145deg,#0b1015,#07090c);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:12px;
+ cursor:pointer;
+}
+
+.cover{
+ width:100%;
+ aspect-ratio:1;
+ border-radius:9px;
+ object-fit:cover;
+ background:linear-gradient(135deg,#111,#321707);
+}
+
+.card strong{
+ display:block;
+ margin-top:9px;
+}
+
+.muted{
+ color:var(--muted);
+ font-size:13px;
+}
+
+/* LISTAS */
+
+.list{
+ border:1px solid var(--line);
+ border-radius:12px;
+ overflow:hidden;
+ background:#070a0d;
+}
+
+.row{
+ display:grid;
+ grid-template-columns:44px 1fr auto auto;
+ gap:12px;
+ align-items:center;
+ padding:10px 13px;
+ border-bottom:1px solid #151a20;
+}
+
+.row:last-child{
+ border:0;
+}
+
+.thumb{
+ width:44px;
+ height:44px;
+ border-radius:7px;
+ object-fit:cover;
+ background:#151515;
+}
+
+.row button{
+ background:none;
+ border:0;
+ cursor:pointer;
+}
+
+.heart{
+ color:var(--orange);
+}
+
+/* BOTÕES */
+
+.btn{
+ border:1px solid #74310f;
+ background:linear-gradient(180deg,#ff7e22,#e85f0b);
+ color:#090909;
+ border-radius:9px;
+ padding:10px 15px;
+ font-weight:800;
+ cursor:pointer;
+}
+
+.btn.ghost{
+ background:#0b0e12;
+ color:#ddd;
+ border-color:#272f38;
+}
+
+.toolbar{
+ display:flex;
+ gap:8px;
+ align-items:center;
+ flex-wrap:wrap;
+ margin-bottom:16px;
+}
+
+.pill{
+ border:1px solid #252c34;
+ border-radius:999px;
+ padding:8px 12px;
+ background:#090c10;
+ color:#bbb;
+ cursor:pointer;
+}
+
+.pill.active{
+ color:var(--orange);
+ border-color:#73300f;
+}
+
+/* PAINEL */
+
+.panel{
+ border:1px solid var(--line);
+ background:linear-gradient(145deg,#0a0d11,#07090c);
+ border-radius:14px;
+ padding:18px;
+ margin-bottom:16px;
+}
+
+/* EQ */
+
+.eq{
+ display:grid;
+ grid-template-columns:repeat(10,1fr);
+ gap:10px;
+ align-items:end;
+ height:250px;
+}
+
+.band{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:6px;
+ height:100%;
+}
+
+.band input{
+ writing-mode:vertical-lr;
+ direction:rtl;
+ height:190px;
+ accent-color:var(--orange);
+}
+
+/* VISUALIZADOR */
+
+.wave{
+ height:90px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:3px;
+}
+
+.wave i{
+ width:5px;
+ background:var(--orange);
+ border-radius:9px;
+ animation:w .55s infinite alternate;
+}
+
+@keyframes w{
+ to{
+  height:18%
+ }
+}
+
+.wave i:nth-child(2n){
+ animation-delay:.1s;
+}
+
+.wave i:nth-child(3n){
+ animation-delay:.2s;
+}
+
+/* NOW PLAYING */
+
+.now{
+ max-width:920px;
+ margin:auto;
+ text-align:center;
+}
+
+.now .bigcover{
+ width:min(58vh,440px);
+ height:min(58vh,440px);
+ margin:10px auto 20px;
+ border-radius:18px;
+ object-fit:cover;
+ box-shadow:0 0 70px #ff74172c;
+ border:1px solid #74310f;
+}
+
+.controls{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:30px;
+ margin:15px;
+}
+
+.circle{
+ width:62px;
+ height:62px;
+ border-radius:50%;
+ border:1px solid var(--orange);
+ background:#0a0d11;
+ box-shadow:0 0 25px #ff741740;
+ font-size:24px;
+ cursor:pointer;
+}
+
+/* PLAYER MINI */
+
+.mini{
+ position:fixed;
+ left:235px;
+ right:18px;
+ bottom:64px;
+ border:1px solid #71300e;
+ background:rgba(7,10,13,.97);
+ backdrop-filter:blur(12px);
+ border-radius:13px;
+ padding:10px 14px;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ z-index:10;
+}
+
+.mini img{
+ width:46px;
+ height:46px;
+ border-radius:7px;
+ object-fit:cover;
+}
+
+.mini .grow{
+ flex:1;
+}
+
+.progress{
+ accent-color:var(--orange);
+ width:100%;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+ display:none;
+}
+
+/* SETTINGS */
+
+.settings{
+ display:grid;
+ gap:10px;
+}
+
+.setting{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #171d24;
+ padding:12px 0;
+}
+
+.toggle{
+ accent-color:var(--orange);
+ transform:scale(1.2);
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+ .side{
+  display:none;
+ }
+
+ .main{
+  padding:14px 13px 110px;
+ }
+
+ .top{
+  margin-bottom:10px;
+ }
+
+ .mini{
+  left:10px;
+  right:10px;
+  bottom:64px;
+ }
+
+ .bottom{
+  position:fixed;
+  display:flex;
+  left:0;
+  right:0;
+  bottom:0;
+  height:60px;
+  background:#07090c;
+  border-top:1px solid var(--line);
+  z-index:20;
+  justify-content:space-around;
+ }
+
+ .bottom button{
+  background:none;
+  border:0;
+  font-size:11px;
+  color:#aeb4bc;
+ }
+
+ .bottom button.active{
+  color:var(--orange);
+ }
+
+ .eq{
+  grid-template-columns:repeat(5,1fr);
+  height:auto;
+ }
+
+ .band input{
+  height:130px;
+ }
+
+ .cards{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ h1{
+  font-size:25px;
+ }
+
+ .now .bigcover{
+  width:min(72vw,360px);
+  height:min(72vw,360px);
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="side">
+
+<div class="logo">
+ AURA <b>PRO</b>
+ <span>STUDIO</span>
+</div>
+
+<nav class="nav" id="nav"></nav>
+
+<div class="theme">
+ <small>MODO TEMA</small>
+
+ <div class="themes">
+  <div class="dot d-orange" onclick="theme('#ff7417')"></div>
+  <div class="dot d-blue" onclick="theme('#2586ff')"></div>
+  <div class="dot d-purple" onclick="theme('#8c49ff')"></div>
+  <div class="dot d-green" onclick="theme('#29bd72')"></div>
+ </div>
+
+</div>
+
+</aside>
+
+<!-- CONTEÚDO -->
+
+<main class="main">
+
+<header class="top">
+
+<input
+ id="search"
+ class="search"
+ placeholder="Pesquisar músicas, artistas, álbuns..."
+ oninput="searchAll(this.value)"
+>
+
+<button class="icon" onclick="show('now')">◖◗</button>
+
+<button class="icon" onclick="toast('Notificações ativadas')">
+ ♧
+</button>
+
+<button class="icon" onclick="show('settings')">
+ ⚙
+</button>
+
+</header>
+
+
+<!-- INÍCIO -->
+
+<section id="home" class="screen active">
+
+<h1>Boa noite</h1>
+
+<div class="sub">
+ Ouça novamente
+</div>
+
+<div class="cards">
+
+<div class="card" onclick="play('Dreams')">
+
+<img
+ class="cover"
+ src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
+>
+
+<strong>Dreams</strong>
+
+<span class="muted">
+ The Weeknd · After Hours
+</span>
+
+</div>
+
+
+<div class="card">
+
+<img
+ class="cover"
+ src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80"
+>
+
+<strong>As Melhores</strong>
+
+<span class="muted">
+ 32 músicas
+</span>
+
+</div>
+
+
+<div class="card">
+
+<img
+ class="cover"
+ src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80"
+>
+
+<strong>Festa e Balada</strong>
+
+<span class="muted">
+ 48 músicas
+</span>
+
+</div>
+
+</div>
+
+<h2>
+ Músicas recomendadas
+</h2>
+
+<div class="list" id="homeList"></div>
+
+</section>
+
+
+<!-- BIBLIOTECA -->
+
+<section id="library" class="screen">
+
+<h1>Biblioteca</h1>
+
+<div class="sub">
+ Todas as suas músicas em um só lugar.
+</div>
+
+<div class="toolbar">
+
+<button
+ class="btn"
+ onclick="document.getElementById('files').click()"
+>
+ ＋ Adicionar músicas
+</button>
+
+<input
+ id="files"
+ type="file"
+ accept="audio/*"
+ multiple
+ hidden
+ onchange="importSongs(this.files)"
+>
+
+<button class="pill active">
+ Músicas
+</button>
+
+<button class="pill">
+ Álbuns
+</button>
+
+<button class="pill">
+ Artistas
+</button>
+
+<button class="pill">
+ Gêneros
+</button>
+
+</div>
+
+<div class="list" id="libraryList"></div>
+
+</section>
+
+
+<!-- ARTISTAS -->
+
+<section id="artists" class="screen">
+
+<h1>Artistas</h1>
+
+<div class="sub">
+ Seus artistas favoritos.
+</div>
+
+<div class="cards" id="artistCards"></div>
+
+</section>
+
+
+<!-- ÁLBUNS -->
+
+<section id="albums" class="screen">
+
+<h1>Álbuns</h1>
+
+<div class="sub">
+ Explore sua coleção por álbum.
+</div>
+
+<div class="cards" id="albumCards"></div>
+
+</section>
+
+
+<!-- GÊNEROS -->
+
+<section id="genres" class="screen">
+
+<h1>Gêneros</h1>
+
+<div class="cards" id="genreCards"></div>
+
+</section>
+
+
+<!-- PLAYLISTS -->
+
+<section id="playlists" class="screen">
+
+<h1>Playlists</h1>
+
+<div class="sub">
+ Organize suas músicas do seu jeito.
+</div>
+
+<div class="toolbar">
+
+<button class="btn" onclick="newPlaylist()">
+ ＋ Nova playlist
+</button>
+
+</div>
+
+<div class="cards" id="playlistCards"></div>
+
+</section>
+
+
+<!-- FAVORITOS -->
+
+<section id="favorites" class="screen">
+
+<h1>Favoritos</h1>
+
+<div class="toolbar">
+
+<button class="btn" onclick="play('Dreams')">
+ ▶ Reproduzir tudo
+</button>
+
+</div>
+
+<div class="list" id="favList"></div>
+
+</section>
+
+
+<!-- HISTÓRICO -->
+
+<section id="history" class="screen">
+
+<h1>Histórico</h1>
+
+<div class="sub">
+ Últimas reproduções.
+</div>
+
+<div class="list" id="historyList"></div>
+
+</section>
+
+
+<!-- EQUALIZADOR -->
+
+<section id="equalizer" class="screen">
+
+<h1>Equalizador</h1>
+
+<div class="sub">
+ Personalize o som do seu jeito.
+</div>
+
+<div class="toolbar" id="presets"></div>
+
+<div class="panel">
+
+<div class="eq" id="eq"></div>
+
+<label>
+ Preamp
+
+ <input
+ id="preamp"
+ type="range"
+ min="-12"
+ max="12"
+ value="0"
+ style="width:100%;accent-color:var(--orange)"
+ >
+
+</label>
+
+</div>
+
+</section>
+
+
+<!-- EFEITOS -->
+
+<section id="effects" class="screen">
+
+<h1>Efeitos</h1>
+
+<div class="sub">
+ Controle avançado de áudio.
+</div>
+
+<div class="cards" id="effectCards"></div>
+
+</section>
+
+
+<!-- VISUALIZADOR -->
+
+<section id="visualizer" class="screen">
+
+<h1>Visualizador</h1>
+
+<div class="panel">
+
+<div class="wave" id="visualWave"></div>
+
+</div>
+
+<div class="toolbar">
+
+<button class="pill active">
+ Spectrum
+</button>
+
+<button class="pill">
+ Wave
+</button>
+
+<button class="pill">
+ Circle
+</button>
+
+<button class="pill">
+ Mirror
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RÁDIO -->
+
+<section id="radio" class="screen">
+
+<h1>Rádio</h1>
+
+<div class="sub">
+ Estações para todos os momentos.
+</div>
+
+<div class="cards" id="radioCards"></div>
+
+</section>
+
+
+<!-- LETRAS -->
+
+<section id="lyrics" class="screen">
+
+<h1>Letra</h1>
+
+<div class="panel" style="line-height:2">
+
+<b>Dreams</b>
+
+<p>
+ I saw you dancing in a crowded room<br>
+ You look so happy when I'm not with you<br>
+ But then you saw me, caught by surprise<br>
+ A single teardrop falling from your eye
+</p>
+
+<p class="muted">
+ Letra sincronizada disponível quando fornecida pelo arquivo.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- AGORA TOCANDO -->
+
+<section id="now" class="screen">
+
+<div class="now">
+
+<button class="pill" onclick="back()">
+ ⌄ Voltar
+</button>
+
+<div
+ class="muted"
+ style="color:var(--orange);margin-top:10px"
+>
+ TOCANDO AGORA
+</div>
+
+<img
+ id="bigCover"
+ class="bigcover"
+ src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
+>
+
+<h1 id="nowTitle">
+ Dreams
+</h1>
+
+<div style="color:var(--orange);font-weight:700">
+ The Weeknd
+</div>
+
+<div class="muted">
+ After Hours
+</div>
+
+<div class="wave" id="nowWave"></div>
+
+<input
+ id="seek"
+ class="progress"
+ type="range"
+ min="0"
+ max="100"
+ value="34"
+ oninput="seekTo(this.value)"
+>
+
+<div style="display:flex;justify-content:space-between" class="muted">
+
+<span id="time">
+ 1:24
+</span>
+
+<span>
+ 3:41
+</span>
+
+</div>
+
+<div class="controls">
+
+<button class="icon">
+ ↝
+</button>
+
+<button class="icon" onclick="prev()">
+ ◀◀
+</button>
+
+<button
+ class="circle"
+ onclick="togglePlay()"
+ id="playBtn"
+>
+ Ⅱ
+</button>
+
+<button class="icon" onclick="next()">
+ ▶▶
+</button>
+
+<button class="icon">
+ ↝
+</button>
+
+</div>
+
+<div
+ class="toolbar"
+ style="justify-content:center"
+>
+
+<button
+ class="pill"
+ onclick="show('lyrics')"
+>
+ ▣ Letra
+</button>
+
+<button class="pill">
+ ⓘ Info
+</button>
+
+<button class="pill">
+ ＋ Adicionar
+</button>
+
+<button class="pill">
+ ☷ Fila
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONFIGURAÇÕES -->
+
+<section id="settings" class="screen">
+
+<h1>
+ Configurações
+</h1>
+
+<div class="panel settings">
+
+<div class="setting">
+
+<span>
+ Tema escuro
+</span>
+
+<input
+ class="toggle"
+ type="checkbox"
+ checked
+>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+ Reprodução contínua
+</span>
+
+<input
+ class="toggle"
+ type="checkbox"
+ checked
+>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+ Reprodução automática
+</span>
+
+<input
+ class="toggle"
+ type="checkbox"
+ checked
+>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+ Crossfade
+</span>
+
+<input
+ class="toggle"
+ type="checkbox"
+>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+ Qualidade de streaming
+</span>
+
+<select>
+
+<option>
+ Alta
+</option>
+
+<option>
+ Máxima
+</option>
+
+</select>
+
+</div>
+
+
+<div class="setting">
+
+<span>
+ Idioma
+</span>
+
+<select>
+
+<option>
+ Português
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- PLAYER MINI -->
+
+<div class="mini">
+
+<img
+ id="miniCover"
+ src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=200&q=80"
+>
+
+<div class="grow">
+
+<b id="miniTitle">
+ Dreams
+</b>
+
+<div class="muted">
+ The Weeknd · After Hours
+</div>
+
+<input
+ class="progress"
+ type="range"
+ min="0"
+ max="100"
+ value="34"
+>
+
+</div>
+
+<button class="icon" onclick="prev()">
+ ◀
+</button>
+
+<button
+ class="circle"
+ style="width:42px;height:42px"
+ onclick="togglePlay()"
+ id="miniPlay"
+>
+ Ⅱ
+</button>
+
+<button class="icon" onclick="next()">
+ ▶
+</button>
+
+<button
+ class="icon"
+ onclick="show('now')"
+>
+ ⌁
+</button>
+
+</div>
+
+
+<!-- NAVEGAÇÃO MOBILE -->
+
+<nav
+ class="bottom"
+ id="bottom"
+></nav>
+
+</div>
+
+
+<audio
+ id="audio"
+ preload="metadata"
+></audio>
+
+
+<script>
+
+const songs=[
+
+{
+ name:'Dreams',
+ artist:'The Weeknd',
+ album:'After Hours',
+ dur:'3:41',
+ cover:'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80'
+},
+
+{
+ name:'Blinding Lights',
+ artist:'The Weeknd',
+ album:'After Hours',
+ dur:'3:20',
+ cover:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80'
+},
+
+{
+ name:'Starboy',
+ artist:'The Weeknd',
+ album:'Starboy',
+ dur:'3:50',
+ cover:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80'
+},
+
+{
+ name:'Save Your Tears',
+ artist:'The Weeknd',
+ album:'After Hours',
+ dur:'3:35',
+ cover:'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80'
+},
+
+{
+ name:'Die For You',
+ artist:'The Weeknd',
+ album:'Starboy',
+ dur:'4:20',
+ cover:'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80'
+}
+
+];
+
+
+let idx=0;
+
+let playing=false;
+
+let history=
+ JSON.parse(
+  localStorage.getItem('auraHistory')||'[]'
+ );
+
+
+const navItems=[
+
+['home','⌂','Início'],
+['library','♫','Biblioteca'],
+['artists','♙','Artistas'],
+['albums','▣','Álbuns'],
+['genres','◈','Gêneros'],
+['favorites','♡','Favoritos'],
+['playlists','☷','Playlists'],
+['equalizer','♬','Equalizador'],
+['effects','✦','Efeitos'],
+['visualizer','▥','Visualizador'],
+['radio','◉','Rádio'],
+['history','◴','Histórico'],
+['settings','⚙','Configurações']
+
+];
+
+
+function buildNav(){
+
+ nav.innerHTML=
+ navItems.map(x=>`
+
+ <button
+ data-s="${x[0]}"
+ onclick="show('${x[0]}')"
+ >
+ ${x[1]} &nbsp; ${x[2]}
+ </button>
+
+ `).join('');
+
+
+ bottom.innerHTML=
+ navItems
+ .slice(0,6)
+ .map(x=>`
+
+ <button
+ data-s="${x[0]}"
+ onclick="show('${x[0]}')"
+ >
+ ${x[1]}<br>${x[2]}
+ </button>
+
+ `)
+ .join('');
+
+}
+
+
+function show(id){
+
+ document
+ .querySelectorAll('.screen')
+ .forEach(s=>
+  s.classList.remove('active')
+ );
+
+ document
+ .getElementById(id)
+ .classList.add('active');
+
+ document
+ .querySelectorAll('[data-s]')
+ .forEach(b=>
+  b.classList.toggle(
+   'active',
+   b.dataset.s===id
+  )
+ );
+
+ window.scrollTo(0,0);
+
+}
+
+
+function back(){
+ show('home');
+}
+
+
+function row(s,i){
+
+ return `
+
+ <div class="row">
+
+ <img
+ class="thumb"
+ src="${s.cover}"
+ >
+
+ <div onclick="playIndex(${i})">
+
+ <b>
+ ${s.name}
+ </b>
+
+ <div class="muted">
+ ${s.artist} · ${s.album}
+ </div>
+
+ </div>
+
+ <span class="muted">
+ ${s.dur}
+ </span>
+
+ <button
+ class="heart"
+ onclick="fav(${i})"
+ >
+ ♡
+ </button>
+
+ </div>
+
+ `;
+
+}
+
+
+function render(){
+
+ homeList.innerHTML=
+ songs.map(row).join('');
+
+ libraryList.innerHTML=
+ songs.map(row).join('');
+
+ favList.innerHTML=
+ songs.slice(0,4).map(row).join('');
+
+ historyList.innerHTML=
+ history.map(
+  x=>row(x,0)
+ ).join('')
+ ||
+ '<div class="row muted">Nenhuma reprodução ainda.</div>';
+
+
+ artistCards.innerHTML=
+ [
+ 'The Weeknd',
+ 'Drake',
+ 'Dua Lipa',
+ 'Post Malone',
+ 'Billie Eilish',
+ 'Imagine Dragons'
+ ]
+ .map(
+ (x,i)=>`
+
+ <div class="card">
+
+ <div
+ class="cover"
+ style="display:grid;place-items:center;font-size:42px"
+ >
+ ◉
+ </div>
+
+ <strong>
+ ${x}
+ </strong>
+
+ <span class="muted">
+ ${20+i*6} músicas
+ </span>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ albumCards.innerHTML=
+ [
+ 'After Hours',
+ 'Starboy',
+ 'Dawn FM',
+ 'Beauty Behind...',
+ 'Certified Lover Boy',
+ 'Hollywood’s Bleeding'
+ ]
+ .map(
+ x=>`
+
+ <div class="card">
+
+ <div class="cover"></div>
+
+ <strong>
+ ${x}
+ </strong>
+
+ <span class="muted">
+ Álbum
+ </span>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ genreCards.innerHTML=
+ [
+ 'Pop',
+ 'Rock',
+ 'Hip Hop',
+ 'Eletrônica',
+ 'Trap',
+ 'Sertanejo',
+ 'Funk',
+ 'Lo-fi'
+ ]
+ .map(
+ (x,i)=>`
+
+ <div
+ class="card"
+ onclick="toast('${x}')"
+ >
+
+ <strong>
+ ${x}
+ </strong>
+
+ <span class="muted">
+ ${12+i*8} músicas
+ </span>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ playlistCards.innerHTML=
+ [
+ 'As Melhores',
+ 'Festa e Balada',
+ 'Relax & Chill',
+ 'Sertanejo Top',
+ 'Top Brasil',
+ 'Músicas Românticas'
+ ]
+ .map(
+ (x,i)=>`
+
+ <div class="card">
+
+ <div class="cover"></div>
+
+ <strong>
+ ${x}
+ </strong>
+
+ <span class="muted">
+ ${20+i*7} músicas
+ </span>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ effectCards.innerHTML=
+ [
+ 'Bass Boost',
+ 'Virtualizer',
+ 'Surround 3D',
+ 'Clareza',
+ 'Reverb',
+ 'Pitch'
+ ]
+ .map(
+ x=>`
+
+ <div class="panel">
+
+ <strong>
+ ${x}
+ </strong>
+
+ <input
+ class="progress"
+ type="range"
+ min="0"
+ max="100"
+ value="50"
+ >
+
+ <div class="muted">
+ 50%
+ </div>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ radioCards.innerHTML=
+ [
+ 'Top Hits',
+ 'Rock Classics',
+ 'Eletrônica',
+ 'Chill Vibes',
+ 'Sertanejo',
+ 'Jazz'
+ ]
+ .map(
+ x=>`
+
+ <div
+ class="card"
+ onclick="toast('Rádio: ${x}')"
+ >
+
+ <div class="cover"></div>
+
+ <strong>
+ ${x}
+ </strong>
+
+ <span class="muted">
+ Ao vivo
+ </span>
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ presets.innerHTML=
+ [
+ 'Normal',
+ 'Rock',
+ 'Pop',
+ 'Bass',
+ 'Clássico',
+ 'Dance',
+ 'Hip Hop',
+ 'Jazz',
+ 'Vocal'
+ ]
+ .map(
+ (x,i)=>`
+
+ <button
+ class="pill ${i===0?'active':''}"
+ onclick="preset(${i})"
+ >
+ ${x}
+ </button>
+
+ `
+ )
+ .join('');
+
+
+ eq.innerHTML=
+ [
+ 32,64,125,250,500,
+ 1e3,2e3,4e3,8e3,16e3
+ ]
+ .map(
+ f=>`
+
+ <div class="band">
+
+ <span class="muted">
+ ${f>=1000?(f/1000)+'k':f}
+ </span>
+
+ <input
+ type="range"
+ min="-12"
+ max="12"
+ value="0"
+ >
+
+ </div>
+
+ `
+ )
+ .join('');
+
+
+ visualWave.innerHTML=
+ nowWave.innerHTML=
+ Array.from(
+  {length:55},
+  (_,i)=>
+   `<i style="height:${15+(i*17)%70}%"></i>`
+ )
+ .join('');
+
+}
+
+
+function playIndex(i){
+
+ idx=i;
+
+ play(
+  songs[i].name
+ );
+
+}
+
+
+function play(name){
+
+ const i=
+ songs.findIndex(
+  s=>s.name===name
+ );
+
+ if(i>=0)
+  idx=i;
+
+ const s=songs[idx];
+
+
+ document
+ .getElementById('nowTitle')
+ .textContent=s.name;
+
+ miniTitle.textContent=s.name;
+
+ bigCover.src=s.cover;
+
+ miniCover.src=s.cover;
+
+
+ if(s.url){
+
+  audio.src=s.url;
+
+  audio.play().catch(()=>{});
+
+ }
+
+
+ playing=true;
+
+ playBtn.textContent='Ⅱ';
+
+ miniPlay.textContent='Ⅱ';
+
+
+ history=[
+  s,
+  ...history.filter(
+   x=>x.name!==s.name
+  )
+ ].slice(0,12);
+
+
+ localStorage.setItem(
+  'auraHistory',
+  JSON.stringify(history)
+ );
+
+
+ render();
+
+ show('now');
+
+}
+
+
+function togglePlay(){
+
+ playing=!playing;
+
+
+ if(
+  songs[idx] &&
+  songs[idx].url
+ ){
+
+  if(playing)
+   audio.play().catch(()=>{});
+  else
+   audio.pause();
+
+ }
+
+
+ playBtn.textContent=
+  playing?'Ⅱ':'▶';
+
+ miniPlay.textContent=
+  playing?'Ⅱ':'▶';
+
+
+ toast(
+  playing
+  ?'Reproduzindo'
+  :'Pausado'
+ );
+
+}
+
+
+function next(){
+
+ idx=
+  (idx+1)%songs.length;
+
+ play(
+  songs[idx].name
+ );
+
+}
+
+
+function prev(){
+
+ idx=
+  (idx-1+songs.length)%songs.length;
+
+ play(
+  songs[idx].name
+ );
+
+}
+
+
+function fav(i){
+
+ toast(
+  'Adicionado aos favoritos'
+ );
+
+}
+
+
+function newPlaylist(){
+
+ const n=
+  prompt(
+   'Nome da playlist:'
+  );
+
+ if(n)
+  toast(
+   'Playlist criada: '+n
+  );
+
+}
+
+
+function preset(i){
+
+ toast(
+  'Preset aplicado'
+ );
+
+}
+
+
+function seekTo(v){
+
+ if(audio.duration){
+
+  audio.currentTime=
+   (Number(v)/100)*
+   audio.duration;
+
+ }
+
+ const total=
+  Math.max(
+   0,
+   Math.floor(
+    (audio.duration||221)*
+    Number(v)/100
+   )
+  );
+
+ document
+ .getElementById('time')
+ .textContent=
+  Math.floor(total/60)+
+  ':'+
+  String(total%60)
+  .padStart(2,'0');
+
+}
+
+
+function searchAll(v){
+
+ if(!v){
+
+  render();
+
+  return;
+
+ }
+
+
+ const filtered=
+ songs.filter(
+  s=>
+   (
+    s.name+
+    s.artist+
+    s.album
+   )
+   .toLowerCase()
+   .includes(
+    v.toLowerCase()
+   )
+ );
+
+
+ homeList.innerHTML=
+  filtered.map(row).join('');
+
+}
+
+
+function importSongs(files){
+
+ [
+  ...files
+ ]
+ .forEach(
+  file=>{
+
+   const url=
+    URL.createObjectURL(file);
+
+   songs.push({
+
+    name:
+     file.name.replace(
+      /\.[^.]+$/,
+      ''
+     ),
+
+    artist:
+     'Arquivo local',
+
+    album:
+     'Biblioteca offline',
+
+    dur:
+     '--:--',
+
+    cover:
+     'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+
+    url
+
+   });
+
+  }
+ );
+
+
+ render();
+
+ show('library');
+
+ toast(
+  files.length+
+  ' música(s) adicionada(s)'
+ );
+
+}
+
+
+function theme(c){
+
+ document
+ .documentElement
+ .style
+ .setProperty(
+  '--orange',
+  c
+ );
+
+ localStorage.setItem(
+  'auraTheme',
+  c
+ );
+
+}
+
+
+function toast(t){
+
+ let x=
+  document.getElementById(
+   'toast'
+  );
+
+
+ if(!x){
+
+  x=
+   document.createElement(
+    'div'
+   );
+
+  x.id='toast';
+
+  x.style=
+   'position:fixed;'+
+   'top:20px;'+
+   'left:50%;'+
+   'transform:translateX(-50%);'+
+   'background:#111820;'+
+   'border:1px solid var(--orange);'+
+   'padding:11px 16px;'+
+   'border-radius:10px;'+
+   'z-index:99;'+
+   'box-shadow:0 10px 30px #000';
+
+  document.body.appendChild(x);
+
+ }
+
+
+ x.textContent=t;
+
+ x.style.display='block';
+
+ clearTimeout(x._t);
+
+ x._t=
+  setTimeout(
+   ()=>x.style.display='none',
+   1800
+  );
+
+}
+
+
+audio.addEventListener(
+ 'timeupdate',
+ ()=>{
+
+  if(audio.duration){
+
+   const p=
+    (audio.currentTime/
+    audio.duration)*100;
+
+   document
+    .getElementById('seek')
+    .value=p;
+
+   document
+    .querySelectorAll(
+     '.mini .progress'
+    )
+    .forEach(
+     x=>x.value=p
+    );
+
+   const m=
+    Math.floor(
+     audio.currentTime/60
+    );
+
+   const sec=
+    Math.floor(
+     audio.currentTime%60
+    );
+
+   document
+    .getElementById('time')
+    .textContent=
+     m+':'+
+     String(sec)
+     .padStart(2,'0');
+
+  }
+
+ }
+);
+
+
+audio.addEventListener(
+ 'ended',
+ ()=>next()
+);
+
+
+buildNav();
+
+render();
+
+if(
+ localStorage.getItem(
+  'auraTheme'
+ )
+)
+ theme(
+  localStorage.getItem(
+   'auraTheme'
+  )
+);
+
+</script>
+
+</body>
+</html>
